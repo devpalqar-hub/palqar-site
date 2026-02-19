@@ -1,16 +1,15 @@
 import Hero from "@/components/sections/Hero/Hero";
-import Services from "@/components/sections/Services/Services";
+import ServicesPreview from "@/components/sections/Services/ServicesPreview";
 import Showcase from "@/components/sections/Showcase.js/Showcase";
 import TestimonialsPage from "@/components/sections/Testimonials/Testimonials";
-
-import Image from "next/image";
+import VedioFrame from "@/components/sections/VedioFrame/VedioFrame";
 
 export default function Home() {
   return (
     <main >
       <Hero/>
       <VedioFrame />
-      <ServicesPreview/>
+      <ServicesPreview />
       <TestimonialsPage/>
       <Showcase/>
     </main>
