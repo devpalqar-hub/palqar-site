@@ -79,13 +79,22 @@ const SERVICES = [
 ];
 
 export default function ServicesPreview() {
+  const [activeId, setActiveId] = useState(null);
 
   return (
     <section className={styles.wrapper}>
       <p className={styles.label}>Most demanded services offered by us</p>
 
       {SERVICES.map((service) => (
-        <div key={service.id} className={styles.service}>
+        <div
+          key={service.id}
+          className={`${styles.service} ${
+            activeId === service.id ? styles.active : ""
+          }`}
+          onClick={() =>
+            setActiveId(activeId === service.id ? null : service.id)
+          }
+        >
           <div className={styles.header}>
             <h3>{service.title}</h3>
             <span className={styles.arrow}>
