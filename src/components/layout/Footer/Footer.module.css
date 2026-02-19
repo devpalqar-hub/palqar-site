@@ -1,0 +1,379 @@
+
+.footer {
+  position: relative;
+  color: white;
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+
+
+.backgroundWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.backgroundImage {
+  object-fit: cover;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  padding: 180px 8% 40px;
+}
+
+.videoWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; 
+  gap: 15px;
+} 
+
+.brandSection {
+  margin: 60px 40px 30px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; 
+}
+ .bigLogo {
+
+  max-width: 1200px; 
+  max-height: 800px; 
+  object-fit: contain; 
+  opacity: 0.8;
+  margin: -300px 0px;
+}
+
+.bottomBar {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.bottomBar div {
+  display: flex;
+  gap: 40px;
+}
+
+.bottomBar span {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.bottomBar span:hover {
+  color: white;
+}
+
+
+.topSection {
+  display: grid;
+  grid-template-columns: 350px 180px 180px 1fr; 
+  gap: 40px;
+  column-gap: 60px; 
+  align-items: start;
+  margin-top: 40px;
+}
+
+.logo {
+  font-family: var(--font-smooch); 
+  font-size: 38px;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  margin-bottom: 5px;
+}
+
+.tagline {
+  margin: 0 0 30px;
+  color: #777;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.emailBox {
+  position: relative;
+  width: 100%;
+  max-width: 450px; 
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+  border-radius: 20px; 
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  overflow: visible; 
+}
+
+.input {
+  background: transparent;
+  border: none;
+  padding-left: 20px;
+  color: white;
+  flex: 1;
+  font-size: 16px;
+  outline: none;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.button {
+
+  width: 111px;
+  height: 38px;
+  border-radius: 10px;
+  padding: 7px 15px;
+  background-color: rgba(220, 53, 69, 1);
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 8px 40px 0px rgba(220, 53, 69, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  box-shadow: 0px 8px 50px 0px rgba(220, 53, 69, 1);
+  transform: translateY(-1px);
+}
+
+.columnTitle {
+  font-size: 16px;
+  margin-bottom: 25px;
+  color: white;
+  font-weight: 600;
+}
+
+.linkList li {
+  margin-bottom: 12px;
+  color: #888;
+  font-size: 15px;
+  list-style: none;
+  transition: color 0.2s;
+}
+
+.linkList li:hover {
+  color: white;
+}
+
+.videoWrapper {
+  position: relative; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+.clientsTag {
+  position: absolute; 
+  top: -44px; 
+  left: 3px;
+  z-index: 10;
+  background: rgba(15, 15, 25, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 8px 18px; 
+  border-radius: 12px;
+  font-size: 14px;
+  color: #ffffff;
+  backdrop-filter: blur(15px);
+}
+.clientsTag::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%; 
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(220, 53, 69, 1), transparent);
+  box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
+}
+
+.clientsTag strong {
+  color: white;
+  margin-left: 6px;
+  font-weight: 600;
+}
+
+.videoCard {
+  width: 320px; 
+  height: 200px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.videoCard::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.playCircle {
+  width: 54px;
+  height: 54px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: white;
+  z-index: 2;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+}
+@media (max-width: 1024px) {
+
+  .content {
+    padding: 140px 6% 40px;
+  }
+
+  .topSection {
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+  }
+  
+  .videoWrapper {
+    align-items: flex-start;
+  }
+
+  .videoCard {
+    width: 260px;
+    height: 170px;
+  }
+
+  .bigLogo {
+    max-width: 800px;
+    margin: -150px 0;
+  }
+
+}
+
+@media (max-width: 720px) {
+
+  .content {
+    padding: 120px 5% 40px;
+  }
+
+  .topSection {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .left {
+    text-align: center;
+  }
+
+  .emailBox {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .videoWrapper {
+    align-items: center;
+  }
+
+  .clientsTag {
+    position: static;
+    margin-bottom: 10px;
+  }
+
+  .videoCard {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .brandSection {
+    margin: 40px 0;
+  }
+
+  .bigLogo {
+    max-width: 500px;
+    margin: -80px 0;
+  }
+
+  .bottomBar {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .bottomBar div {
+    gap: 20px;
+    justify-content: center;
+  }
+
+}
+@media (max-width: 460px) {
+
+  .logo {
+    font-size: 28px;
+  }
+
+  .tagline {
+    font-size: 14px;
+  }
+  /* Center the entire column */
+  .topSection > div:nth-child(2),
+  .topSection > div:nth-child(3) {
+    text-align: center;
+  }
+
+  .columnTitle {
+    text-align: center;
+  }
+
+  .linkList {
+    padding: 0;
+  }
+
+  .linkList li {
+    text-align: center;
+  }
+
+  .columnTitle {
+    font-size: 14px;
+  }
+
+  .linkList li {
+    font-size: 14px;
+  }
+
+  .videoCard {
+    height: 160px;
+  }
+
+  .bigLogo {
+    max-width: 320px;
+    margin: -50px 0;
+  }
+
+  .bottomBar {
+    font-size: 12px;
+  }
+
+}
