@@ -24,8 +24,10 @@ export default function Hero() {
 
   return (
     <section className={styles.hero}>
-      <div className={styles.poster}></div>
+      {/* LCP poster */}
+      <div className={styles.poster} />
 
+      {/* Background video */}
       <video
         ref={videoRef}
         className={`${styles.video} ${loaded ? styles.show : ""}`}
@@ -38,8 +40,10 @@ export default function Hero() {
         <source src="/hero-video.mp4" type="video/mp4" />
       </video>
 
-      <div className={styles.overlay}></div>
+      {/* Readability overlay */}
+      <div className={styles.overlay} />
 
+      {/* Content */}
       <div className={styles.content}>
         <p className={styles.kicker}>30+ PROJECTS DELIVERED</p>
 
@@ -53,26 +57,35 @@ export default function Hero() {
           and modern SEO built for steady growth.
         </p>
 
-        <button className={styles.cta}>LET’S TALK</button>
+        <div className={styles.ctaWrap}>
+          <button className={styles.cta}>
+            <span className={styles.ctaText}>LET&apos;S TALK</span>
+
+            <div className={styles.avatars}>
+              <img src="/image1.jpg" alt="Team member 1" />
+              <img src="/image2.jpg" alt="Team member 2" />
+              <img src="/image3.jpg" alt="Team member 3" />
+            </div>
+          </button>
+        </div>
 
         <div className={styles.logoStrip}>
-        <div className={styles.logoViewport}>
-          <LogoLoop
-            logos={logos}
-            speed={60}
-            direction="left"
-            width={220}   
-            logoHeight={36}
-            gap={56}
-            hoverSpeed={25}
-            scaleOnHover
-            fadeOut
-            fadeOutColor="transparent"
-            ariaLabel="Technologies we use"
-          />
+          <div className={styles.logoViewport}>
+            <LogoLoop
+              logos={logos}
+              speed={60}
+              direction="left"
+              width={220}
+              logoHeight={36}
+              gap={56}
+              hoverSpeed={25}
+              scaleOnHover
+              fadeOut
+              fadeOutColor="transparent"
+              ariaLabel="Technologies we use"
+            />
+          </div>
         </div>
-      </div>
-
       </div>
     </section>
   );

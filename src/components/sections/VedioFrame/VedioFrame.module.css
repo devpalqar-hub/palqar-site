@@ -1,0 +1,106 @@
+/* BIG SCROLL AREA */
+.videoFrame {
+    background: #000;
+    height: 500vh;
+    position: relative;
+}
+
+/* TEXT PINNED */
+.wrapper {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px;
+}
+
+/* PARAGRAPH STYLE */
+.para {
+    font-family: "DM Sans", sans-serif;
+    max-width: 1320px;
+    font-weight: 200;
+    font-size: 56px;
+    line-height: 88px;
+    letter-spacing: 1.8px;
+    text-align: center;
+}
+
+/* LETTERS */
+.char {
+    color: rgba(255,255,255,0.18);
+    transition: color 0.15s linear;
+}
+
+.active {
+    color: white;
+}
+
+/* VIDEO SECTION */
+.videoContainer {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+}
+
+/* GREY FRAME */
+.vedioFrame {
+    width: 1320px;
+    height: 772px;
+    border-radius: 24px;
+    background: #141618;
+    overflow: hidden;
+
+    opacity: 0;
+    transform: scale(0.9) translateY(60px);
+    transition: 0.8s ease;
+}
+
+/* VIDEO INSIDE */
+.vedioFrame video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* APPEARS AFTER TEXT */
+.showVideo {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+/* CTA BUTTON */
+.ctaWrapper {
+    width: 246px;
+    height: 54px;
+    border-radius: 50px;
+    padding:7px 24px 7px 7px;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    background: #F5F4F3;
+}
+
+.cta {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 15.8px;
+    line-height: 20px;
+}
+
+.arrowRight {
+    border-radius: 35px;
+    background: #DC3545;
+    color: #fff;
+    padding: 11px;
+}
