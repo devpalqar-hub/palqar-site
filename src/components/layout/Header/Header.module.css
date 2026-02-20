@@ -1,0 +1,221 @@
+.wrapper {
+  position: fixed;
+  top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 50;
+
+  /* Fade controlled by JS via opacity + pointer-events */
+  opacity: 1;
+  transition: opacity 0.6s ease, top 0.4s ease;
+}
+
+.wrapper.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Navbar shell ─────────────────────────────────────── */
+.navbar {
+  width: min(1320px, calc(100% - 32px));
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 24px;
+  border-radius: 70px;
+
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Logo ─────────────────────────────────────────────── */
+.logoBox {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoImg {
+  object-fit: contain;
+  padding: 4px;
+  transform: scale(6.5);
+}
+
+/* ── Desktop links ────────────────────────────────────── */
+.links {
+  display: flex;
+  gap: 48px;
+  font-size: 14px;
+  line-height: 15px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: #ffffff;
+}
+
+.links a {
+  cursor: pointer;
+  transition: opacity 0.25s;
+  opacity: 0.7;
+}
+
+.links a:hover {
+  opacity: 1;
+}
+
+/* ── CTA button ───────────────────────────────────────── */
+.contact {
+  background: #ff3b3b;
+  color: white;
+  border: none;
+  padding: 14px 26px;
+  border-radius: 40px;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.25s, transform 0.2s;
+}
+
+.contact:hover {
+  background: #ff1f1f;
+  transform: scale(1.04);
+}
+
+/* ── Hamburger button (mobile only) ───────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: transform 0.35s ease, opacity 0.25s ease;
+  transform-origin: center;
+}
+
+/* Open state — morphs into ✕ */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile drawer ────────────────────────────────────── */
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+
+  background: rgba(10, 10, 10, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  /* Hidden by default */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.drawer.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.drawerLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.drawerLinks a {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #ffffff;
+  opacity: 0.75;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+
+.drawerLinks a:hover {
+  opacity: 1;
+}
+
+.drawerContact {
+  background: #ff3b3b;
+  color: white;
+  border: none;
+  padding: 16px 40px;
+  border-radius: 40px;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.drawerContact:hover {
+  background: #ff1f1f;
+}
+
+/* ── Breakpoints ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  .wrapper {
+    top: 16px;
+  }
+
+  .links,
+  .contact {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0 16px;
+  }
+}
