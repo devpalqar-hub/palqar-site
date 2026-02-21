@@ -1,8 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useState,useRef,useEffect } from "react";
 import styles from "./ServicesPreview.module.css";
 import { LuArrowUpRight } from "react-icons/lu";
 import Image from "next/image";
+import gsap from "gsap";
 
 const SERVICES = [
   {
@@ -80,6 +81,71 @@ const SERVICES = [
 
 export default function ServicesPreview() {
   const [activeId, setActiveId] = useState(null);
+  const contentRefs = useRef({});
+const handleToggle = (serviceId) => {
+  const content = contentRefs.current[serviceId];
+  if (!content) return;
+
+  if (activeId === serviceId) {
+    // CLOSE
+    gsap.to(content, {
+      height: 0,
+      opacity: 0,
+      y: -12,
+      duration: 0.4,
+      ease: "power2.inOut",
+    });
+    setActiveId(null);
+  } else {
+    // CLOSE PREVIOUS (if any)
+    if (activeId && contentRefs.current[activeId]) {
+      gsap.to(contentRefs.current[activeId], {
+        height: 0,
+        opacity: 0,
+        y: -12,
+        duration: 0.3,
+        ease: "power2.inOut",
+      });
+    }
+
+    // OPEN
+    gsap.set(content, { height: "auto", opacity: 1, y: 0 });
+
+    gsap.from(content, {
+      height: 0,
+      opacity: 0,
+      y: -12,
+      duration: 0.5,
+      ease: "power3.out",
+    });
+
+    // LIST STAGGER
+    gsap.from(
+      content.querySelectorAll("li"),
+      {
+        y: 12,
+        opacity: 0,
+        stagger: 0.06,
+        duration: 0.4,
+        ease: "power2.out",
+      }
+    );
+
+    // IMAGE STAGGER
+    gsap.from(
+      content.querySelectorAll(`.${styles.thumb}`),
+      {
+        y: 20,
+        opacity: 0,
+        stagger: 0.08,
+        duration: 0.45,
+        ease: "power3.out",
+      }
+    );
+
+    setActiveId(serviceId);
+  }
+};
 
   return (
     <section className={styles.wrapper}>
@@ -91,9 +157,7 @@ export default function ServicesPreview() {
           className={`${styles.service} ${
             activeId === service.id ? styles.active : ""
           }`}
-          onClick={() =>
-            setActiveId(activeId === service.id ? null : service.id)
-          }
+          onClick={() => handleToggle(service.id)}
         >
           <div className={styles.header}>
             <h3>{service.title}</h3>
@@ -102,7 +166,10 @@ export default function ServicesPreview() {
             </span>
           </div>
 
-          <div className={styles.content}>
+          <div
+            ref={(el) => (contentRefs.current[service.id] = el)}
+            className={styles.content}
+          >
             <div className={styles.count}>
               {service.id < 10 ? `0${service.id}` : service.id}
             </div>
