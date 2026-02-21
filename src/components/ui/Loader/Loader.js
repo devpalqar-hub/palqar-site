@@ -11,7 +11,7 @@ export default function Loader({ onFinish }) {
 
     setTimeout(() => {
       onFinish();
-    }, 600); // match CSS fade duration
+    }, 600);
   };
 
   return (
