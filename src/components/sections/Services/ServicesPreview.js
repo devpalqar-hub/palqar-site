@@ -82,7 +82,7 @@ export default function ServicesPreview() {
   const [activeId, setActiveId] = useState(null);
 
   return (
-    <section className={styles.wrapper}>
+    <section className={styles.wrapper} id="services">
       <p className={styles.label}>Most demanded services offered by us</p>
 
       {SERVICES.map((service) => (
