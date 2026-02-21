@@ -82,6 +82,18 @@ const SERVICES = [
 export default function ServicesPreview() {
   const [activeId, setActiveId] = useState(null);
   const contentRefs = useRef({});
+
+  useEffect(() => {
+    Object.values(contentRefs.current).forEach((content) => {
+      if (!content) return;
+
+      gsap.set(content, {
+        height: 0,
+        opacity: 0,
+        y: -12,
+      });
+    });
+  }, []);
 const handleToggle = (serviceId) => {
   const content = contentRefs.current[serviceId];
   if (!content) return;

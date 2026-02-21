@@ -99,7 +99,7 @@ export default function Whyanimate() {
       scrollTrigger: {
         trigger: animate,
         start: "top top",
-        end: "+=500%",
+        end: "+=200%",
         scrub: true,
         pin: true,
         anticipatePin: 1,
