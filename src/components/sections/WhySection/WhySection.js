@@ -217,9 +217,9 @@ export default function Whyanimate() {
           >
             <div className={`${styles.card} ${styles.tl}`}
             style={{
-    width: CARD_DIMENSIONS[layerIndex][0].w,
-    height: CARD_DIMENSIONS[layerIndex][0].h,
-  }}>
+              width: CARD_DIMENSIONS[layerIndex][0].w,
+              height: CARD_DIMENSIONS[layerIndex][0].h,
+            }}>
               <Image
                 src={layerImages[0]}
                 alt=""
@@ -231,9 +231,9 @@ export default function Whyanimate() {
 
             <div className={`${styles.card} ${styles.tr}`}
             style={{
-    width: CARD_DIMENSIONS[layerIndex][1].w,
-    height: CARD_DIMENSIONS[layerIndex][1].h,
-  }}>
+              width: CARD_DIMENSIONS[layerIndex][1].w,
+              height: CARD_DIMENSIONS[layerIndex][1].h,
+            }}>
               <Image
                 src={layerImages[1]}
                 alt=""
@@ -245,9 +245,9 @@ export default function Whyanimate() {
 
             <div className={`${styles.card} ${styles.bl}`}
             style={{
-    width: CARD_DIMENSIONS[layerIndex][2].w,
-    height: CARD_DIMENSIONS[layerIndex][2].h,
-  }}>
+              width: CARD_DIMENSIONS[layerIndex][2].w,
+              height: CARD_DIMENSIONS[layerIndex][2].h,
+            }}>
               <Image
                 src={layerImages[2]}
                 alt=""
@@ -259,9 +259,9 @@ export default function Whyanimate() {
 
             <div className={`${styles.card} ${styles.br}`}
             style={{
-    width: CARD_DIMENSIONS[layerIndex][3].w,
-    height: CARD_DIMENSIONS[layerIndex][3].h,
-  }}>
+              width: CARD_DIMENSIONS[layerIndex][3].w,
+              height: CARD_DIMENSIONS[layerIndex][3].h,
+            }}>
               <Image
                 src={layerImages[3]}
                 alt=""
