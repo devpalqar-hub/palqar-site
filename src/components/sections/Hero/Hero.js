@@ -78,13 +78,17 @@ export default function Hero() {
             muted
             loop
             playsInline
-            preload="none"
+            preload="metadata"
           >
             <source src="/preview-video.mp4" type="video/mp4" />
           </video>
 
           {/* Poster / fallback */}
-          <div className={styles.previewPoster} />
+          <div
+            className={`${styles.previewPoster} ${
+              previewPlaying ? styles.hidePoster : ""
+            }`}
+          />
 
           {/* Play / pause button */}
           <button
