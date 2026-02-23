@@ -1,63 +1,72 @@
-"use client"
+"use client";
 
-import styles from "./Header.module.css"
-import Image from "next/image"
-import { useEffect, useRef, useState } from "react"
+import styles from "./Header.module.css";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [visible, setVisible] = useState(true)
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [isHovering, setIsHovering] = useState(false);
 
-  const scrollTimer = useRef(null)
-  const lastScrollY = useRef(0)
+  const scrollTimer = useRef(null);
 
   useEffect(() => {
-    const IDLE_DELAY = 1800 // ms after scroll stops → fade out
+    const IDLE_DELAY = 1800;
 
     const handleScroll = () => {
-      const currentY = window.scrollY
+      setVisible(true);
+      clearTimeout(scrollTimer.current);
 
-      // Always show while actively scrolling
-      setVisible(true)
+      if (window.scrollY < 10) return;
 
-      // Clear any existing idle timer
-      clearTimeout(scrollTimer.current)
-
-      // If scrolled back to very top, keep visible indefinitely
-      if (currentY < 10) {
-        lastScrollY.current = currentY
-        return
-      }
-
-      // Start idle timer — hides after user stops scrolling
       scrollTimer.current = setTimeout(() => {
-        setVisible(false)
-      }, IDLE_DELAY)
+        if (!isHovering) {
+          setVisible(false);
+        }
+      }, IDLE_DELAY);
+    };
 
-      lastScrollY.current = currentY
-    }
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
-    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-      clearTimeout(scrollTimer.current)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollTimer.current);
+    };
+  }, [isHovering]);
 
-  // Lock body scroll when mobile menu is open
+  // Lock body scroll when mobile menu open
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : ""
-    return () => { document.body.style.overflow = "" }
-  }, [menuOpen])
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
-  const closeMenu = () => setMenuOpen(false)
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+    setVisible(true);
+    clearTimeout(scrollTimer.current);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+
+    scrollTimer.current = setTimeout(() => {
+      setVisible(false);
+    }, 1800);
+  };
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <>
-      <header className={`${styles.wrapper} ${!visible ? styles.hidden : ""}`}>
+      <header
+        className={`${styles.wrapper} ${!visible ? styles.hidden : ""}`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <div className={styles.navbar}>
-
-          {/* Logo */}
           <div className={styles.logoBox}>
             <Image
               src="/logo.png"
@@ -67,7 +76,6 @@ export default function Header() {
             />
           </div>
 
-          {/* Desktop nav */}
           <nav className={styles.links}>
             <a href="#services">Services</a>
             <a>Works</a>
@@ -77,21 +85,20 @@ export default function Header() {
 
           <button className={styles.contact}>CONTACT US</button>
 
-          {/* Hamburger (mobile) */}
           <button
-            className={`${styles.hamburger} ${menuOpen ? styles.open : ""}`}
-            onClick={() => setMenuOpen(prev => !prev)}
+            className={`${styles.hamburger} ${
+              menuOpen ? styles.open : ""
+            }`}
+            onClick={() => setMenuOpen((prev) => !prev)}
             aria-label="Toggle menu"
           >
             <span />
             <span />
             <span />
           </button>
-
         </div>
       </header>
 
-      {/* Full-screen mobile drawer */}
       <div className={`${styles.drawer} ${menuOpen ? styles.open : ""}`}>
         <ul className={styles.drawerLinks}>
           <li><a onClick={closeMenu}>Services</a></li>
@@ -104,5 +111,5 @@ export default function Header() {
         </button>
       </div>
     </>
-  )
+  );
 }
