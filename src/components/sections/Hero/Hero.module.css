@@ -207,7 +207,7 @@
 */
 .previewCard {
   position: absolute;
-  right: 25;
+  right: 25px;
   bottom: 0;
   width: 296px;
   height: 193px;
@@ -250,7 +250,10 @@
   z-index: 1;
   transition: opacity 0.4s ease;
 }
-
+.hidePoster {
+  opacity: 0;
+  pointer-events: none;
+}
 /* ── Play / Pause button ── */
 .playBtn {
   position: absolute;
