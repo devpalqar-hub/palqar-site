@@ -5,8 +5,6 @@
   display: flex;
   justify-content: center;
   z-index: 50;
-
-  /* Fade controlled by JS via opacity + pointer-events */
   opacity: 1;
   transition: opacity 0.6s ease, top 0.4s ease;
 }
@@ -16,9 +14,10 @@
   pointer-events: none;
 }
 
-/* ── Navbar shell ─────────────────────────────────────── */
+/* ── Navbar shell ── */
 .navbar {
-  width: min(1320px, calc(100% - 32px));
+  width: 100%;
+  max-width: 1320px;
   height: 60px;
 
   display: flex;
@@ -32,9 +31,11 @@
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-sizing: border-box; /* ← ensures padding doesn't push width beyond 100% */
 }
 
-/* ── Logo ─────────────────────────────────────────────── */
+/* ── Logo ── */
 .logoBox {
   position: relative;
   width: 32px;
@@ -52,7 +53,7 @@
   transform: scale(6.5);
 }
 
-/* ── Desktop links ────────────────────────────────────── */
+/* ── Desktop links ── */
 .links {
   display: flex;
   gap: 48px;
@@ -73,9 +74,9 @@
   opacity: 1;
 }
 
-/* ── CTA button ───────────────────────────────────────── */
+/* ── CTA button ── */
 .contact {
-  background: #ff3b3b;
+  background: #DC3545;
   color: white;
   border: none;
   padding: 14px 26px;
@@ -93,7 +94,7 @@
   transform: scale(1.04);
 }
 
-/* ── Hamburger button (mobile only) ───────────────────── */
+/* ── Hamburger button (mobile only) ── */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -105,6 +106,7 @@
   border: none;
   cursor: pointer;
   padding: 0;
+  flex-shrink: 0; /* ← stops hamburger from being squeezed */
 }
 
 .hamburger span {
@@ -117,7 +119,6 @@
   transform-origin: center;
 }
 
-/* Open state — morphs into ✕ */
 .hamburger.open span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
@@ -129,7 +130,7 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* ── Mobile drawer ────────────────────────────────────── */
+/* ── Mobile drawer ── */
 .drawer {
   position: fixed;
   inset: 0;
@@ -145,7 +146,6 @@
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
 
-  /* Hidden by default */
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease;
@@ -198,10 +198,21 @@
   background: #ff1f1f;
 }
 
-/* ── Breakpoints ──────────────────────────────────────── */
+/* ── Tablet / Mobile ── */
 @media (max-width: 768px) {
   .wrapper {
     top: 16px;
+    /* Constrain wrapper so it never exceeds the screen width */
+    width: calc(100% - 32px); /* 16px breathing room on each side */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .navbar {
+    width: 100%;       /* fills the already-constrained wrapper */
+    max-width: 100%;   /* prevents 1320px cap from mattering */
+    padding: 0 16px;
+    border-radius: 50px;
   }
 
   .links,
@@ -214,8 +225,13 @@
   }
 }
 
+/* ── Small mobile ── */
 @media (max-width: 480px) {
+  .wrapper {
+    width: calc(100% - 24px); 
+  }
+
   .navbar {
-    padding: 0 16px;
+    padding: 0 14px;
   }
 }

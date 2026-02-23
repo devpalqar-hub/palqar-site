@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
+import LoaderWrapper from "@/components/ui/LoaderWrapper";
 import { Smooch_Sans } from "next/font/google";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,12 +28,15 @@ const smoochSans = Smooch_Sans({
   variable: "--font-smooch",
 });
 export default function RootLayout({ children }) {
+  
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} ${smoochSans.variable}`}>
-        <Header/>
-        {children}
-        <Footer/>
+        <LoaderWrapper>
+          <Header />
+          {children}
+          <Footer />
+        </LoaderWrapper>
       </body>
     </html>
   );

@@ -12,10 +12,10 @@ export default function Home() {
       <Hero/>
       <VedioFrame />
       <ServicesPreview />
-      <TestimonialsPage/>
-      <Showcase/>
       <FeaturedProjects/>
       <WhySection/>
+      <TestimonialsPage/>
+      <Showcase/>
     </main>
   );
 }

@@ -69,7 +69,7 @@ export default function Header() {
 
           {/* Desktop nav */}
           <nav className={styles.links}>
-            <a>Services</a>
+            <a href="#services">Services</a>
             <a>Works</a>
             <a>About</a>
             <a>Blog</a>
