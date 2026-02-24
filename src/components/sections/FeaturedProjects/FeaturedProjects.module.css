@@ -225,13 +225,16 @@
     padding: 48px 16px;
   }
   .top{
-    gap: 12px;
+    gap: 16px;
+    flex-direction: column;
+    align-items: flex-start;
   }
   .label{
     font-size: 12px;
   }
   .controls{
-    gap: 10px;
+    gap: 20px;
+    width: 100%;
   }
   .recent {
     font-size: 12px;
