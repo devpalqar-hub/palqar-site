@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import styles from "./Showcase.module.css";
+import { ArrowRight } from "lucide-react";
 
 export default function Showcase() {
   const container = useRef(null);
@@ -164,13 +165,19 @@ export default function Showcase() {
           design and develop solutions that move your business forward —
           strategically, creatively, and efficiently.
         </p>
-        <button className={styles.cta}>
-          <div className={styles.arrow}>
-            <span>&rarr;</span>
-          </div>
-          <span className={styles.ctaText}>Start Your Project</span>
-        </button>
-      </div>
+               <div
+                  className={styles.ctaWrapper}
+                  // style={{
+                  //   opacity: ctaOpacity,
+                  //   pointerEvents: ctaOpacity > 0.5 ? "all" : "none",
+                  // }}
+                >
+                  <div className={styles.arrowRight}>
+                    <ArrowRight size={18} />
+                  </div>
+                  <span className={styles.cta}>Start Your Project</span>
+                </div>
+               </div>
 
       <div className={styles.sliderWrapper}>
         <div className={styles.sliderRow}>
