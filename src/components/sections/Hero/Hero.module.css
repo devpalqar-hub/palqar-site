@@ -4,7 +4,7 @@
   width: 100%;
   overflow: hidden;
   color: white;
-  font-family: Inter, sans-serif;
+  font-family: var(--font-dm-sans);
 }
 
 /* ── Poster (LCP) ── */

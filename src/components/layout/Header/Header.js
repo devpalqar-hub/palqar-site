@@ -3,6 +3,7 @@
 import styles from "./Header.module.css";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -77,10 +78,11 @@ export default function Header() {
           </div>
 
           <nav className={styles.links}>
-            <a href="#services">Services</a>
-            <a>Works</a>
-            <a>About</a>
-            <a>Blog</a>
+            <Link href="/">Home</Link>
+            <Link href="/services">Services</Link>
+            <Link href="/works">Works</Link>
+            <Link href="/about">About</Link>
+            <Link href="/blog">Blog</Link>
           </nav>
 
           <button className={styles.contact}>CONTACT US</button>
@@ -101,10 +103,11 @@ export default function Header() {
 
       <div className={`${styles.drawer} ${menuOpen ? styles.open : ""}`}>
         <ul className={styles.drawerLinks}>
-          <li><a onClick={closeMenu}>Services</a></li>
-          <li><a onClick={closeMenu}>Works</a></li>
-          <li><a onClick={closeMenu}>About</a></li>
-          <li><a onClick={closeMenu}>Blog</a></li>
+          <li><Link href="/" onClick={closeMenu}>Home</Link></li>
+          <li><Link href="/services" onClick={closeMenu}>Services</Link></li>
+          <li><Link href="/works" onClick={closeMenu}>Works</Link></li>
+          <li><Link href="/about" onClick={closeMenu}>About</Link></li>
+          <li><Link href="/blog" onClick={closeMenu}>Blog</Link></li>
         </ul>
         <button className={styles.drawerContact} onClick={closeMenu}>
           CONTACT US

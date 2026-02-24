@@ -4,11 +4,16 @@ import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
 import LoaderWrapper from "@/components/ui/LoaderWrapper";
 import { Smooch_Sans } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
-
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-dm-sans",
+});
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -31,7 +36,7 @@ export default function RootLayout({ children }) {
   
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${smoochSans.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${smoochSans.variable} ${dmSans.variable}`}>
         <LoaderWrapper>
           <Header />
           {children}
