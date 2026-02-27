@@ -8,15 +8,6 @@ import CaseProcess from "@/components/case-study/CaseProcess";
 import CaseInnovation from "@/components/case-study/CaseInnovation";
 import { ArrowRight } from "lucide-react";
 
-export async function generateMetadata({ params }) {
-  const project = projects.find((p) => p.slug === params.slug);
-  if (!project) return {};
-  return {
-    title: `${project.title} | Palqar`,
-    description: project.overview,
-  };
-}
-
 export default async function CaseStudy({ params }) {
   const { slug } = await params;
 
@@ -95,22 +86,15 @@ export default async function CaseStudy({ params }) {
 
       <section className={styles.initiateProject}>
           <div className={styles.column}>
-            <h5 className={styles.header}>NEXT CHAPTER</h5>
-            <div className={styles.title}>Architecting</div>
-            <div className={styles.title}>the Next.</div>
-            <p>Ready to redefine your industry? Let's build a digital product that doesn't just work, but leads.</p>
+            <span className={styles.lets}>LET'S <span className={styles.talk}>TALK</span></span>
             <div className={styles.buttonWrapper}>
               <button>
-                INITIATE PROJECT
+                START A PROJECT
               </button>
-              <ArrowRight />
+              <div className={styles.arrowRight}>
+                <ArrowRight />  
+              </div>
             </div>   
-          </div>
-          <div className={styles.bottom}>
-            <span>SYNERGY</span>
-            <span>VERTICE</span>
-            <span>QUANTUM</span>
-            <span>NOVA</span>
           </div>
       </section>
     </main>

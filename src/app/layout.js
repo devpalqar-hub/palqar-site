@@ -1,10 +1,13 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
 import LoaderWrapper from "@/components/ui/LoaderWrapper";
 import { Smooch_Sans } from "next/font/google";
 import { DM_Sans } from "next/font/google";
+import { Raleway } from "next/font/google";
+import { Inter } from "next/font/google";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -14,9 +17,28 @@ const dmSans = DM_Sans({
   weight: ["400", "500", "600", "700"],
   variable: "--font-dm-sans",
 });
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
+});
+
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const raleway = Raleway({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-raleway",
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-jetbrains",
 });
 
 export const metadata = {
@@ -36,7 +58,7 @@ export default function RootLayout({ children }) {
   
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${smoochSans.variable} ${dmSans.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${smoochSans.variable} ${dmSans.variable} ${raleway.variable} ${inter.variable} ${jetbrains.variable}`}>
         <LoaderWrapper>
           <Header />
           {children}
