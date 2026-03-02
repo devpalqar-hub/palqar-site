@@ -1,0 +1,722 @@
+/* ============================================================
+   Contact.module.css  —  Palqar Contact Page
+============================================================ */
+
+/* ── Base ──────────────────────────────────────────────── */
+.contactPage {
+  background: #000;
+  min-height: 100vh;
+  color: #fff;
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+.header {
+  padding: 140px 8% 0;
+}
+
+.headerInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.labelLine {
+  width: 40px;
+  height: 1px;
+  background: #dc3545;
+}
+
+.labelText {
+  font-family: var(--font-jetbrains);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #dc3545;
+}
+
+.title {
+  font-family: var(--font-raleway);
+  font-weight: 800;
+  font-size: clamp(72px, 10vw, 136px);
+  line-height: 1.05;
+  letter-spacing: -3px;
+  color: #fff;
+  margin: 0;
+}
+
+.titleAccent {
+  color: #dc3545;
+}
+
+.headerMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 24px;
+  padding-bottom: 8px;
+  max-width: 300px;
+}
+
+.headerDesc {
+  font-family: var(--font-inter);
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.55);
+  text-align: right;
+  margin: 0;
+}
+
+.responseTime {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.responseNumber {
+  font-family: var(--font-jetbrains);
+  font-size: 48px;
+  font-weight: 700;
+  color: #dc3545;
+  line-height: 1;
+}
+
+.responseLabel {
+  font-family: var(--font-jetbrains);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.headerDivider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Form Section ───────────────────────────────────────── */
+.formSection {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 8%;
+}
+
+/* ── Tabs ────────────────────────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 14px 28px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: var(--font-inter);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: all 0.22s ease;
+}
+
+.tab:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.tabActive {
+  padding: 14px 28px;
+  border-radius: 9999px;
+  border: none;
+  background: #dc3545;
+  color: #fff;
+  font-family: var(--font-inter);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(220, 53, 69, 0.3);
+  transition: all 0.22s ease;
+}
+
+/* ── Panel ───────────────────────────────────────────────── */
+.panel {
+  background: #0d0d0d;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: 52px 52px 56px;
+}
+
+.panelHeader {
+  margin-bottom: 44px;
+}
+
+.panelTag {
+  font-family: var(--font-jetbrains);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #dc3545;
+  margin: 0 0 10px;
+}
+
+.panelDesc {
+  font-family: var(--font-inter);
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Form Grid ───────────────────────────────────────────── */
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px 24px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fieldFull   { grid-column: span 2; }
+.fieldHalf   { grid-column: span 1; }
+
+/* ── Fields ──────────────────────────────────────────────── */
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-family: var(--font-inter);
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.req {
+  color: #dc3545;
+}
+
+.input {
+  width: 100%;
+  height: 56px;
+  padding: 0 18px;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 15px;
+  font-family: var(--font-inter);
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.input:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.13);
+}
+
+.textarea {
+  width: 100%;
+  height: 160px;
+  padding: 16px 18px;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 15px;
+  font-family: var(--font-inter);
+  outline: none;
+  resize: vertical;
+  line-height: 1.6;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.textarea::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.textarea:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.13);
+}
+
+/* ── Phone Row ───────────────────────────────────────────── */
+.phoneRow {
+  display: flex;
+  gap: 0;
+}
+
+.flagBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 56px;
+  padding: 0 14px;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: none;
+  border-radius: 12px 0 0 12px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  transition: border-color 0.2s;
+  flex-shrink: 0;
+}
+
+.flagBtn:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dialCode {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  font-family: var(--font-jetbrains);
+}
+
+.phoneInput {
+  flex: 1;
+  border-radius: 0 12px 12px 0 !important;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 200;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  min-width: 160px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.dropdownItem:hover,
+.dropdownItemActive {
+  background: #222;
+}
+
+/* ── File Upload ─────────────────────────────────────────── */
+.fileUpload {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 22px;
+  background: #111;
+  border: 1.5px dashed rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  grid-column: span 2;
+}
+
+.fileUpload:hover {
+  border-color: #dc3545;
+  background: #151515;
+}
+
+.fileUploadTitle {
+  margin: 0;
+  font-size: 15px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.fileUploadMeta {
+  margin: 3px 0 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ── Submit ──────────────────────────────────────────────── */
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 36px 0 28px;
+  height: 60px;
+  background: #dc3545;
+  border: none;
+  border-radius: 9999px;
+  color: #fff;
+  font-family: var(--font-inter);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(220, 53, 69, 0.2);
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.submitBtn:hover {
+  background: #b02030;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(220, 53, 69, 0.35);
+}
+
+.submitArrow {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.submitBtn:hover .submitArrow {
+  transform: rotate(45deg);
+}
+
+/* ── Location ────────────────────────────────────────────── */
+.locationSection {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 8% 120px;
+}
+
+.locationCard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #0d0d0d;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  overflow: hidden;
+}
+
+.locationInfo {
+  padding: 56px 52px;
+}
+
+.locationNameRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.locationIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(220, 53, 69, 0.12);
+  border: 1px solid rgba(220, 53, 69, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.locationName {
+  font-family: var(--font-raleway);
+  font-size: 26px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.locationAddress {
+  font-family: var(--font-inter);
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.75;
+  margin: 0 0 40px;
+}
+
+.locationDivider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin-bottom: 36px;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.contactDetail {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contactDetailLabel {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.contactDetailText {
+  font-family: var(--font-jetbrains);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.contactDetailValue {
+  font-family: var(--font-inter);
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.mapWrapper {
+  position: relative;
+  min-height: 420px;
+}
+
+.mapIframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.mapBadge {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 12px 18px;
+}
+
+.mapBadgeTitle {
+  font-family: var(--font-jetbrains);
+  font-size: 12px;
+  color: #dc3545;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.mapBadgeSub {
+  font-family: var(--font-inter);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 4px 0 0;
+}
+
+/* ============================================================
+   CTA — LET'S TALK
+============================================================ */
+
+.initiateProject {
+  width: 100%;
+  background: #000;
+  padding: 80px 0 120px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 28px;
+  height: 64px;
+  min-width: 220px;
+  max-width: 100%;
+  border-radius: 9999px;
+  background: #fff;
+  color: #000;
+  font-family: var(--font-inter);
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 24px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.buttonWrapper:hover {
+  background: #dc3545;
+  color: #fff;
+}
+
+.buttonWrapper button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+}
+
+.arrowRight {
+  color: #fff;
+  background: #000;
+  border-radius: 50%;
+  padding: 10px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.buttonWrapper:hover .arrowRight {
+  background: #fff;
+  color: #dc3545;
+}
+
+.lets {
+  font-family: var(--font-inter);
+  font-weight: 700;
+  font-size: clamp(42px, 12vw, 210px);
+  line-height: 1;
+  letter-spacing: clamp(-2px, -1vw, -10px);
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  word-break: break-word;
+}
+
+.talk {
+  color: #e52e3d;
+}
+
+.sectionDivider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+}
+@media (max-width: 768px) {
+  .initiateProject {
+    padding: 60px 0 80px;
+  }
+
+  .column {
+    gap: 16px;
+    padding: 0 20px;
+  }
+
+  .buttonWrapper {
+    width: 100%;
+    max-width: 280px;
+    height: 60px;
+  }
+
+  .arrowRight {
+    padding: 8px;
+  }
+}
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 1200px) {
+  .panel { padding: 40px 40px 44px; }
+  .locationInfo { padding: 44px 40px; }
+}
+
+@media (max-width: 1024px) {
+  .header { padding: 110px 5% 0; }
+  .formSection { padding: 60px 5%; }
+  .locationSection { padding: 60px 5% 100px; }
+
+  .headerInner { flex-direction: column; align-items: flex-start; }
+  .headerMeta { align-items: flex-start; max-width: 100%; }
+  .headerDesc { text-align: left; }
+
+  .formGrid { grid-template-columns: 1fr; }
+  .fieldHalf { grid-column: span 1; }
+  .fieldFull { grid-column: span 1; }
+  .fileUpload { grid-column: span 1; }
+  .submitBtn { grid-column: span 1; }
+
+  .locationCard { grid-template-columns: 1fr; }
+  .mapWrapper { min-height: 320px; }
+
+  .ctaText { letter-spacing: -5px; }
+}
+
+@media (max-width: 768px) {
+  .header { padding: 100px 5% 0; }
+  .formSection { padding: 40px 5%; }
+  .locationSection { padding: 40px 5% 80px; }
+
+  .panel { padding: 28px 24px 32px; border-radius: 20px; }
+  .locationCard { border-radius: 20px; }
+  .locationInfo { padding: 32px 24px; }
+
+  .tabs { gap: 8px; }
+  .tab, .tabActive { padding: 12px 20px; font-size: 14px; }
+
+  .title { font-size: clamp(52px, 12vw, 80px); letter-spacing: -2px; }
+  .ctaText { font-size: clamp(48px, 14vw, 90px); letter-spacing: -2px; }
+
+  .ctaBtn { width: 100%; max-width: 260px; height: 60px; }
+  .responseNumber { font-size: 40px; }
+
+  .contactGrid { grid-template-columns: 1fr; gap: 20px; }
+}
+
+@media (max-width: 480px) {
+  .title { font-size: clamp(44px, 14vw, 64px); }
+  .ctaText { font-size: clamp(40px, 16vw, 64px); letter-spacing: -1px; }
+  .panelDesc { font-size: 15px; }
+  .tab, .tabActive { padding: 10px 16px; font-size: 13px; }
+}
