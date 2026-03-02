@@ -85,7 +85,7 @@ export default function Header() {
             <Link href="/blog">Blog</Link>
           </nav>
 
-          <button className={styles.contact}>CONTACT US</button>
+          <Link href="/contact" className={styles.contact}>CONTACT US</Link>
 
           <button
             className={`${styles.hamburger} ${
@@ -109,9 +109,9 @@ export default function Header() {
           <li><Link href="/about" onClick={closeMenu}>About</Link></li>
           <li><Link href="/blog" onClick={closeMenu}>Blog</Link></li>
         </ul>
-        <button className={styles.drawerContact} onClick={closeMenu}>
+        <Link href="/contact" className={styles.drawerContact} onClick={closeMenu}>
           CONTACT US
-        </button>
+        </Link>
       </div>
     </>
   );
