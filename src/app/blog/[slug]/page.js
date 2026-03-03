@@ -10,7 +10,6 @@ import styles from "./BlogPost.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* ─── Mock blog data — replace with CMS/MDX fetch ─── */
 const post = {
   slug:     "future-of-digital-experiences",
   category: "Strategy",
@@ -265,9 +264,6 @@ export default function BlogPost() {
 
       <main>
 
-        {/* ════════════════════════════════
-            HERO — dark Palqar brand
-        ════════════════════════════════ */}
         <section className={styles.hero} ref={heroRef}>
           <div className={styles.heroInner}>
 
@@ -340,9 +336,6 @@ export default function BlogPost() {
           </div>
         </section>
 
-        {/* ════════════════════════════════
-            ARTICLE — light reading zone
-        ════════════════════════════════ */}
         <article className={styles.articleZone} ref={articleRef}>
           <div className={styles.articleInner}>
 
@@ -462,10 +455,7 @@ export default function BlogPost() {
             </div>
           </div>
         </article>
-
-        {/* ════════════════════════════════
-            MORE TO EXPLORE — dark again
-        ════════════════════════════════ */}
+        
         <section className={styles.explore} ref={exploreRef} aria-label="More articles">
           <div className={styles.exploreInner}>
 
