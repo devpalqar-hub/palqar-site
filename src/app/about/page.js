@@ -58,9 +58,6 @@ export default function About() {
         });
       }
 
-      /* ─────────────────────────────────────────
-         2. PHILOSOPHY
-      ───────────────────────────────────────── */
       const philEl = philosophyRef.current;
       if (philEl) {
         fadeUp(philEl.querySelector(`.${styles.philosophyLabel}`), philEl);
@@ -78,9 +75,6 @@ export default function About() {
         });
       }
 
-      /* ─────────────────────────────────────────
-         3. MISSION
-      ───────────────────────────────────────── */
       const missEl = missionRef.current;
       if (missEl) {
         fadeUp(missEl.querySelector(`.${styles.missionLabel}`), missEl);
@@ -102,18 +96,15 @@ export default function About() {
           duration: 0.8,
           stagger: 0.15,
           ease,
-          immediateRender: false,   // ← KEY FIX: cards won't be invisible on mount
+          immediateRender: false,   
           scrollTrigger: {
             trigger: missEl.querySelector(`.${styles.missionGrid}`),
-            start: "top 85%",      // ← slightly earlier to give more room
+            start: "top 85%",     
             toggleActions: "play none none none",
           },
         });
       }
 
-      /* ─────────────────────────────────────────
-         4. ROADMAP — line draws + items stagger
-      ───────────────────────────────────────── */
       const roadEl = roadmapRef.current;
       if (roadEl) {
         fadeUp(roadEl.querySelector(`.${styles.roadmapLabel}`), roadEl);
@@ -162,9 +153,6 @@ export default function About() {
         });
       }
 
-      /* ─────────────────────────────────────────
-         5. TEAM
-      ───────────────────────────────────────── */
       const teamEl = teamRef.current;
       if (teamEl) {
         gsap.from(
@@ -231,9 +219,6 @@ export default function About() {
         });
       }
 
-      /* ─────────────────────────────────────────
-         7. CTA — "LET'S TALK" dramatic entrance
-      ───────────────────────────────────────── */
       const ctaEl = ctaRef.current;
       if (ctaEl) {
         const ctaTl = gsap.timeline({
