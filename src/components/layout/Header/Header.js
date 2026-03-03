@@ -166,9 +166,10 @@ export default function Header() {
               </Link>
             </div>
 
-            <Link href="/works">Works</Link>
+            <Link href="/works">Industries</Link>
             <Link href="/about">About</Link>
             <Link href="/blog">Blog</Link>
+            <Link href="/career">Career</Link>
           </nav>
 
           <Link href="/contact" className={styles.contact}>CONTACT US</Link>
@@ -195,9 +196,10 @@ export default function Header() {
         <ul className={styles.drawerLinks}>
           <li><Link href="/"         onClick={closeMenu}>Home</Link></li>
           <li><Link href="/services" onClick={closeMenu}>Services</Link></li>
-          <li><Link href="/works"    onClick={closeMenu}>Works</Link></li>
+          <li><Link href="/works"    onClick={closeMenu}>Industries</Link></li>
           <li><Link href="/about"    onClick={closeMenu}>About</Link></li>
           <li><Link href="/blog"     onClick={closeMenu}>Blog</Link></li>
+          <li><Link href="/career"   onClick={closeMenu}>Career</Link></li>
         </ul>
         <Link href="/contact" className={styles.drawerContact} onClick={closeMenu}>
           CONTACT US
