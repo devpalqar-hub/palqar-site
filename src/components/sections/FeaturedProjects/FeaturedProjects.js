@@ -4,10 +4,12 @@ import Image from "next/image";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useRef } from "react";
 import { LuArrowUpRight } from "react-icons/lu";
+import Link from "next/link";
 
 const PROJECTS = [
   {
     id: 1,
+    slug: "vivodyne",
     title: "Vivodyne",
     logo: "/featured-projects/vivodynelogo.svg",
     desc:"UI/UX, 3D rendering, and Implementation to take the Vivodyne website to the next level and establish them as an innovative leader in the biotech industry",
@@ -22,6 +24,7 @@ const PROJECTS = [
   {
     id: 2,
     title: "Lovethesales",
+    slug: "Lovethesales",
     logo: "/featured-projects/lovethesaleslogo.svg",
     desc:"E-commerce redesign with a 30% uplift in signups and nearly +50% in cart conversion rate. We rebuilt the brand identity and took their design to the next level.",
     bg: "#00b38a",
@@ -39,6 +42,7 @@ const PROJECTS = [
   {
     id: 3,
     title: "Creek Wearable",
+    slug: "Creek-Wearable",
     logo: "/featured-projects/creeklogo.svg",
     desc: "Designing the watch interface and accompanying applications for Creek's new smart watch",
     bg: "#111111",
@@ -92,6 +96,7 @@ export default function FeaturedProjects() {
             style={{ background: p.bg }}
           >
             <div className={styles.text}>
+            <Link href={`/projects/${p.slug}`}>
               <Image
                 src={p.logo}
                 alt={`${p.title} logo`}
@@ -100,6 +105,7 @@ export default function FeaturedProjects() {
                 className={styles.logo}
               />
               <p>{p.desc}</p>
+            </Link>
             </div>
 
             <div className={styles.media}>

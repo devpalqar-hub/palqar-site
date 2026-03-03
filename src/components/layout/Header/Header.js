@@ -1,108 +1,210 @@
-"use client"
+"use client";
 
-import styles from "./Header.module.css"
-import Image from "next/image"
-import { useEffect, useRef, useState } from "react"
+import styles from "./Header.module.css";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+
+const SERVICES = [
+  {
+    category: "Code",
+    items: [
+      "Enterprise Management Solutions",
+      "Website & CMS Solutions",
+      "Custom Application Development",
+      "Enterprise eCommerce Platform",
+      "SaaS Solutions",
+      "Advanced Technology Solutions",
+      "Design & Experience",
+      "Cybersecurity Solutions",
+    ],
+  },
+  {
+    category: "Creativity",
+    items: [
+      "Branding & Identity",
+      "Design & Collateral",
+      "Content & Storytelling",
+      "Media Production",
+      "Advertising & Communication",
+      "Extended Creative Edge",
+    ],
+  },
+  {
+    category: "Conversion",
+    items: [
+      "Performance Marketing",
+      "Influencer Marketing",
+      "Video Marketing",
+      "360° Marketing",
+      "Theatre Commercials",
+      "SEO",
+      "Marketing Automation",
+    ],
+  },
+  {
+    category: "Consulting",
+    items: [
+      "Business & Corporate Strategy",
+      "Marketing & Brand Strategy",
+      "Operational & Organizational Strategy",
+      "Innovation & Digital Transformation",
+      "Product, Market & Financial Strategy",
+    ],
+  },
+];
+
+function MegaMenu({ visible, onMouseEnter, onMouseLeave }) {
+  return (
+    <div
+      className={`${styles.megaMenu} ${visible ? styles.megaMenuVisible : ""}`}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      <div className={styles.megaInner}>
+        {SERVICES.map((col) => (
+          <div key={col.category} className={styles.megaCol}>
+            <p className={styles.megaCategory}>{col.category}</p>
+            <ul className={styles.megaList}>
+              {col.items.map((item) => (
+                <li key={item}>
+                  <Link
+                    href={`/services/${item.toLowerCase().replace(/[\s&,°/]+/g, "-")}`}
+                    className={styles.megaItem}
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [visible, setVisible] = useState(true)
+  const [menuOpen, setMenuOpen]       = useState(false);
+  const [visible, setVisible]         = useState(true);
+  const [isHovering, setIsHovering]   = useState(false);
+  const [megaOpen, setMegaOpen]       = useState(false);
 
-  const scrollTimer = useRef(null)
-  const lastScrollY = useRef(0)
+  const scrollTimer  = useRef(null);
+  const megaTimer    = useRef(null);
 
+  /* ── Hide on scroll idle ── */
   useEffect(() => {
-    const IDLE_DELAY = 1800 // ms after scroll stops → fade out
+    const IDLE_DELAY = 1800;
 
     const handleScroll = () => {
-      const currentY = window.scrollY
-
-      // Always show while actively scrolling
-      setVisible(true)
-
-      // Clear any existing idle timer
-      clearTimeout(scrollTimer.current)
-
-      // If scrolled back to very top, keep visible indefinitely
-      if (currentY < 10) {
-        lastScrollY.current = currentY
-        return
-      }
-
-      // Start idle timer — hides after user stops scrolling
+      setVisible(true);
+      clearTimeout(scrollTimer.current);
+      if (window.scrollY < 10) return;
       scrollTimer.current = setTimeout(() => {
-        setVisible(false)
-      }, IDLE_DELAY)
+        if (!isHovering) setVisible(false);
+      }, IDLE_DELAY);
+    };
 
-      lastScrollY.current = currentY
-    }
-
-    window.addEventListener("scroll", handleScroll, { passive: true })
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-      clearTimeout(scrollTimer.current)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollTimer.current);
+    };
+  }, [isHovering]);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : ""
-    return () => { document.body.style.overflow = "" }
-  }, [menuOpen])
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
 
-  const closeMenu = () => setMenuOpen(false)
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+    setVisible(true);
+    clearTimeout(scrollTimer.current);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+    scrollTimer.current = setTimeout(() => setVisible(false), 1800);
+  };
+
+  const openMega  = () => { clearTimeout(megaTimer.current); setMegaOpen(true);  };
+  const closeMega = () => { megaTimer.current = setTimeout(() => setMegaOpen(false), 120); };
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <>
-      <header className={`${styles.wrapper} ${!visible ? styles.hidden : ""}`}>
+      <header
+        className={`${styles.wrapper} ${!visible ? styles.hidden : ""}`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <div className={styles.navbar}>
 
           {/* Logo */}
           <div className={styles.logoBox}>
-            <Image
-              src="/logo.png"
-              alt="logo"
-              fill
-              className={styles.logoImg}
-            />
+            <Image src="/logo.png" alt="logo" fill className={styles.logoImg} />
           </div>
 
           {/* Desktop nav */}
           <nav className={styles.links}>
-            <a href="#services">Services</a>
-            <a>Works</a>
-            <a>About</a>
-            <a>Blog</a>
+            <Link href="/">Home</Link>
+
+            {/* Services with mega menu */}
+            <div
+              className={styles.servicesWrap}
+              onMouseEnter={openMega}
+              onMouseLeave={closeMega}
+            >
+              <Link
+                href="/services"
+                className={`${styles.servicesLink} ${megaOpen ? styles.servicesLinkActive : ""}`}
+              >
+                Services
+              </Link>
+            </div>
+
+            <Link href="/works">Industries</Link>
+            <Link href="/about">About</Link>
+            <Link href="/blog">Blog</Link>
+            <Link href="/career">Career</Link>
           </nav>
 
-          <button className={styles.contact}>CONTACT US</button>
+          <Link href="/contact" className={styles.contact}>CONTACT US</Link>
 
-          {/* Hamburger (mobile) */}
+          {/* Hamburger */}
           <button
             className={`${styles.hamburger} ${menuOpen ? styles.open : ""}`}
-            onClick={() => setMenuOpen(prev => !prev)}
+            onClick={() => setMenuOpen((p) => !p)}
             aria-label="Toggle menu"
           >
-            <span />
-            <span />
-            <span />
+            <span /><span /><span />
           </button>
-
         </div>
       </header>
 
-      {/* Full-screen mobile drawer */}
+      <MegaMenu
+        visible={megaOpen}
+        onMouseEnter={openMega}
+        onMouseLeave={closeMega}
+      />
+
+      {/* ── Mobile drawer ── */}
       <div className={`${styles.drawer} ${menuOpen ? styles.open : ""}`}>
         <ul className={styles.drawerLinks}>
-          <li><a onClick={closeMenu}>Services</a></li>
-          <li><a onClick={closeMenu}>Works</a></li>
-          <li><a onClick={closeMenu}>About</a></li>
-          <li><a onClick={closeMenu}>Blog</a></li>
+          <li><Link href="/"         onClick={closeMenu}>Home</Link></li>
+          <li><Link href="/services" onClick={closeMenu}>Services</Link></li>
+          <li><Link href="/works"    onClick={closeMenu}>Industries</Link></li>
+          <li><Link href="/about"    onClick={closeMenu}>About</Link></li>
+          <li><Link href="/blog"     onClick={closeMenu}>Blog</Link></li>
+          <li><Link href="/career"   onClick={closeMenu}>Career</Link></li>
         </ul>
-        <button className={styles.drawerContact} onClick={closeMenu}>
+        <Link href="/contact" className={styles.drawerContact} onClick={closeMenu}>
           CONTACT US
-        </button>
+        </Link>
       </div>
     </>
-  )
+  );
 }
