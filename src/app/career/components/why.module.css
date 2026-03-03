@@ -1,0 +1,148 @@
+.container {
+  background-color: #000;
+  color: #fff;
+  padding: 80px 20px;
+  text-align: center;
+  font-family: sans-serif; /* Use your project's specific font */
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 50px;
+  letter-spacing: -1px;
+}
+
+.dim {
+  color: #444; /* Creates the greyed-out "WHY" effect */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.iconWrapper {
+  /* This creates the reddish-brown square background */
+  background-color: #b33939; 
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px; /* Adjust for rounded look */
+  margin-bottom: 24px;
+}
+
+.card {
+  background-color: #0d0d0d; /* Very dark grey, almost black */
+  border: 1px solid #1a1a1a;
+  border-radius: 20px;
+  padding: 40px;
+  /* ... rest of your styles */
+}
+
+.card {
+  background-color: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  border-radius: 16px;
+  padding: 40px 30px;
+  text-align: left;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  border-color: #333;
+}
+
+.iconWrapper {
+  background-color: #b53d38; /* The reddish icon background */
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  font-size: 1.2rem;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.cardDescription {
+  color: #888;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+@media (max-width: 1024px) {
+
+  .container {
+    padding: 70px 24px;
+  }
+
+  .grid {
+    gap: 20px;
+  }
+
+  .card {
+    padding: 35px 25px;
+  }
+}
+@media (max-width: 768px) {
+
+  .container {
+    padding: 60px 20px;
+  }
+
+  .title {
+    margin-bottom: 40px;
+  }
+
+  .grid {
+    gap: 18px;
+  }
+
+  .card {
+    padding: 30px 22px;
+  }
+}
+@media (max-width: 480px) {
+
+  .container {
+    padding: 50px 16px;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-bottom: 35px;
+  }
+
+  .grid {
+    gap: 16px;
+  }
+
+  .card {
+    padding: 25px 18px;
+    border-radius: 14px;
+  }
+
+  .iconWrapper {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 20px;
+  }
+
+  .cardTitle {
+    font-size: 17px;
+  }
+
+  .cardDescription {
+    font-size: 14px;
+  }
+}

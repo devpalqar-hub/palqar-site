@@ -1,8 +1,13 @@
-export default function Career() {
+import DNASection from "./components/DNASection";
+import Hero from "./components/hero";
+import WhySection from "./components/whySection"; // 1. Capitalized Import
+
+export default function CareerPage() {
   return (
-    <div style={{ padding: "100px", textAlign: "center" }}>
-      <h1>Career Page</h1>
-      <p>Join our team and help shape the future of digital experiences!</p>
-    </div>
+    <main style={{ backgroundColor: '#000' }}>
+      <Hero />
+      <DNASection/>
+      <WhySection /> {/* 2. Capitalized Component Tag */}
+    </main>
   );
 }
