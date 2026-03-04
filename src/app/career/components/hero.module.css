@@ -1,0 +1,214 @@
+.heroSection {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: white;
+}
+
+/* The dark linear gradient from your color specs */
+.topOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 26, 26, 1),
+    rgba(0, 0, 0, 0)
+  );
+  opacity: 0.4;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.glowContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Purple light on the left */
+.purpleGlow {
+  position: absolute;
+  top: 50%;
+  left: 35%;
+  transform: translate(-50%, -50%);
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(
+    circle,
+    rgba(88, 28, 135, 0.7) 0%, /* Deep Purple */
+    transparent 50%
+  );
+  filter: blur(60px);
+}
+
+/* Red/Pink light on the right */
+.redGlow {
+  position: absolute;
+  top: 50%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(
+    circle,
+    rgba(233, 69, 96, 0.35) 0%, /* Red/Pink */
+    transparent 50%
+  );
+  filter: blur(60px);
+}
+
+.container {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+}
+
+.badge {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #e94560;
+  border: 1px solid rgba(233, 69, 96, 0.3);
+  padding: 6px 18px;
+  border-radius: 50px;
+  display: inline-block;
+  margin-bottom:1rem;
+}
+.mainTitle {
+  font-size: clamp(4rem, 12vw, 9rem);
+  line-height: 0.85; /* Makes the two lines sit tightly together */
+  font-weight: 900;
+  margin: 0;
+  letter-spacing: -4px; /* Tight letter spacing is key for this look */
+  color: #FFFFFF; /* "DEFY" stays solid white */
+}
+
+.gradientText {
+  /* This creates the vertical transition from White to Pink/Red */
+  
+   background: linear-gradient(180deg, #DC3545 0%, #FFFFFF 50%, #DC3545 100%),
+linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+
+
+  
+  /* Standard clipping properties */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Subtle text-shadow to make the letters "glow" against the dark background */
+  filter: drop-shadow(0 0 15px rgba(255, 45, 85, 0.3));
+  
+  display: inline-block;
+}
+
+.description {
+  margin-top: 4rem;
+  font-size:18px;
+  color: #888;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.scrollContainer {
+  position: absolute;
+  margin-top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #444;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.chevron {
+  margin: 8px auto;
+  width: 6px;
+  height: 6px;
+  border-bottom: 1px solid #444;
+  border-right: 1px solid #444;
+  transform: rotate(45deg);
+}
+@media (max-width: 1024px) {
+
+  .mainTitle {
+    letter-spacing: -2px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .purpleGlow,
+  .redGlow {
+    width: 70vw;
+    height: 70vw;
+    filter: blur(80px);
+  }
+}
+@media (max-width: 768px) {
+
+  .badge {
+    font-size: 9px;
+    padding: 5px 14px;
+  }
+
+  .mainTitle {
+    font-size: clamp(3rem, 14vw, 5rem);
+    letter-spacing: -1px;
+    line-height: 0.95;
+  }
+
+  .description {
+    font-size: 15px;
+    margin-top: 2rem;
+  }
+
+  .purpleGlow,
+  .redGlow {
+    width: 90vw;
+    height: 90vw;
+    filter: blur(90px);
+  }
+}
+@media (max-width: 480px) {
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .badge {
+    margin-bottom: 2rem;
+  }
+
+  .mainTitle {
+    font-size: 2.8rem;
+    line-height: 1;
+  }
+
+  .description {
+    font-size: 14px;
+    max-width: 90%;
+  }
+
+  .scrollContainer {
+    bottom: -130px;
+  }
+
+  .purpleGlow,
+  .redGlow {
+    width: 120vw;
+    height: 120vw;
+    filter: blur(100px);
+  }
+}
