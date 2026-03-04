@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./Hero.module.css";
 import LogoLoop from "@/components/ui/LogoLoop";
 import TechLogos from "@/components/ui/tech-logos";
+import Link from "next/link";
 
 export default function Hero() {
   const logos = TechLogos();
@@ -47,7 +48,6 @@ export default function Hero() {
         preload="none"
       >
         <source src="/hero-video.webm" type="video/webm" />
-        <source src="/hero-video.mp4" type="video/mp4" />
       </video>
 
       {/* Readability overlay */}
@@ -126,14 +126,14 @@ export default function Hero() {
         </p>
 
         <div className={styles.ctaWrap}>
-          <button className={styles.cta}>
+          <Link className={styles.cta} href="/contact">
             <span className={styles.ctaText}>LET&apos;S TALK</span>
             <div className={styles.avatars}>
               <img src="/image1.jpg" alt="Team member 1" />
               <img src="/image2.jpg" alt="Team member 2" />
               <img src="/image3.jpg" alt="Team member 3" />
             </div>
-          </button>
+          </Link>
         </div>
 
         <div className={styles.logoStrip}>
