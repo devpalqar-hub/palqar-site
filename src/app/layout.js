@@ -7,7 +7,6 @@ import { Smooch_Sans } from "next/font/google";
 import { DM_Sans } from "next/font/google";
 import { Raleway } from "next/font/google";
 import { Inter } from "next/font/google";
-import { Montserrat } from "next/font/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,11 +16,6 @@ const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-dm-sans",
-});
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["600", "700"],
-  variable: "--font-montserrat",
 });
 
 const inter = Inter({
