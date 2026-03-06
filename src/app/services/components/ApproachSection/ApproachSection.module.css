@@ -1,27 +1,34 @@
+/* ─── Section ──────────────────────────────────────────────────────────── */
+
 .section {
   background: black;
   color: white;
-  padding: 0 60px;          /* remove vertical padding — pinning handles height */
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
   display: flex;
   align-items: center;
+  padding: 0 60px;
+
+  /* Clip cards that start below — NOT on .right */
+  overflow: hidden;
 }
+
+/* ─── Grid ──────────────────────────────────────────────────────────────── */
 
 .container {
   display: grid;
   grid-template-columns: 60% 40%;
-  max-width: 1500px;
+  max-width: 1400px;
   width: 100%;
   margin: auto;
   align-items: center;
 }
 
-/* ── Left sticky title ─────────────────────────────── */
+/* ─── Left ──────────────────────────────────────────────────────────────── */
+
 .left {
   position: sticky;
   top: 120px;
-  height: fit-content;
-  margin-left: 30px;
 }
 
 .left h2 {
@@ -30,50 +37,55 @@
   font-weight: 700;
 }
 
-/* ── Right card stack ──────────────────────────────── */
+/* ─── Right ─────────────────────────────────────────────────────────────── */
+
 .right {
   position: relative;
-  height: 330px;            /* tall enough for one card; adjust to match .card min-height */
-  overflow: hidden;         /* clip cards sliding in from below */
-  border-radius: 28px;      /* clip rounded edges cleanly */
+  height: 340px;
+  /* overflow: visible — cards animate in from below, must NOT be clipped here */
 }
 
-/* Every card is absolutely stacked in the same slot */
+/* ─── Cards ─────────────────────────────────────────────────────────────── */
+
 .card {
   position: absolute;
-  inset: 0;                 /* top/left/right/bottom: 0 */
+  inset: 0;
+
   background: #111;
   border-radius: 28px;
   padding: 50px;
-  margin-right: 80px;
-  min-height: 220px;
+
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-  transform-origin: top center;  /* scale collapses toward the top */
+  transform-origin: top center;
   will-change: transform;
+  font-family: var(--font-raleway);
 }
 
 .card h3 {
-  font-size: 28px;
+  font-size: 35px;
+  font-weight: 700;
   margin-bottom: 16px;
-  font-family: var(--font-raleway);
 }
 
 .card p {
-  font-size: 18px;
+  font-size: 24px;
   line-height: 1.6;
   color: #bcbcbc;
-  font-family: var(--font-raleway);
 }
-.icon{
-  margin-bottom:18px;
-  color:white;
-  opacity:0.8;
+
+.icon {
+  margin-bottom: 18px;
+  color: white;
 }
-/* ── Responsive ────────────────────────────────────── */
+
+/* ─── Mobile — plain vertical scroll, no GSAP ──────────────────────────── */
+
 @media (max-width: 900px) {
   .section {
-    height: auto;
+    min-height: auto;
     padding: 120px 24px;
+    display: block;
+    overflow: visible;
   }
 
   .container {
@@ -83,17 +95,12 @@
   .left {
     position: relative;
     top: auto;
+    margin-bottom: 40px;
   }
 
-  .left h2 {
-    font-size: 56px;
-  }
-
-  /* On mobile, undo the absolute stack so cards flow normally */
   .right {
     position: relative;
     height: auto;
-    overflow: visible;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -102,5 +109,6 @@
   .card {
     position: relative;
     inset: auto;
+    width: 100%;
   }
 }

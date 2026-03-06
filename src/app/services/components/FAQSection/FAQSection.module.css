@@ -1,79 +1,134 @@
-.section{
-  background:#e0281d;
-  color:white;
-  padding:160px 80px;
+.section {
+  background: #e0281d;
+  color: white;
+  padding: 160px 80px;
+  border-radius: 30px;
+  margin: 0 80px;
 }
 
-.container{
-  max-width:1200px;
-  margin:auto;
+.container {
+  margin: auto;
+  border-radius: 80px;
 }
 
-.title{
-  font-size:clamp(70px,8vw,130px);
-  font-weight:700;
-  margin-bottom:100px;
+.title {
+  font-size: 130px;
+  font-weight: 900;
+  margin-bottom: 100px;
+  line-height: 120px;
+  font-family: var(--font-raleway);
 }
 
-.list{
-  border-top:1px solid rgba(255,255,255,0.4);
+.list {
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-.item{
-  border-bottom:1px solid rgba(255,255,255,0.4);
+.item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-.question{
-  width:100%;
-  background:none;
-  border:none;
-  color:white;
-  font-size:28px;
-  text-align:left;
-  padding:30px 0;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  cursor:pointer;
+.question {
+  width: 100%;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  text-align: left;
+  padding: 30px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: var(--font-raleway);
 }
 
-.icon{
-  transition:transform .3s ease;
+.icon {
+  flex-shrink: 0;           /* stops icon squishing on long questions */
+  margin-left: 24px;
+  transition: transform 0.3s ease;
 }
 
-.rotate{
-  transform:rotate(180deg);
+.rotate {
+  transform: rotate(180deg);
 }
 
-.answer{
-  max-height:0;
-  overflow:hidden;
-  transition:max-height .4s ease;
+.answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
 }
 
-.answer p{
-  font-size:18px;
-  line-height:1.7;
-  padding-bottom:30px;
+.answer p {
+  font-size: 18px;
+  line-height: 1.7;
+  padding-bottom: 30px;
+  font-family: var(--font-raleway);
 }
 
-.show{
-  max-height:200px;
+.show {
+  max-height: 400px;       /* increased — 200px cuts off longer answers  */
 }
 
-@media(max-width:900px){
+/* ─── Tablet ────────────────────────────────── */
 
-.section{
-padding:120px 30px;
+@media (max-width: 1100px) {
+  .section {
+    margin: 0 40px;
+    padding: 120px 60px;
+  }
+
+  .title {
+    font-size: 90px;
+    line-height: 88px;
+    margin-bottom: 80px;
+  }
+
+  .question {
+    font-size: 24px;
+  }
 }
 
-.title{
-font-size:60px;
-margin-bottom:60px;
+/* ─── Mobile ────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .section {
+    margin: 0 16px;
+    padding: 80px 24px;
+    border-radius: 20px;
+  }
+
+  .title {
+    font-size: 52px;
+    line-height: 52px;
+    margin-bottom: 50px;
+  }
+
+  .question {
+    font-size: 18px;
+    padding: 22px 0;
+  }
+
+  .answer p {
+    font-size: 15px;
+    padding-bottom: 22px;
+  }
 }
 
-.question{
-font-size:22px;
-}
+/* ─── Small phones ──────────────────────────── */
 
+@media (max-width: 400px) {
+  .section {
+    margin: 0 10px;
+    padding: 60px 18px;
+  }
+
+  .title {
+    font-size: 40px;
+    line-height: 42px;
+    margin-bottom: 40px;
+  }
+
+  .question {
+    font-size: 16px;
+  }
 }
