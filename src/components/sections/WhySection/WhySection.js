@@ -201,7 +201,7 @@ export default function Whyanimate() {
   return (
     <section className={styles.wrapper}>
       <div>
-        <p className={styles.label}>Most demanded services offered by us</p>
+        <p className={styles.label}>Why you should partner with Palqar</p>
         <p ref={paraRef} className={styles.para}>
             At Palqar, we deliver tailored business solutions designed to drive growth and long-term success. From strategic planning and financial management to advanced technology implementation, our expert team works closely with you to identify opportunities, reduce risks, and build a clear roadmap to achieve your business goals.
         </p>

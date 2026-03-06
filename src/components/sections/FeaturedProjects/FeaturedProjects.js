@@ -9,47 +9,50 @@ import Link from "next/link";
 const PROJECTS = [
   {
     id: 1,
-    slug: "vivodyne",
-    title: "Vivodyne",
-    logo: "/featured-projects/vivodynelogo.svg",
-    desc:"UI/UX, 3D rendering, and Implementation to take the Vivodyne website to the next level and establish them as an innovative leader in the biotech industry",
-    bg: "#5b2d82",
+    slug: "zodo",
+    title: "ZodoAI",
+    logo: "/featured-projects/zodo/logo.svg",
+    logoClass: "zodoLogo",
+    desc:"With ZODO AI, managing your health becomes easier than ever.Schedule consultations quickly and access expert advice in seconds.Stay informed with real-time updates and personalized support.Your journey to better health starts here.",
+    bg: "#01B18A",
     media: [
       {
-        src: "/featured-projects/Vivodyne.png",
-        className: "VivodyneLaptop",
+        src: "/featured-projects/zodo/laptop.png",
+        className: "ZodoLaptop",
       },
     ],
   },
   {
     id: 2,
-    title: "Lovethesales",
-    slug: "Lovethesales",
-    logo: "/featured-projects/lovethesaleslogo.svg",
-    desc:"E-commerce redesign with a 30% uplift in signups and nearly +50% in cart conversion rate. We rebuilt the brand identity and took their design to the next level.",
-    bg: "#00b38a",
+    slug: "cleanmaria",
+    title: "CleanMaria",
+    logo: "/featured-projects/cleanmaria/logo.svg",
+    logoClass: "cleanmariaLogo",
+    desc:"Book your cleaning in seconds with our easy platform while trusted professionals handle every detail. Enjoy flexible scheduling that fits your routine and relax knowing your home will be left fresh, spotless, and beautifully clean.",
+    bg: "linear-gradient(180deg, #000000 10%, #333333 80%, #111111 95%)",
     media: [
       {
-        src: "/featured-projects/Lovethesalesmob.png",
-        className: "mediaPhone",
+        src: "/featured-projects/cleanmaria/phone.png",
+        className: "Cleanphone",
       },
       {
-        src: "/featured-projects/Lovethesaleslap.png",
-        className: "mediaLaptop",
+        src: "/featured-projects/cleanmaria/laptop.png",
+        className: "Cleanlaptop",
       },
     ],
   },
   {
     id: 3,
-    title: "Creek Wearable",
-    slug: "Creek-Wearable",
-    logo: "/featured-projects/creeklogo.svg",
-    desc: "Designing the watch interface and accompanying applications for Creek's new smart watch",
-    bg: "#111111",
+    slug: "bambinidoulas",
+    title: "Bambini Doulas",
+    logo: "/featured-projects/bambinidoulas/logo.svg",
+    logoClass: "bambiniLogo",
+    desc: "Personalized doula support for every stage of your journey.Compassionate professionals guiding you through pregnancy and beyond.Feel confident, supported, and cared for every step of the way.",
+    bg: "linear-gradient(65deg, #A739FF 0%, #6b2bb3 40%, #08060A 82%)",
     media: [
       {
-        src: "/featured-projects/CreekWearable.png",
-        className: "mediaWatch",
+        src: "/featured-projects/bambinidoulas/laptop.png",
+        className: "Bambinilaptop",
       },
     ],
   },
@@ -102,7 +105,7 @@ export default function FeaturedProjects() {
                 alt={`${p.title} logo`}
                 width={230}
                 height={56}
-                className={styles.logo}
+                className={`${styles.logo} ${styles[p.logoClass]}`}
               />
               <p>{p.desc}</p>
             </Link>

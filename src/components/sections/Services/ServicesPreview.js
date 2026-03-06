@@ -8,11 +8,16 @@ import gsap from "gsap";
 const SERVICES = [
   {
     id: 1,
-    title: "Software Development",
+    title: "Code",
     details: [
-      "Responsive Web Design",
-      "Typography & Color Systems",
-      "Brand Guidelines & Visual Systems",
+      "Enterprise Management Solutions",
+      "Website & CMS Solutions",
+      "Custom Application Development",
+      "Enterprise eCommerce Platform",
+      "SaaS Solutions",
+      "Advanced Technology Solutions",
+      "Design & Experience",
+      "Cybersecurity Solutions",
     ],
     images: [
       "/services-preview/service3-01.png",
@@ -23,11 +28,14 @@ const SERVICES = [
   },
   {
     id: 2,
-    title: "UX UI Design",
+    title: "Creativity",
     details: [
-      "Brand Positioning",
-      "Messaging & Tone of Voice",
-      "Design Consultation & Audit",
+      "Branding & Identity",
+      "Design & Collateral",
+      "Content & Storytelling",
+      "Media Production",
+      "Advertising & Communication",
+      "Extended Creative Edge",
     ],
     images: [
       "/services-preview/service2-01.png",
@@ -36,11 +44,15 @@ const SERVICES = [
   },
   {
     id: 3,
-    title: "Brand Consultation",
+    title: "Conversion",
     details: [
-      "Logo Design",
-      "Typography & Color Systems",
-      "Brand Guidelines & Visual Systems",
+      "Performance Marketing",
+      "Influencer Marketing",
+      "Video Marketing",
+      "360° Marketing",
+      "Theatre Commercials",
+      "SEO",
+      "Marketing Automation",
     ],
     images: [
       "/services-preview/service1-01.png",
@@ -51,30 +63,18 @@ const SERVICES = [
   },
   {
     id: 4,
-    title: "Branding and Social Media Marketing",
+    title: "Consulting",
     details: [
-      "Custom Brand Illustrations",
-      "Editorial & Digital Artwork",
-      "Iconography & Infographic Design",
+      "Business & Corporate Strategy",
+      "Marketing & Brand Strategy",
+      "Operational & Organizational Strategy",
+      "Innovation & Digital Transformation",
+      "Product, Market & Financial Strategy",
     ],
     images: [
       "/services-preview/service5-01.png",
       "/services-preview/service5-02.png",
       "/services-preview/service5-03.png"
-    ],
-  },
-  {
-    id: 5,
-    title: "Legal Support & Compliance",
-    details: [
-      "Concept Development",
-      "Campaign Visual Strategy",
-      "Photography & Video Direction",
-    ],
-    images: [
-      "/services-preview/service4-01.png",
-      "/services-preview/service4-02.png",
-      "/services-preview/service4-03.png"
     ],
   },
 ];
