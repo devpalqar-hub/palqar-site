@@ -1,0 +1,128 @@
+/* ─── Section — pinned viewport ────────────────────────────────── */
+
+.section {
+  background: black;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;             /* must be exactly one viewport tall for pin  */
+}
+
+/* ─── Sliding strip ─────────────────────────────────────────────── */
+
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100%;              /* fills the pinned section                   */
+  will-change: transform;
+}
+
+/* ─── Each panel = one full viewport wide ───────────────────────── */
+
+.panel {
+  flex: 0 0 100vw;           /* never shrink, always exactly 100vw         */
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 80px;
+}
+
+/* ─── Inner card (desktop: side-by-side) ───────────────────────── */
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
+  max-width: 1300px;
+}
+
+/* ─── Image ─────────────────────────────────────────────────────── */
+
+.imageWrap {
+  position: relative;
+  flex: 0 0 38%;
+  height: 520px;
+  border-radius: 32px;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* ─── Text content ──────────────────────────────────────────────── */
+
+.content {
+  flex: 1;
+  height: 520px;
+  background: #1b1b1b;
+  padding: 60px;
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content h2 {
+  font-size: 48px;
+  font-weight: 700;
+  font-family: var(--font-raleway);
+  margin-bottom: 24px;
+  color: white;
+}
+
+.content p {
+  font-size: 24px;
+  font-family: var(--font-raleway);
+  line-height: 1.7;
+  color: #cfcfcf;
+}
+
+/* ─── Mobile — same horizontal GSAP scroll, vertical card ──────── */
+
+@media (max-width: 900px) {
+
+  .panel {
+    padding: 0 20px;
+    align-items: center;
+  }
+
+  .card {
+    flex-direction: column;
+    gap: 0;
+    background: #1a1a1a;
+    border-radius: 24px;
+    overflow: hidden;
+    max-width: 380px;
+    width: 100%;
+  }
+
+  .imageWrap {
+    flex: none;
+    width: 100%;
+    height: 220px;
+    border-radius: 0;
+  }
+
+  .content {
+    flex: none;
+    width: 100%;
+    height: auto;
+    background: transparent;
+    padding: 28px 24px 36px;
+    border-radius: 0;
+    justify-content: flex-start;
+  }
+
+  .content h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .content p {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+}

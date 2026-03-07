@@ -46,7 +46,7 @@ export default function VedioFrame() {
   }, [progress]);
 
 
-  const textProgress = Math.min(1, progress / TEXT_END);
+  const textProgress = Math.min(1, progress / TEXT_END * 1.5);
   const letters = TEXT.split("");
 
   const videoOpacity = progress < VIDEO_START

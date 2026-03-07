@@ -8,8 +8,16 @@ import CaseProcess from "@/components/case-study/CaseProcess";
 import CaseInnovation from "@/components/case-study/CaseInnovation";
 import { ArrowRight } from "lucide-react";
 
+import CleanMaria from "@/app/project-pages/CleanMaria/CleanMaria";
+import Zodo from "@/app/project-pages/Zodo/Zodo";
+import Doulas from "@/app/project-pages/Doulas/Doulas";
+
 export default async function CaseStudy({ params }) {
   const { slug } = await params;
+
+  if (slug === "zodo") return <Zodo />;
+  if (slug === "bambinidoulas") return <Doulas />;
+  if (slug === "cleanmaria") return <CleanMaria />;
 
   const project = projects.find((p) => p.slug === slug);
 

@@ -99,7 +99,6 @@ export default function Blog() {
           "-=0.5"
         );
 
-      /* Cards stagger in on scroll */
       gsap.from(gridRef.current?.querySelectorAll(`.${styles.cardOuter}`), {
         y: 70,
         opacity: 0,

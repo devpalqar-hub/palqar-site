@@ -47,6 +47,7 @@ body {
 } */
 html, body {
   background: #000;
+  font-family: var(--font-inter);
 }
 *,
 *::before,

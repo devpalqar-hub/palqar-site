@@ -2,12 +2,14 @@
 
 import styles from "./Header.module.css";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
 
-const SERVICES = [
+// ─── Move to constants/navigation.ts in a real project ───────────────────────
+export const SERVICES = [
   {
     category: "Code",
+    num: "01",
     items: [
       "Enterprise Management Solutions",
       "Website & CMS Solutions",
@@ -21,6 +23,7 @@ const SERVICES = [
   },
   {
     category: "Creativity",
+    num: "02",
     items: [
       "Branding & Identity",
       "Design & Collateral",
@@ -32,6 +35,7 @@ const SERVICES = [
   },
   {
     category: "Conversion",
+    num: "03",
     items: [
       "Performance Marketing",
       "Influencer Marketing",
@@ -44,6 +48,7 @@ const SERVICES = [
   },
   {
     category: "Consulting",
+    num: "04",
     items: [
       "Business & Corporate Strategy",
       "Marketing & Brand Strategy",
@@ -54,17 +59,23 @@ const SERVICES = [
   },
 ];
 
+// ─── Mega Menu ────────────────────────────────────────────────────────────────
 function MegaMenu({ visible, onMouseEnter, onMouseLeave }) {
   return (
     <div
       className={`${styles.megaMenu} ${visible ? styles.megaMenuVisible : ""}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      role="region"
+      aria-label="Services menu"
     >
       <div className={styles.megaInner}>
         {SERVICES.map((col) => (
           <div key={col.category} className={styles.megaCol}>
-            <p className={styles.megaCategory}>{col.category}</p>
+            <p className={styles.megaCategory}>
+              <span className={styles.megaNum}>{col.num}</span>
+              {col.category}
+            </p>
             <ul className={styles.megaList}>
               {col.items.map((item) => (
                 <li key={item}>
@@ -72,6 +83,7 @@ function MegaMenu({ visible, onMouseEnter, onMouseLeave }) {
                     href={`/services/${item.toLowerCase().replace(/[\s&,°/]+/g, "-")}`}
                     className={styles.megaItem}
                   >
+                    <span className={styles.megaItemArrow}>→</span>
                     {item}
                   </Link>
                 </li>
@@ -84,23 +96,32 @@ function MegaMenu({ visible, onMouseEnter, onMouseLeave }) {
   );
 }
 
+// ─── Header ───────────────────────────────────────────────────────────────────
 export default function Header() {
-  const [menuOpen, setMenuOpen]       = useState(false);
-  const [visible, setVisible]         = useState(true);
-  const [isHovering, setIsHovering]   = useState(false);
-  const [megaOpen, setMegaOpen]       = useState(false);
+  const [menuOpen, setMenuOpen]         = useState(false);
+  const [visible, setVisible]           = useState(true);
+  const [isHovering, setIsHovering]     = useState(false);
+  const [megaOpen, setMegaOpen]         = useState(false);
+  const [scrolled, setScrolled]         = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [servicesExpanded, setServicesExpanded] = useState(false);
 
-  const scrollTimer  = useRef(null);
-  const megaTimer    = useRef(null);
+  const scrollTimer = useRef(null);
+  const megaTimer   = useRef(null);
 
-  /* ── Hide on scroll idle ── */
+  // ── Scroll: hide on idle + progress bar + blur trigger ──────────────────
   useEffect(() => {
-    const IDLE_DELAY = 1800;
+    const IDLE_DELAY = 2500;
 
     const handleScroll = () => {
+      const y   = window.scrollY;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(max > 0 ? (y / max) * 100 : 0);
+      setScrolled(y > 10);
       setVisible(true);
+
       clearTimeout(scrollTimer.current);
-      if (window.scrollY < 10) return;
+      if (y < 10) return;
       scrollTimer.current = setTimeout(() => {
         if (!isHovering) setVisible(false);
       }, IDLE_DELAY);
@@ -113,31 +134,57 @@ export default function Header() {
     };
   }, [isHovering]);
 
+  // ── Lock body scroll when mobile drawer is open ──────────────────────────
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
-  const handleMouseEnter = () => {
+  // ── Header hover handlers ────────────────────────────────────────────────
+  const handleMouseEnter = useCallback(() => {
     setIsHovering(true);
     setVisible(true);
     clearTimeout(scrollTimer.current);
-  };
+  }, []);
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     setIsHovering(false);
-    scrollTimer.current = setTimeout(() => setVisible(false), 1800);
+    scrollTimer.current = setTimeout(() => setVisible(false), 2500);
+  }, []);
+
+  // ── Mega menu open/close with debounce ───────────────────────────────────
+  const openMega  = useCallback(() => {
+    clearTimeout(megaTimer.current);
+    setMegaOpen(true);
+  }, []);
+
+  const closeMega = useCallback(() => {
+    megaTimer.current = setTimeout(() => setMegaOpen(false), 220);
+  }, []);
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setServicesExpanded(false);
   };
-
-  const openMega  = () => { clearTimeout(megaTimer.current); setMegaOpen(true);  };
-  const closeMega = () => { megaTimer.current = setTimeout(() => setMegaOpen(false), 120); };
-
-  const closeMenu = () => setMenuOpen(false);
 
   return (
     <>
+      {/* ── Scroll progress bar ──────────────────────────────────────────── */}
+      <div
+        className={styles.progressBar}
+        style={{ width: `${scrollProgress}%` }}
+        role="progressbar"
+        aria-valuenow={Math.round(scrollProgress)}
+        aria-valuemin={0}
+        aria-valuemax={100}
+      />
+
       <header
-        className={`${styles.wrapper} ${!visible ? styles.hidden : ""}`}
+        className={`
+          ${styles.wrapper}
+          ${!visible   ? styles.hidden  : ""}
+          ${scrolled   ? styles.scrolled : ""}
+        `}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -149,10 +196,10 @@ export default function Header() {
           </div>
 
           {/* Desktop nav */}
-          <nav className={styles.links}>
-            <Link href="/">Home</Link>
+          <nav className={styles.links} aria-label="Main navigation">
+            <Link href="/" className={styles.navLink}>Home</Link>
 
-            {/* Services with mega menu */}
+            {/* Services — hover + keyboard accessible */}
             <div
               className={styles.servicesWrap}
               onMouseEnter={openMega}
@@ -160,16 +207,23 @@ export default function Header() {
             >
               <Link
                 href="/services"
-                className={`${styles.servicesLink} ${megaOpen ? styles.servicesLinkActive : ""}`}
+                className={`${styles.navLink} ${styles.servicesLink} ${megaOpen ? styles.servicesLinkActive : ""}`}
+                onFocus={openMega}
+                onBlur={closeMega}
+                aria-haspopup="true"
+                aria-expanded={megaOpen}
               >
                 Services
+                <span className={`${styles.chevron} ${megaOpen ? styles.chevronOpen : ""}`}>
+                  
+                </span>
               </Link>
             </div>
 
-            <Link href="/works">Industries</Link>
-            <Link href="/about">About</Link>
-            <Link href="/blog">Blog</Link>
-            <Link href="/career">Career</Link>
+            <Link href="/industries" className={styles.navLink}>Industries</Link>
+            <Link href="/about"      className={styles.navLink}>About</Link>
+            <Link href="/blog"       className={styles.navLink}>Blog</Link>
+            <Link href="/career"     className={styles.navLink}>Career</Link>
           </nav>
 
           <Link href="/contact" className={styles.contact}>CONTACT US</Link>
@@ -178,29 +232,78 @@ export default function Header() {
           <button
             className={`${styles.hamburger} ${menuOpen ? styles.open : ""}`}
             onClick={() => setMenuOpen((p) => !p)}
-            aria-label="Toggle menu"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
           >
             <span /><span /><span />
           </button>
         </div>
       </header>
 
+      {/* ── Mega Menu ────────────────────────────────────────────────────── */}
       <MegaMenu
         visible={megaOpen}
         onMouseEnter={openMega}
         onMouseLeave={closeMega}
       />
 
-      {/* ── Mobile drawer ── */}
-      <div className={`${styles.drawer} ${menuOpen ? styles.open : ""}`}>
+      {/* ── Mobile Drawer ────────────────────────────────────────────────── */}
+      <div
+        className={`${styles.drawer} ${menuOpen ? styles.drawerOpen : ""}`}
+        aria-hidden={!menuOpen}
+      >
         <ul className={styles.drawerLinks}>
-          <li><Link href="/"         onClick={closeMenu}>Home</Link></li>
-          <li><Link href="/services" onClick={closeMenu}>Services</Link></li>
-          <li><Link href="/works"    onClick={closeMenu}>Industries</Link></li>
-          <li><Link href="/about"    onClick={closeMenu}>About</Link></li>
-          <li><Link href="/blog"     onClick={closeMenu}>Blog</Link></li>
-          <li><Link href="/career"   onClick={closeMenu}>Career</Link></li>
+          {["Home", "Industries", "About", "Blog", "Career"].map((label, i) => (
+            <li
+              key={label}
+              className={styles.drawerItem}
+              style={{ "--i": i }}
+            >
+              <Link
+                href={`/${label === "Home" ? "" : label.toLowerCase()}`}
+                onClick={closeMenu}
+              >
+                {label}
+              </Link>
+            </li>
+          ))}
+
+          {/* Services accordion */}
+          <li className={styles.drawerItem} style={{ "--i": 1 }}>
+            <button
+              className={styles.drawerAccordion}
+              onClick={() => setServicesExpanded((p) => !p)}
+              aria-expanded={servicesExpanded}
+            >
+              Services
+              <span className={`${styles.drawerChevron} ${servicesExpanded ? styles.drawerChevronOpen : ""}`}>
+                &#8964;
+              </span>
+            </button>
+
+            <div className={`${styles.drawerSub} ${servicesExpanded ? styles.drawerSubOpen : ""}`}>
+              {SERVICES.map((col) => (
+                <div key={col.category} className={styles.drawerSubGroup}>
+                  <p className={styles.drawerSubHeading}>
+                    <span className={styles.drawerSubNum}>{col.num}</span>
+                    {col.category}
+                  </p>
+                  {col.items.map((item) => (
+                    <Link
+                      key={item}
+                      href={`/services/${item.toLowerCase().replace(/[\s&,°/]+/g, "-")}`}
+                      className={styles.drawerSubItem}
+                      onClick={closeMenu}
+                    >
+                      {item}
+                    </Link>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </li>
         </ul>
+
         <Link href="/contact" className={styles.drawerContact} onClick={closeMenu}>
           CONTACT US
         </Link>

@@ -9,21 +9,21 @@ const testimonialData = [
     text: "Discover why leading companies choose our solution to drive their success",
     author: "Adam smith",
     role: "CEO OF XC",
-    image: "/avatar1.png" 
+    image: "image1.jpg" 
   },
   {
     company: "Innovation Hub",
     text: "The strategic depth and technical execution were beyond our expectations.",
     author: "Sarah Jenkins",
     role: "Director of Product",
-    image: "/avatar2.png"
+    image: "/image2.jpg"
   },
   {
     company: "Global Tech",
     text: "A truly seamless experience from design to final deployment.",
     author: "Michael Chen",
     role: "CTO",
-    image: "/avatar3.png"
+    image: "/image3.jpg"
   }
 ];
 const logos = [

@@ -1,0 +1,197 @@
+.section{
+  position:relative;
+
+  padding:180px 20px;
+
+  background:radial-gradient(
+    circle at top,
+    #062c2e,
+    #021a1b
+  );
+
+  text-align:center;
+
+  overflow:hidden;
+}
+
+/* container */
+
+.container{
+  max-width:700px;
+  margin:auto;
+}
+
+/* title */
+
+.title{
+  font-size:56px;
+  color:white;
+  font-weight:800;
+}
+
+.subtitle{
+  margin-top:18px;
+
+  color:#9aa4ab;
+
+  font-size:14px;
+  line-height:1.7;
+
+  letter-spacing:1px;
+
+  margin-bottom:60px;
+}
+
+/* form */
+
+.form{
+  background:#050505;
+
+  border:1px solid rgba(255,255,255,0.06);
+
+  padding:40px;
+
+  border-radius:16px;
+}
+
+/* row */
+
+.row{
+  display:flex;
+  gap:16px;
+}
+
+/* fields */
+
+.field{
+  text-align:left;
+  flex:1;
+  margin-bottom:16px;
+}
+
+.label{
+  display:block;
+
+  font-size:10px;
+  letter-spacing:2px;
+
+  color:#7a7a7a;
+
+  margin-bottom:6px;
+}
+
+.input,
+.textarea{
+  width:100%;
+
+  background:#0a0a0a;
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  padding:12px;
+
+  border-radius:6px;
+
+  color:white;
+
+  font-size:13px;
+}
+
+.textarea{
+  min-height:120px;
+}
+
+/* button */
+
+.button{
+  margin-top:14px;
+
+  width:100%;
+
+  background:white;
+
+  color:black;
+
+  font-size:12px;
+
+  letter-spacing:2px;
+
+  padding:14px;
+
+  border-radius:6px;
+
+  cursor:pointer;
+}
+
+/* demo */
+
+.demo{
+  margin-top:50px;
+}
+
+.demo span{
+  display:block;
+
+  font-size:10px;
+
+  color:#7a7a7a;
+
+  letter-spacing:2px;
+
+  margin-bottom:6px;
+}
+
+.demo a{
+  color:#20c4ff;
+
+  font-size:12px;
+
+  letter-spacing:2px;
+}
+
+/* dashed circle */
+
+.circle{
+  position:absolute;
+
+  top:-120px;
+  left:-120px;
+
+  width:320px;
+  height:320px;
+
+  border:2px dashed rgba(255,255,255,0.08);
+
+  border-radius:50%;
+}
+
+/* star */
+
+.star{
+  position:absolute;
+
+  bottom:-80px;
+  right:-80px;
+
+  width:220px;
+  height:220px;
+
+  border:2px solid rgba(255,255,255,0.05);
+
+  transform:rotate(45deg);
+}
+@media(max-width:768px){
+
+.title{
+font-size:36px;
+}
+
+.row{
+flex-direction:column;
+}
+
+.section{
+padding:120px 20px;
+}
+
+}
