@@ -1,0 +1,122 @@
+.section{
+  background:black;
+  padding:160px 20px;
+  text-align:center;
+}
+
+/* header */
+
+.header{
+  max-width:900px;
+  margin:auto;
+  margin-bottom:80px;
+}
+
+.header h2{
+  font-size:64px;
+  font-weight:800;
+  color:white;
+}
+
+.header span{
+  color:#20c4ff;
+}
+
+.header p{
+  margin-top:20px;
+  color:#7a7a7a;
+  font-size:14px;
+  letter-spacing:1px;
+}
+
+/* workflow container */
+
+.workflowContainer{
+  max-width:1200px;
+  margin:auto;
+  border:1px solid rgba(255,255,255,0.06);
+  padding:50px;
+  border-radius:20px;
+}
+
+.workflowTitle{
+  font-size:11px;
+  letter-spacing:2px;
+  color:#6f6f6f;
+  margin-bottom:40px;
+}
+
+/* workflow row */
+
+.workflow{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+/* step */
+
+.step{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  position:relative;
+}
+
+.iconCircle{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,0.08);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#20c4ff;
+  background:#050505;
+}
+
+.step span{
+  margin-top:10px;
+  font-size:11px;
+  letter-spacing:2px;
+  color:#9aa4ab;
+}
+
+/* connector */
+
+.connector{
+  position:absolute;
+  right:-55px;
+  top:28px;
+  width:60px;
+  height:2px;
+  background:#20c4ff33;
+}
+@media(max-width:1000px){
+
+.workflow{
+flex-wrap:wrap;
+gap:40px;
+justify-content:center;
+}
+
+.connector{
+display:none;
+}
+
+}
+
+@media(max-width:600px){
+
+.header h2{
+font-size:38px;
+}
+
+.workflowContainer{
+padding:30px;
+}
+
+}
