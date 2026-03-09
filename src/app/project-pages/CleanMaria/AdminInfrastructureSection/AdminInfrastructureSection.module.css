@@ -16,18 +16,25 @@
 
 .header h3{
   color:white;
-  font-size:26px;
+font-weight: 900;
+font-size: 30px;
+line-height: 36px;
+letter-spacing: -1.1px;
+text-transform: uppercase;
 }
 
 .header p{
   color:#6f6f6f;
-  font-size:11px;
-  letter-spacing:2px;
+font-weight: 700;
+font-size: 10px;
+line-height: 15px;
+letter-spacing: 3.12px;
+text-transform: uppercase;
 }
 
 .systemActive{
   background:#042b34;
-  border:1px solid #0ea5e9;
+  border: 1px solid #17A5C633;
   color:#20c4ff;
   padding:8px 18px;
   border-radius:6px;
