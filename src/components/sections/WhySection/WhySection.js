@@ -9,22 +9,16 @@ import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
 
 const IMAGES = [
-  "/whysection/img1.png",
+  "/whysection/murali3.png",
+  "/whysection/image1.png",
+  "/whysection/anandhu.png",
+  "/whysection/reema.png",
+  "/whysection/devan.png",
+  "/whysection/Fayaz.png",
+  "/whysection/sai.png",
+  "/whysection/sona.png",
+  "/whysection/adheena.png",
   "/whysection/img2.png",
-  "/whysection/img3.png",
-  "/whysection/img4.png",
-  "/whysection/img5.png",
-  "/whysection/img6.png",
-  "/whysection/img7.png",
-  "/whysection/img8.jpg",
-  "/whysection/img1.png",
-  "/whysection/img2.png",
-  "/whysection/img3.png",
-  "/whysection/img4.png",
-  "/whysection/img5.png",
-  "/whysection/img6.png",
-  "/whysection/img7.png",
-  "/whysection/img8.jpg",
 ];
 
 const chunkArray = (arr, size) => {
@@ -35,19 +29,24 @@ const chunkArray = (arr, size) => {
   return chunks;
 };
 const paddedImages = [...IMAGES];
-while (paddedImages.length % 4 !== 0) {
+while (paddedImages.length % 2 !== 0) {
   paddedImages.push(IMAGES[paddedImages.length % IMAGES.length]);
 }
 
-const imageLayers = chunkArray(paddedImages, 4);
+const imageLayers = chunkArray(paddedImages, 2);
 
 const CARD_SIZES = [
-  { w: 280, h: 220 },
-  { w: 320, h: 260 },
-  { w: 360, h: 280 },
-  { w: 300, h: 240 },
-  { w: 380, h: 300 },
-  { w: 260, h: 200 },
+  { w: 380, h: 570 }, // tall
+  { w: 340, h: 520 }, // shorter
+
+  { w: 350, h: 560 }, // medium
+  { w: 390, h: 620 }, // tallest
+
+  { w: 360, h: 540 },
+  { w: 420, h: 580 },
+
+  { w: 340, h: 600 },
+  { w: 380, h: 520 },
 ];
 
 const generateCardSizes = (layersCount) => {
@@ -56,7 +55,7 @@ const generateCardSizes = (layersCount) => {
 
   for (let l = 0; l < layersCount; l++) {
     const layerSizes = [];
-    for (let c = 0; c < 4; c++) {
+    for (let c = 0; c < 2; c++) {
       layerSizes.push(CARD_SIZES[seed % CARD_SIZES.length]);
       seed++;
     }
@@ -112,8 +111,8 @@ export default function Whyanimate() {
       const cards = layer.querySelectorAll(`.${styles.card}`);
 
       gsap.set(cards, {
-        x: (cardIndex) => (cardIndex % 2 === 0 ? -20 : 20),
-        y: (cardIndex) => (cardIndex < 2 ? -20 : 20),
+        x: (i) => (i === 0 ? -30 : 30),
+        y: 0,
       });
 
       // Front layer zooms away
@@ -215,11 +214,11 @@ export default function Whyanimate() {
             ref={(el) => (layersRef.current[layerIndex] = el)}
             className={styles.layer}
           >
-            <div className={`${styles.card} ${styles.tl}`}
-            style={{
-              width: CARD_DIMENSIONS[layerIndex][0].w,
-              height: CARD_DIMENSIONS[layerIndex][0].h,
-            }}>
+            <div className={`${styles.card} ${styles.left}`}
+              style={{
+                width: CARD_DIMENSIONS[layerIndex][0].w,
+                height: CARD_DIMENSIONS[layerIndex][0].h,
+              }}>
               <Image
                 src={layerImages[0]}
                 alt=""
@@ -229,41 +228,13 @@ export default function Whyanimate() {
               />
             </div>
 
-            <div className={`${styles.card} ${styles.tr}`}
-            style={{
-              width: CARD_DIMENSIONS[layerIndex][1].w,
-              height: CARD_DIMENSIONS[layerIndex][1].h,
-            }}>
+            <div className={`${styles.card} ${styles.right}`}
+              style={{
+                width: CARD_DIMENSIONS[layerIndex][1].w,
+                height: CARD_DIMENSIONS[layerIndex][1].h,
+              }}>
               <Image
                 src={layerImages[1]}
-                alt=""
-                fill
-                className={styles.cardImage}
-                sizes="350px"
-              />
-            </div>
-
-            <div className={`${styles.card} ${styles.bl}`}
-            style={{
-              width: CARD_DIMENSIONS[layerIndex][2].w,
-              height: CARD_DIMENSIONS[layerIndex][2].h,
-            }}>
-              <Image
-                src={layerImages[2]}
-                alt=""
-                fill
-                className={styles.cardImage}
-                sizes="350px"
-              />
-            </div>
-
-            <div className={`${styles.card} ${styles.br}`}
-            style={{
-              width: CARD_DIMENSIONS[layerIndex][3].w,
-              height: CARD_DIMENSIONS[layerIndex][3].h,
-            }}>
-              <Image
-                src={layerImages[3]}
                 alt=""
                 fill
                 className={styles.cardImage}

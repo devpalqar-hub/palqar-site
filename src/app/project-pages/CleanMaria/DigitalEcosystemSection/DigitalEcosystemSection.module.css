@@ -1,6 +1,6 @@
 .section{
   background:black;
-  padding:200px 20px;
+  padding:150px 20px;
   text-align:center;
 }
 
@@ -20,9 +20,10 @@
   padding:8px 18px;
   border-radius:30px;
 
-  font-size:11px;
+  font-size:10px;
+  font-weight: 900;
   letter-spacing:2px;
-  color:#9aa4ab;
+  color:#ffffff;
 
   margin-bottom:40px;
 }
@@ -37,10 +38,13 @@
 /* title */
 
 .title{
-  font-size:72px;
-  font-weight:800;
-  line-height:1.05;
-  color:white;
+font-weight: 900;
+font-size: 96px;
+line-height: 120px;
+letter-spacing: -4.8px;
+text-align: center;
+text-transform: uppercase;
+color: white;
 }
 
 .title span{
@@ -50,11 +54,15 @@
 /* subtitle */
 
 .subtitle{
-  margin-top:30px;
-  color:#6f6f6f;
-  font-size:15px;
-  line-height:1.8;
-  letter-spacing:1px;
+font-weight: 300;
+font-style: italic;
+font-size: 20px;
+line-height: 32.5px;
+letter-spacing: 3.55px;
+text-align: center;
+text-transform: uppercase;
+color: #FFFFFF4D;
+margin-top: 20px;
 }
 @media(max-width:1024px){
 
