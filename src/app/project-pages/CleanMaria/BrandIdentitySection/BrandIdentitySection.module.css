@@ -1,0 +1,202 @@
+.section{
+  background:black;
+  padding:160px 20px;
+}
+
+.container{
+  max-width:1400px;
+  margin:auto;
+}
+
+/* HEADER */
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:60px;
+}
+
+.header h2{
+  font-size:72px;
+  font-weight: 900;
+  color:white;
+  margin-bottom:14px;
+}
+
+.header p{
+  color:#9aa4ab;
+  max-width:666px;
+  line-height:29.25px;
+  letter-spacing: -0.44px;
+  font-weight: 300;
+}
+
+/* COLORS */
+
+.colors{
+  display:flex;
+  gap:24px;
+}
+
+.colourColumn {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+.colors span {
+  display: inline-block;
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+}
+.colorName {
+  color: #6f6f6f;
+  font-size: 10px;
+  line-height: 15px;
+  margin-top: 20px;
+}
+
+/* TOP GRID */
+
+.topGrid{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:24px;
+  margin-bottom:24px;
+}
+
+/* BRAND CARD */
+
+.brandCard{
+  position:relative;
+  height:474px;
+  border-radius:16px;
+  overflow:hidden;
+  background:#e9e9e9;
+}
+
+/* TYPOGRAPHY */
+
+.typeCard{
+  background:#0c0c0c;
+  border:1px solid rgba(255,255,255,0.05);
+  border-radius:12px;
+  padding:28px;
+}
+
+.typeCard h3{
+font-weight: 900;
+font-size: 30px;
+line-height: 36px;
+letter-spacing: 0.4px;
+text-transform: uppercase;
+color: #ffff;
+}
+
+.sub{
+font-weight: 400;
+font-size: 12px;
+line-height: 19.5px;
+letter-spacing: -0.6px;
+text-transform: uppercase;
+color: #828282;
+}
+
+.typeSample{
+font-weight: 900;
+font-size: 48px;
+line-height: 48px;
+letter-spacing: -2.05px;
+text-align: center;
+color: #ffff;
+margin-top: 100px;
+margin-bottom: 20px;
+}
+
+.small{
+  font-size:10px;
+  font-weight: 700;
+  color:#3d3c3c;
+  margin-bottom: 10px;
+}
+
+.small2{
+font-weight: 300;
+font-style: light;
+font-size: 14px;
+line-height: 20px;
+letter-spacing: 4.05px;
+text-align: center;
+text-transform: uppercase;
+color: #FFFFFF66;
+}
+
+/* LARGE IMAGE */
+
+.largeImage{
+  position:relative;
+  height:598px;
+  border-radius:12px;
+  overflow:hidden;
+  margin-bottom:24px;
+}
+
+/* BOTTOM GRID */
+
+.bottomGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+
+.smallCard{
+  position:relative;
+  height:498px;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+/* IMAGE */
+
+.image{
+  object-fit:cover;
+}
+@media(max-width:1024px){
+
+.header{
+flex-direction:column;
+gap:20px;
+}
+
+.topGrid{
+grid-template-columns:1fr;
+}
+
+.largeImage{
+height:360px;
+}
+
+}
+
+@media(max-width:640px){
+
+.section{
+padding:120px 20px;
+}
+
+.header h2{
+font-size:32px;
+}
+
+.largeImage{
+height:280px;
+}
+
+.bottomGrid{
+grid-template-columns:1fr;
+}
+
+}

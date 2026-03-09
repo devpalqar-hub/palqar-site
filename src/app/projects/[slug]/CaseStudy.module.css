@@ -1,0 +1,452 @@
+.wrapper {
+  background: #000;
+  color: white;
+  padding: 120px 8%;
+}
+
+/* HERO */
+.hero {
+  margin-bottom: 160px;
+}
+
+.caseStudyWrapper {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(231, 0, 11, 1);
+  flex-shrink: 0;
+}
+
+.caseStudy {
+  font-family: var(--font-inter);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.heroText {
+  max-width: 800px;
+  margin-bottom: 60px;
+}
+
+.hero h1 {
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 0.9;
+  letter-spacing: -2.4px;
+  margin: 30px 0 10px 0;
+}
+
+.meta {
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0.07px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 20px;
+}
+
+.overview {
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 39px;
+  letter-spacing: 0.07px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.heroImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 447px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.heroImage {
+  object-fit: cover;
+}
+
+/* SECTIONS */
+.section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+  margin-bottom: 160px;
+}
+
+.reverse {
+  direction: rtl;
+}
+
+.reverse > * {
+  direction: ltr;
+}
+
+.textBlock h2 {
+  font-size: 42px;
+  margin-bottom: 30px;
+}
+
+.textBlock p {
+  line-height: 1.8;
+  font-size: 18px;
+  color: #ccc;
+}
+
+.imageBlock {
+  position: relative;
+  height: 500px;
+  width: 100%; /* was fixed 706.66px — breaks layout on smaller screens */
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.sectionImage {
+  object-fit: cover;
+}
+
+.tagRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.number {
+  font-size: 12px;
+  font-weight: 600;
+  color: #DC3545;
+  letter-spacing: 2px;
+}
+
+.label {
+  font-size: 12px;
+  letter-spacing: 3px;
+  opacity: 0.6;
+}
+
+/* INITIATE / CTA */
+.initiateProject {
+  width: 100%;
+  background: #000;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 286.875px;
+  height: 68px;
+  border-radius: 9999px;
+  background: #fff;
+  color: #000;
+  font-family: var(--font-inter);
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 2.4px;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.arrowRight {
+  color: #fff;
+  background: #000;
+  border-radius: 50%;
+  padding: 10px;
+  flex-shrink: 0;
+}
+
+.bottom {
+  display: flex;
+  gap: 80px;
+  justify-content: center;
+  align-items: center;
+}
+
+.lets {
+  font-family: var(--font-inter);
+  font-weight: 700;
+  font-size: 207.7px;
+  line-height: 1;
+  letter-spacing: -10.39px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.talk {
+  color: #E52E3D;
+}
+
+
+/* =================================
+   LARGE DESKTOP (1400px ↓)
+================================= */
+@media (max-width: 1400px) {
+  .lets {
+    font-size: clamp(120px, 14vw, 180px);
+    line-height: 1;
+    letter-spacing: -6px;
+  }
+}
+
+
+/* =================================
+   LAPTOP (1200px ↓)
+================================= */
+@media (max-width: 1200px) {
+  .wrapper {
+    padding: 100px 6%;
+  }
+
+  .hero h1 {
+    font-size: clamp(56px, 7vw, 80px);
+    letter-spacing: -2px;
+  }
+
+  .meta,
+  .overview {
+    font-size: 20px;
+    line-height: 1.6;
+  }
+
+  .section {
+    gap: 60px;
+  }
+
+  .imageBlock {
+    height: 420px;
+  }
+}
+
+
+/* =================================
+   TABLET LANDSCAPE (1024px ↓)
+================================= */
+@media (max-width: 1024px) {
+  .wrapper {
+    padding: 100px 5%;
+  }
+
+  .hero {
+    margin-bottom: 100px;
+  }
+
+  .caseStudyWrapper {
+    margin-top: 60px;
+  }
+
+  .hero h1 {
+    font-size: clamp(44px, 6vw, 64px);
+    letter-spacing: -1.5px;
+  }
+
+  .meta,
+  .overview {
+    font-size: 18px;
+  }
+
+  .heroImageWrapper {
+    height: 380px;
+  }
+
+  /* Sections collapse to single column */
+  .section {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 100px;
+  }
+
+  /* Undo rtl trick on mobile — it can mis-order DOM visually */
+  .reverse {
+    direction: ltr;
+  }
+
+  .imageBlock {
+    height: 360px;
+    width: 100%;
+  }
+
+  .textBlock h2 {
+    font-size: clamp(28px, 4vw, 36px);
+  }
+
+  /* CTA */
+  .column {
+    gap: 16px;
+    padding: 0 40px;
+  }
+
+  .lets {
+    font-size: clamp(80px, 14vw, 140px);
+    letter-spacing: -4px;
+  }
+
+  .buttonWrapper {
+    width: 240px;
+    height: 60px;
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  .bottom {
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+}
+
+
+/* =================================
+   TABLET PORTRAIT / MOBILE (768px ↓)
+================================= */
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 80px 5%;
+  }
+
+  .hero {
+    margin-bottom: 80px;
+  }
+
+  .caseStudyWrapper {
+    margin-top: 40px;
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 8vw, 52px);
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .heroText {
+    margin-bottom: 40px;
+  }
+
+  .meta {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .overview {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .heroImageWrapper {
+    height: 280px;
+    border-radius: 16px;
+  }
+
+  .section {
+    margin-bottom: 80px;
+    gap: 32px;
+  }
+
+  .imageBlock {
+    height: 280px;
+    border-radius: 10px;
+  }
+
+  .textBlock h2 {
+    font-size: clamp(24px, 5vw, 32px);
+    margin-bottom: 16px;
+  }
+
+  .textBlock p {
+    font-size: 16px;
+  }
+
+  /* CTA */
+  .initiateProject {
+    padding: 100px 0;
+  }
+
+  .column {
+    padding: 0 20px;
+    gap: 14px;
+  }
+
+  .lets {
+    font-size: clamp(48px, 16vw, 90px);
+    letter-spacing: -2px;
+  }
+
+  .buttonWrapper {
+    width: 100%;
+    max-width: 260px;
+    height: 56px;
+    font-size: 11px;
+  }
+
+  .arrowRight {
+    padding: 8px;
+  }
+
+  .bottom {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+
+/* =================================
+   SMALL MOBILE (480px ↓)
+================================= */
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 60px 4%;
+  }
+
+  .hero h1 {
+    font-size: clamp(30px, 9vw, 42px);
+  }
+
+  .meta,
+  .overview {
+    font-size: 15px;
+  }
+
+  .heroImageWrapper {
+    height: 220px;
+    border-radius: 14px;
+  }
+
+  .imageBlock {
+    height: 240px;
+  }
+
+  .textBlock h2 {
+    font-size: clamp(22px, 6vw, 28px);
+  }
+
+  .lets {
+    font-size: clamp(40px, 18vw, 64px);
+    letter-spacing: -1px;
+  }
+
+  .buttonWrapper {
+    height: 52px;
+  }
+}

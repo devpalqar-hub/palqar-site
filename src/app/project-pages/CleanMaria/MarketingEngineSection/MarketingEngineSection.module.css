@@ -1,0 +1,135 @@
+.section{
+  background:black;
+  padding:160px 20px;
+}
+
+.container{
+  max-width:1400px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1.3fr;
+  gap:80px;
+}
+
+/* LEFT */
+
+.left h2{
+  font-size:64px;
+  font-weight:800;
+  color:white;
+  line-height:1.1;
+  margin-bottom:20px;
+}
+
+.subtitle{
+  color:#9aa4ab;
+  margin-bottom:40px;
+  max-width:420px;
+}
+
+.strategyList{
+  display:flex;
+  flex-direction:column;
+  gap:26px;
+}
+
+.strategyItem{
+  display:flex;
+  gap:16px;
+}
+
+.iconBox{
+  width:42px;
+  height:42px;
+  border:1px solid rgba(255,255,255,0.1);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:6px;
+  color:#20c4ff;
+}
+
+.strategyItem h4{
+  color:white;
+  font-size:14px;
+  letter-spacing:1px;
+  margin-bottom:4px;
+}
+
+.strategyItem p{
+  color:#8b8b8b;
+  font-size:13px;
+  max-width:260px;
+}
+
+/* RIGHT */
+
+.kitLabel{
+  font-size:11px;
+  color:#6f6f6f;
+  letter-spacing:2px;
+  margin-bottom:20px;
+}
+
+/* CARD GRID */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+.card{
+  background:#0c0c0c;
+  border:1px solid rgba(255,255,255,0.05);
+  padding:32px;
+  border-radius:10px;
+  min-height:160px;
+  position:relative;
+}
+
+.card h3{
+  color:white;
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.card p{
+  color:#8b8b8b;
+  font-size:13px;
+}
+
+/* small sparkle indicator */
+
+.spark{
+  position:absolute;
+  top:18px;
+  right:18px;
+  width:8px;
+  height:8px;
+  background:#20c4ff;
+  border-radius:50%;
+}
+@media(max-width:1100px){
+
+.container{
+grid-template-columns:1fr;
+}
+
+.left h2{
+font-size:48px;
+}
+
+}
+
+@media(max-width:640px){
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.section{
+padding:120px 20px;
+}
+
+}

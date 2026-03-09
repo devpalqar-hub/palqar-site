@@ -1,0 +1,200 @@
+.section {
+  background: #000;
+  padding: 100px 0 80px;
+  overflow: hidden;
+}
+
+/* ── HEADER ── */
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1352px;
+  margin: 0 auto 56px;
+  padding: 0 24px;
+}
+
+.title {
+font-weight: 900;
+font-size: 30px;
+line-height: 36px;
+letter-spacing: -1.1px;
+text-transform: uppercase;
+color: #ffff;
+}
+
+.subtitle {
+font-weight: 700;
+font-style: bold;
+font-size: 10px;
+line-height: 15px;
+letter-spacing: 3.12px;
+text-transform: uppercase;
+color: #FFFFFF66;
+}
+
+.dots {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding-top: 4px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #5d5d5d;
+  transition: background 0.3s;
+}
+
+.dotActive {
+  background: #2e2e2e;
+}
+.dotThree {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #1e1d1d;
+  transition: background 0.3s;
+} 
+
+/* ── STAGE ── */
+
+.stage {
+  /* Fixed container width matching Figma: 1352px, left-offset so phones bleed left */
+  max-width: 1252px;
+  margin: 0 auto;
+  padding: 0 24px;
+  overflow: hidden; /* clips leftmost & rightmost phones */
+}
+
+/* ── PHONE TRACK ── */
+
+.track {
+  display: flex;
+  /* Negative margin-left so the first phone starts partially off-screen */
+  margin-left: -10px;
+  gap: -100px; /* overlap controlled per phone */
+  align-items: flex-end;
+  padding-bottom: 14px;
+}
+
+.phoneWrap {
+  flex-shrink: 0;
+  /* each phone overlaps the previous by 28px */
+  margin-left: -86px;
+  /* first child sits fully off-left edge; reset for index 0 is handled by track margin */
+  animation: fadeUp 0.5s ease both;
+  animation-delay: calc(var(--i) * 60ms);
+}
+
+/* First phone extra push off-left */
+.phoneWrap:first-child {
+  margin-left: 0;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── PHONE FRAME ── */
+
+.phoneFrame {
+  position: relative;
+  width: 280px;
+  height: 624px;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+/* ── SCREEN AREA ── */
+
+.screen {
+  position: absolute;
+  inset: 0;
+}
+
+.screenImg {
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* ── LABELS ROW ── */
+
+.labelsRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;       /* aligns roughly under each phone */
+  margin-top: -50px;
+}
+
+.label {
+  color: #4fa8c8;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  .track {
+    margin-left: -40px;
+    gap: 0;
+  }
+
+  .phoneWrap {
+    margin-left: -22px;
+  }
+
+  .phoneFrame {
+    width: 165px;
+    height: 336px;
+    border-radius: 32px;
+  }
+
+  .notch {
+    width: 70px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 72px 0 60px;
+  }
+
+  .track {
+    margin-left: -24px;
+  }
+
+  .phoneWrap {
+    margin-left: -16px;
+  }
+
+  .phoneFrame {
+    width: 130px;
+    height: 266px;
+    border-radius: 26px;
+  }
+
+  .notch {
+    width: 56px;
+    height: 16px;
+  }
+
+  .label {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+  }
+
+  .labelsRow {
+    padding: 0 12px;
+  }
+}

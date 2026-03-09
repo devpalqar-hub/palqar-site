@@ -1,0 +1,465 @@
+
+.footer {
+  position: relative;
+  color: white;
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+
+.backgroundWrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.backgroundVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.backgroundImage {
+  object-fit: cover;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  padding: 180px 8% 40px;
+}
+
+.topSection {
+  display: grid;
+  grid-template-columns: 360px 160px 160px 1fr;
+  gap: 40px;
+  column-gap: 56px;
+  align-items: start;
+  margin-top: 40px;
+}
+
+.linksGroup {
+  display: contents;
+}
+
+/* ─────────────────────────────────────────
+   LEFT — Brand + Email
+───────────────────────────────────────── */
+.left {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  font-family: var(--font-smooch, Georgia, serif);
+  font-size: 38px;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  margin: 0 0 5px;
+  line-height: 1;
+}
+
+.tagline {
+  margin: 0 0 28px;
+  color: #777;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.emailBox {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 6px;
+  gap: 6px;
+  box-sizing: border-box;
+}
+
+.input {
+  background: transparent;
+  border: none;
+  padding: 0 12px;
+  color: white;
+  flex: 1;
+  font-size: 15px;
+  outline: none;
+  min-width: 0;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.button {
+  flex-shrink: 0;
+  height: 38px;
+  border-radius: 12px;
+  padding: 0 18px;
+  background-color: rgba(220, 53, 69, 1);
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(220, 53, 69, 0.5);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.button:hover {
+  box-shadow: 0 10px 44px rgba(220, 53, 69, 0.75);
+  transform: translateY(-1px);
+}
+
+/* ─────────────────────────────────────────
+   LINK COLUMNS
+───────────────────────────────────────── */
+.columnTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 22px;
+  white-space: nowrap;
+}
+
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.linkList li {
+  margin-bottom: 12px;
+  color: #888;
+  font-size: 15px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.linkList li:hover {
+  color: white;
+}
+
+/* ─────────────────────────────────────────
+   VIDEO WRAPPER
+───────────────────────────────────────── */
+.videoWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding-top: 4px;
+}
+
+.clientsTag {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(15, 15, 25, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 8px 18px;
+  border-radius: 12px;
+  font-size: 13px;
+  color: #ccc;
+  backdrop-filter: blur(15px);
+  overflow: hidden;
+}
+
+.clientsTag::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 55%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(220, 53, 69, 1), transparent);
+  box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
+}
+
+.clientsTag strong {
+  color: white;
+  font-weight: 700;
+}
+
+.videoCard {
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 16 / 10;
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.videoCard::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.playCircle {
+  width: 54px;
+  height: 54px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: white;
+  backdrop-filter: blur(6px);
+  transition: background 0.25s, transform 0.2s;
+}
+
+.videoCard:hover .playCircle {
+  background: rgba(220, 53, 69, 0.4);
+  transform: scale(1.08);
+}
+
+/* ─────────────────────────────────────────
+   BIG BRAND LOGO
+───────────────────────────────────────── */
+.brandSection {
+  margin: 60px 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.bigLogo {
+  width: 100%;
+  max-width: 1100px;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.8;
+  margin: -260px 0;
+}
+
+/* ─────────────────────────────────────────
+   BOTTOM BAR
+───────────────────────────────────────── */
+.bottomBar {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #aaa;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bottomLinks {
+  display: flex;
+  gap: 32px;
+}
+
+.bottomLinks span,
+.bottomBar > span {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.bottomLinks span:hover,
+.bottomBar > span:hover {
+  color: white;
+}
+
+@media (max-width: 1080px) {
+  .content {
+    padding: 140px 6% 40px;
+  }
+
+  /* Switch to flex column — each direct child stacks */
+  .topSection {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .topSection {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 40px;
+    column-gap: 48px;
+  }
+
+  /* left spans both columns in row 1 */
+  .left {
+    grid-column: 1 / -1;
+  }
+
+  /* linksGroup occupies col 1 row 2 as a real flex row */
+  .linksGroup {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  /* videoWrapper takes col 2 row 2 */
+  .videoWrapper {
+    grid-column: 2;
+    grid-row: 2;
+    align-items: flex-start;
+  }
+
+  .videoCard {
+    max-width: 260px;
+  }
+
+  .bigLogo {
+    max-width: 780px;
+    margin: -130px 0;
+  }
+}
+
+@media (max-width: 660px) {
+  .content {
+    padding: 40px 5% 36px;
+  }
+
+  /* Single-column stack */
+  .topSection {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+  .left{
+    width: 100%;
+  }
+
+  /* Email box becomes vertical */
+  .emailBox {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px;
+    border-radius: 16px;
+    max-width: 100%;
+  }
+
+  .input {
+    padding: 10px 14px;
+    font-size: 15px;
+  }
+
+  .button {
+    width: 100%;
+    height: 44px;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+
+  /* Links side-by-side row */
+  .linksGroup {
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+  }
+
+  .templateColumn,
+  .socialColumn {
+    flex: 1;
+  }
+
+  /* Full-width video, centered */
+  .videoWrapper {
+    width: 100%;
+    align-items: center;
+  }
+
+  .videoCard {
+    max-width: 100%;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+
+  .bigLogo {
+    max-width: 460px;
+    margin: -150px 0;
+  }
+
+  .brandSection {
+    margin: 40px 0 20px;
+  }
+
+  .bottomBar {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .bottomLinks {
+    gap: 20px;
+    justify-content: center;
+  }
+}
+
+/* ─────────────────────────────────────────
+   SMALL MOBILE  ≤ 400px
+───────────────────────────────────────── */
+@media (max-width: 400px) {
+  .content {
+    padding: 30px 4% 30px;
+  }
+
+  .logo {
+    font-size: 30px;
+  }
+
+  .tagline {
+    font-size: 13px;
+  }
+
+  .columnTitle {
+    font-size: 14px;
+  }
+
+  .linkList li {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .linksGroup {
+    gap: 28px;
+  }
+
+  .playCircle {
+    width: 44px;
+    height: 44px;
+    font-size: 14px;
+  }
+
+  .bigLogo {
+    max-width: 290px;
+    margin: -75px 0;
+  }
+
+  .bottomBar {
+    font-size: 12px;
+  }
+
+  .bottomLinks {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

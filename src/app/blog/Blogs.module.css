@@ -1,0 +1,595 @@
+.blogPage {
+  background: #000;
+  min-height: 100vh;
+  color: #fff;
+}
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.header {
+  padding: 140px 8% 60px;
+}
+
+.headerInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+/* Title block — big left-aligned editorial */
+.titleBlock {
+  flex: 1;
+}
+
+.title {
+  font-family: var(--font-raleway);
+  font-weight: 800;
+  font-size: clamp(72px, 10vw, 140px);
+  line-height: 1.15;
+  letter-spacing: -3px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.titleWordWrap {
+  overflow: hidden;
+  display: block;
+}
+
+.titleWord {
+  display: block;
+}
+
+/* Right meta block */
+.headerMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 24px;
+  padding-bottom: 8px;
+  flex-shrink: 0;
+  max-width: 300px;
+}
+
+.headerDesc {
+  font-family: var(--font-inter);
+  font-size: 16px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: right;
+}
+
+.headerCount {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.countNumber {
+  font-family: var(--font-jetbrains);
+  font-size: 48px;
+  font-weight: 700;
+  color: #dc3545;
+  line-height: 1;
+}
+
+.countLabel {
+  font-family: var(--font-jetbrains);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.headerDivider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================================
+   CONTAINER
+============================================================ */
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 8%;
+}
+
+/* ============================================================
+   FEATURED GRID  (2-col, tall cards)
+============================================================ */
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.cardOuter {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+/* The card itself */
+.card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+/* Arrow button top-right */
+.arrowBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.card:hover .arrowBtn {
+  background: #dc3545;
+  color: #fff;
+  transform: rotate(0deg) scale(1.1);
+}
+
+/* Brand tag top-left */
+.brandTag {
+  position: absolute;
+  top: 22px;
+  left: 24px;
+  z-index: 10;
+  font-family: var(--font-inter);
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+/* Big card title bottom-left */
+.cardTitleBlock {
+  position: absolute;
+  bottom: 80px;
+  left: 24px;
+  right: 50%;
+  z-index: 10;
+}
+
+.cardTitle {
+  font-family: var(--font-raleway);
+  font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 0.95;
+  letter-spacing: -1.5px;
+}
+
+/* Author bottom-left */
+.authorBlock {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.authorName {
+  font-family: var(--font-inter);
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.authorRole {
+  font-family: var(--font-inter);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Person image right half */
+.personImageWrapper {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 55%;
+  height: 100%;
+  z-index: 1;
+}
+
+.personImage {
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* Dark gradient over left side of image */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.3) 40%,
+    transparent 70%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Tagline below card */
+.cardTagline {
+  font-family: var(--font-inter);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  margin-top: 18px;
+  padding-left: 4px;
+  transition: letter-spacing 0.3s ease;
+}
+
+.cardLink:hover .cardTagline {
+  letter-spacing: 0.2px;
+}
+
+/* ============================================================
+   REST GRID  (3-col smaller cards)
+============================================================ */
+
+.restGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 0;
+}
+
+.cardSmall {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+/* Small card image */
+.smallImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #111;
+  margin-bottom: 18px;
+}
+
+.smallImage {
+  object-fit: cover;
+  transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.cardSmall:hover .smallImage {
+  transform: scale(1.07);
+}
+
+.smallOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.7) 0%,
+    transparent 60%
+  );
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  transition: background 0.3s ease;
+}
+
+.category {
+  font-family: var(--font-jetbrains);
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #dc3545;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+/* Small card info */
+.smallInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.smallTitle {
+  font-family: var(--font-raleway);
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.smallTagline {
+  font-family: var(--font-inter);
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.smallMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.smallAuthor {
+  font-family: var(--font-inter);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.readMoreLink {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-jetbrains);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #dc3545;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.cardLink:hover .readMoreLink {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ============================================================
+   CTA — LET'S TALK
+============================================================ */
+
+.initiateProject {
+  width: 100%;
+  background: #000;
+  padding: 80px 0 120px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 286.875px;
+  height: 68px;
+  border-radius: 9999px;
+  background: #fff;
+  color: #000;
+  font-family: var(--font-inter);
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.buttonWrapper:hover {
+  background: #dc3545;
+  color: #fff;
+}
+
+.buttonWrapper button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+}
+
+.arrowRight {
+  color: #fff;
+  background: #000;
+  border-radius: 50%;
+  padding: 10px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.buttonWrapper:hover .arrowRight {
+  background: #fff;
+  color: #dc3545;
+}
+
+.lets {
+  font-family: var(--font-inter);
+  font-weight: 700;
+  font-size: 207.7px;
+  line-height: 1;
+  letter-spacing: -10.39px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.talk {
+  color: #e52e3d;
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+/* Large desktop — tighten grid gap */
+@media (max-width: 1400px) {
+  .lets {
+    font-size: clamp(120px, 14vw, 180px);
+    letter-spacing: -6px;
+  }
+}
+
+/* Laptop */
+@media (max-width: 1200px) {
+  .header {
+    padding: 120px 6% 50px;
+  }
+
+  .container {
+    padding: 60px 6%;
+  }
+
+  .cardTitle {
+    font-size: clamp(30px, 3.5vw, 48px);
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .header {
+    padding: 110px 5% 40px;
+  }
+
+  .container {
+    padding: 50px 5%;
+  }
+
+  .headerInner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .headerMeta {
+    align-items: flex-start;
+    max-width: 100%;
+  }
+
+  .headerDesc {
+    text-align: left;
+  }
+
+  .countNumber {
+    font-size: 40px;
+  }
+
+  .restGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* CTA */
+  .column { gap: 16px; padding: 0 40px; }
+  .lets { font-size: clamp(80px, 14vw, 140px); letter-spacing: -4px; }
+  .buttonWrapper { width: 240px; height: 60px; font-size: 11px; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .header {
+    padding: 100px 5% 32px;
+  }
+
+  .container {
+    padding: 40px 5%;
+  }
+
+  .title {
+    font-size: clamp(52px, 12vw, 80px);
+    letter-spacing: -2px;
+  }
+
+  .featuredGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .restGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .cardTitle {
+    font-size: clamp(32px, 7vw, 44px);
+  }
+
+  .cardTagline {
+    font-size: 15px;
+  }
+
+  .smallTitle {
+    font-size: 20px;
+  }
+
+  /* CTA */
+  .initiateProject { padding: 60px 0 100px; }
+  .column { padding: 0 20px; gap: 14px; }
+  .lets { font-size: clamp(48px, 16vw, 90px); letter-spacing: -2px; }
+  .buttonWrapper { width: 100%; max-width: 260px; height: 56px; }
+  .arrowRight { padding: 8px; }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .title {
+    font-size: clamp(44px, 14vw, 64px);
+  }
+
+  .cardTitle {
+    font-size: clamp(26px, 7vw, 36px);
+  }
+
+  .lets {
+    font-size: clamp(40px, 18vw, 64px);
+    letter-spacing: -1px;
+  }
+
+  .buttonWrapper { height: 52px; }
+}

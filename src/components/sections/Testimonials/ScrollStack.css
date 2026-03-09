@@ -1,0 +1,20 @@
+.scroll-stack-scroller {
+  position: relative;
+  width: 100%;
+}
+
+.scroll-stack-inner {
+  padding: 10vh 0 30vh;
+  position: relative;
+}
+
+.scroll-stack-card {
+  position: relative;
+  width: 100%;
+  margin-bottom: 100px;
+  border-radius: 40px;
+  z-index: 1;
+  will-change: transform;
+  transition: none;
+  box-shadow: 0 4px 94px 0 #00000059;
+}
