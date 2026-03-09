@@ -436,10 +436,10 @@ export default function About() {
           <div className={styles.teamGrid}>
 
             {[
-              { src: "/about/team-1.jpg", name: "Sarah Johnson",   role: "Chief Executive Officer" },
-              { src: "/about/team-2.jpg", name: "Michael Chen",    role: "Chief Technology Officer" },
-              { src: "/about/team-3.jpg", name: "Emily Rodriguez", role: "Chief Creative Officer" },
-              { src: "/about/team-4.jpg", name: "David Park",      role: "Chief Operations Officer" },
+              { src: "/whysection/murali3.png", name: "Murali",   role: "Founder" },
+              { src: "/whysection/image1.png", name: "Rishan",    role: "Chief Executive Officer" },
+              { src: "/whysection/anandhu.png", name: "Anandhu", role: "Backend Developer" },
+              { src: "/whysection/reema.png", name: "Reema",      role: "Flutter Developer" },
             ].map(({ src, name, role }) => (
               <article key={name} className={styles.teamCard}>
                 <div className={styles.imageWrapper}>

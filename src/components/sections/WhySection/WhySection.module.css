@@ -39,19 +39,13 @@
 
 /* Card */
 .card {
-  --card-scale: 1;
-
   position: absolute;
   background: #e6e6e6;
   overflow: hidden;
   box-shadow: 0 30px 60px rgba(0,0,0,0.25);
   will-change: transform, opacity, filter;
 
-  transform: scale(var(--card-scale));
   transform-origin: center;
-
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
 }
 .cardImage {
   object-fit: cover;
@@ -66,11 +60,17 @@
   transform-style: preserve-3d;
 }
 
-/* Corners */
-.tl { top: 7%; left: 10%; }
-.tr { top: 7%; right: 10%; }
-.bl { bottom: 8%; left: 10%; }
-.br { bottom: 8%; right: 10%; }
+.left {
+  left: 10%;
+  top: 50%;
+  margin-top: -280px; /* half of card height */
+}
+
+.right {
+  right: 10%;
+  top: 50%;
+  margin-top: -280px;
+}
 
 /* Center text */
 .text {
@@ -154,11 +154,6 @@
     --card-scale: 0.55;
   }
 
-  .tl { left: -6%; top: 10%; }
-  .tr { right: -6%; top: 10%; }
-  .bl { left: -10%; bottom: 9%; }
-  .br { right: -6%; bottom: 10%; }
-
   .tag {
     padding: 10px 15px;
   }
@@ -180,12 +175,19 @@
   .text h3 {
     font-size: 12px;
   }
-    .tl { left: -10%; top: 10%; }
-  .tr { right: -11%; top: 10%; }
-  .bl { left: -14%; bottom: 10%; }
-  .br { right: -10%; bottom: 12%; }
   .tag {
     padding: 8px 10px;
     font-size: 12px;
   }
+}
+@media (max-width: 768px) {
+
+.left{
+  left:-10%;
+}
+
+.right{
+  right:-10%;
+}
+
 }
