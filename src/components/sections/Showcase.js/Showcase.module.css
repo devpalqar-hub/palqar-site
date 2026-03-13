@@ -33,12 +33,16 @@
   line-height: 1.6;
 }
 
-
-
 @keyframes slideRight {
-  0%   { transform: translateX(0); }
-  50%  { transform: translateX(5px); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .ctaText {

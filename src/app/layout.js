@@ -55,10 +55,11 @@ const smoochSans = Smooch_Sans({
   variable: "--font-smooch",
 });
 export default function RootLayout({ children }) {
-  
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${smoochSans.variable} ${dmSans.variable} ${raleway.variable} ${inter.variable} ${jetbrains.variable}`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${smoochSans.variable} ${dmSans.variable} ${raleway.variable} ${inter.variable} ${jetbrains.variable}`}
+      >
         <LoaderWrapper>
           <Header />
           {children}

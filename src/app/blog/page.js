@@ -71,9 +71,9 @@ const blogs = [
 ];
 
 export default function Blog() {
-  const headerRef  = useRef(null);
-  const gridRef    = useRef(null);
-  const ctaRef     = useRef(null);
+  const headerRef = useRef(null);
+  const gridRef = useRef(null);
+  const ctaRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -91,12 +91,12 @@ export default function Blog() {
         .from(
           `.${styles.headerMeta}`,
           { y: 24, opacity: 0, duration: 0.8 },
-          "-=0.6"
+          "-=0.6",
         )
         .from(
           `.${styles.headerDivider}`,
           { scaleX: 0, transformOrigin: "left", duration: 0.9 },
-          "-=0.5"
+          "-=0.5",
         );
 
       gsap.from(gridRef.current?.querySelectorAll(`.${styles.cardOuter}`), {
@@ -123,29 +123,34 @@ export default function Blog() {
       });
       ctaTl
         .from(`.${styles.lets}`, {
-          y: 60, opacity: 0, scale: 0.94, duration: 1.1, ease: "power4.out",
+          y: 60,
+          opacity: 0,
+          scale: 0.94,
+          duration: 1.1,
+          ease: "power4.out",
         })
         .from(
           `.${styles.buttonWrapper}`,
           { y: 24, opacity: 0, duration: 0.7, ease },
-          "-=0.5"
+          "-=0.5",
         );
     });
 
     const t = setTimeout(() => ScrollTrigger.refresh(), 300);
-    return () => { clearTimeout(t); ctx.revert(); };
+    return () => {
+      clearTimeout(t);
+      ctx.revert();
+    };
   }, []);
 
   const featuredBlogs = blogs.filter((b) => b.featured);
-  const restBlogs     = blogs.filter((b) => !b.featured);
+  const restBlogs = blogs.filter((b) => !b.featured);
 
   return (
     <main className={styles.blogPage}>
-
       {/* ─── HEADER ─── */}
       <header className={styles.header} ref={headerRef}>
         <div className={styles.headerInner}>
-
           <div className={styles.titleBlock}>
             <h1 className={styles.title}>
               {"Blogs and Insights".split(" ").map((word, i) => (
@@ -158,8 +163,10 @@ export default function Blog() {
 
           <div className={styles.headerMeta}>
             <p className={styles.headerDesc}>
-              Insights, ideas, and strategies<br />
-              shaping the future of digital<br />
+              Insights, ideas, and strategies
+              <br />
+              shaping the future of digital
+              <br />
               and business transformation.
             </p>
             <div className={styles.headerCount}>
@@ -167,7 +174,6 @@ export default function Blog() {
               <span className={styles.countLabel}>Articles</span>
             </div>
           </div>
-
         </div>
         <div className={styles.headerDivider} />
       </header>
@@ -175,11 +181,12 @@ export default function Blog() {
       {/* ─── FEATURED GRID ─── */}
       <section className={styles.container}>
         <div className={styles.featuredGrid} ref={gridRef}>
-
           {featuredBlogs.map((blog) => (
-            <article key={blog.id} className={`${styles.cardOuter} ${styles.featuredCard}`}>
+            <article
+              key={blog.id}
+              className={`${styles.cardOuter} ${styles.featuredCard}`}
+            >
               <Link href={`/blog/${blog.slug}`} className={styles.cardLink}>
-
                 {/* Card thumbnail */}
                 <div
                   className={styles.card}
@@ -219,15 +226,15 @@ export default function Blog() {
                 {/* Tagline below card */}
                 <p
                   className={styles.cardTagline}
-                  style={{ color: blog.accentColor === "#dc3545" ? "#fff" : "#e52e3d" }}
+                  style={{
+                    color: blog.accentColor === "#dc3545" ? "#fff" : "#e52e3d",
+                  }}
                 >
                   {blog.tagline}
                 </p>
-
               </Link>
             </article>
           ))}
-
         </div>
 
         {/* ─── REST GRID ─── */}
@@ -235,7 +242,6 @@ export default function Blog() {
           {restBlogs.map((blog) => (
             <article key={blog.id} className={styles.cardOuter}>
               <Link href={`/blog/${blog.slug}`} className={styles.cardLink}>
-
                 <div className={styles.cardSmall}>
                   {/* Image */}
                   <div className={styles.smallImageWrapper}>
@@ -263,7 +269,6 @@ export default function Blog() {
                     </div>
                   </div>
                 </div>
-
               </Link>
             </article>
           ))}
@@ -281,14 +286,15 @@ export default function Blog() {
             LET&apos;S <span className={styles.talk}>TALK</span>
           </p>
           <div className={styles.buttonWrapper}>
-            <button aria-label="Start a project with Palqar">START A PROJECT</button>
+            <button aria-label="Start a project with Palqar">
+              START A PROJECT
+            </button>
             <div className={styles.arrowRight} aria-hidden="true">
               <ArrowRight />
             </div>
           </div>
         </div>
       </section>
-
     </main>
   );
 }

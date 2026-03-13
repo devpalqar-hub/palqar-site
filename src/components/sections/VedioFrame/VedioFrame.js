@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import styles from "./VedioFrame.module.css";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 const TEXT = `At PALQAR, we're not just building a business we're crafting a vision, one innovation at a time. Founded in 2023, we embarked on this journey with a shared dream to unlock`;
@@ -92,7 +93,8 @@ export default function VedioFrame() {
           </video>
         </div>
 
-        <div
+        <Link
+          href="/contact"
           className={styles.ctaWrapper}
           style={{
             opacity: ctaOpacity,
@@ -103,7 +105,7 @@ export default function VedioFrame() {
             <ArrowRight size={18} />
           </div>
           <span className={styles.cta}>Start Your Project</span>
-        </div>
+        </Link>
 
       </div>
     </section>
