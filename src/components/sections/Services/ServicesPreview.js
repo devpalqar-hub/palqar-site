@@ -1,80 +1,117 @@
 "use client";
-import { useState,useRef,useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import styles from "./ServicesPreview.module.css";
 import { LuArrowUpRight } from "react-icons/lu";
 import Image from "next/image";
 import gsap from "gsap";
+import Link from "next/link";
 
 const SERVICES = [
   {
     id: 1,
     title: "Code",
     details: [
-      "Enterprise Management Solutions",
-      "Website & CMS Solutions",
-      "Custom Application Development",
-      "Enterprise eCommerce Platform",
-      "SaaS Solutions",
-      "Advanced Technology Solutions",
-      "Design & Experience",
-      "Cybersecurity Solutions",
+      {
+        title: "Enterprise Management Solutions",
+        href: "/services/enterprise-management-solutions",
+      },
+      { title: "Website & CMS Solutions", href: "/services/website-cms-solutions" },
+      {
+        title: "Custom Application Development",
+        href: "/services/custom-application-development",
+      },
+      { title: "Enterprise eCommerce Platform", href: "/services/enterprise-ecommerce-platform" },
+      { title: "SaaS Solutions", href: "/services/saas-solutions" },
+      {
+        title: "Advanced Technology Solutions",
+        href: "/services/advanced-technology-solutions",
+      },
+      { title: "Design & Experience", href: "/services/design-experience" },
+      { title: "Cybersecurity Solutions", href: "/services/cybersecurity-solutions" },
     ],
     images: [
       "/services-preview/service3-01.png",
       "/services-preview/service3-02.png",
       "/services-preview/service3-03.png",
-      "/services-preview/service3-04.png"
+      "/services-preview/service3-04.png",
     ],
   },
   {
     id: 2,
     title: "Creativity",
     details: [
-      "Branding & Identity",
-      "Design & Collateral",
-      "Content & Storytelling",
-      "Media Production",
-      "Advertising & Communication",
-      "Extended Creative Edge",
+      { title: "Branding & Identity", href: "/services/branding-identity" },
+      { title: "Design & Collateral", href: "/services/design-collateral" },
+      {
+        title: "Content & Storytelling",
+        href: "/services/content-storytelling",
+      },
+      { title: "Media Production", href: "/services/media-production" },
+      {
+        title: "Advertising & Communication",
+        href: "/services/advertising-communication",
+      },
+      {
+        title: "Extended Creative Edge",
+        href: "/services/extended-creative-edge",
+      },
     ],
     images: [
       "/services-preview/service2-01.png",
-      "/services-preview/service2-02.png"
+      "/services-preview/service2-02.png",
     ],
   },
   {
     id: 3,
     title: "Conversion",
     details: [
-      "Performance Marketing",
-      "Influencer Marketing",
-      "Video Marketing",
-      "360° Marketing",
-      "Theatre Commercials",
-      "SEO",
-      "Marketing Automation",
+      {
+        title: "Performance Marketing",
+        href: "/services/performance-marketing",
+      },
+      { title: "Influencer Marketing", href: "/services/influencer-marketing" },
+      { title: "Video Marketing", href: "/services/video-marketing" },
+      { title: "360° Marketing", href: "/services/360-marketing" },
+      { title: "Theatre Commercials", href: "/services/theatre-commercials" },
+      { title: "SEO", href: "/services/seo" },
+      { title: "Marketing Automation", href: "/services/marketing-automation" },
     ],
     images: [
       "/services-preview/service1-01.png",
       "/services-preview/service1-02.png",
       "/services-preview/service1-03.png",
-      "/services-preview/service1-04.png"
+      "/services-preview/service1-04.png",
     ],
   },
   {
     id: 4,
     title: "Consulting",
     details: [
-      "Business & Corporate Strategy",
-      "Marketing & Brand Strategy",
-      "Operational & Organizational Strategy",
-      "Innovation & Digital Transformation",
-      "Product, Market & Financial Strategy",
+      {
+        title: "Business & Corporate Strategy",
+        href: "/services/business-corporate-strategy",
+      },
+      {
+        title: "Marketing & Brand Strategy",
+        href: "/services/marketing-brand-strategy",
+      },
+      {
+        title: "Operational & Organizational Strategy",
+        href: "/services/operational-organizational-strategy",
+      },
+      {
+        title: "Innovation & Digital Transformation",
+        href: "/services/innovation-digital-transformation",
+      },
+      {
+        title: "Product, Market & Financial Strategy",
+        href: "/services/product-market-financial-strategy",
+      },
     ],
     images: [
       "/services-preview/service5-01.png",
       "/services-preview/service5-02.png",
-      "/services-preview/service5-03.png"
+      "/services-preview/service5-03.png",
     ],
   },
 ];
@@ -94,70 +131,64 @@ export default function ServicesPreview() {
       });
     });
   }, []);
-const handleToggle = (serviceId) => {
-  const content = contentRefs.current[serviceId];
-  if (!content) return;
+  const handleToggle = (serviceId) => {
+    const content = contentRefs.current[serviceId];
+    if (!content) return;
 
-  if (activeId === serviceId) {
-    // CLOSE
-    gsap.to(content, {
-      height: 0,
-      opacity: 0,
-      y: -12,
-      duration: 0.4,
-      ease: "power2.inOut",
-    });
-    setActiveId(null);
-  } else {
-    // CLOSE PREVIOUS (if any)
-    if (activeId && contentRefs.current[activeId]) {
-      gsap.to(contentRefs.current[activeId], {
+    if (activeId === serviceId) {
+      // CLOSE
+      gsap.to(content, {
         height: 0,
         opacity: 0,
         y: -12,
-        duration: 0.3,
+        duration: 0.4,
         ease: "power2.inOut",
       });
-    }
+      setActiveId(null);
+    } else {
+      // CLOSE PREVIOUS (if any)
+      if (activeId && contentRefs.current[activeId]) {
+        gsap.to(contentRefs.current[activeId], {
+          height: 0,
+          opacity: 0,
+          y: -12,
+          duration: 0.3,
+          ease: "power2.inOut",
+        });
+      }
 
-    // OPEN
-    gsap.set(content, { height: "auto", opacity: 1, y: 0 });
+      // OPEN
+      gsap.set(content, { height: "auto", opacity: 1, y: 0 });
 
-    gsap.from(content, {
-      height: 0,
-      opacity: 0,
-      y: -12,
-      duration: 0.5,
-      ease: "power3.out",
-    });
+      gsap.from(content, {
+        height: 0,
+        opacity: 0,
+        y: -12,
+        duration: 0.5,
+        ease: "power3.out",
+      });
 
-    // LIST STAGGER
-    gsap.from(
-      content.querySelectorAll("li"),
-      {
+      // LIST STAGGER
+      gsap.from(content.querySelectorAll("li"), {
         y: 12,
         opacity: 0,
         stagger: 0.06,
         duration: 0.4,
         ease: "power2.out",
-      }
-    );
+      });
 
-    // IMAGE STAGGER
-    gsap.from(
-      content.querySelectorAll(`.${styles.thumb}`),
-      {
+      // IMAGE STAGGER
+      gsap.from(content.querySelectorAll(`.${styles.thumb}`), {
         y: 20,
         opacity: 0,
         stagger: 0.08,
         duration: 0.45,
         ease: "power3.out",
-      }
-    );
+      });
 
-    setActiveId(serviceId);
-  }
-};
+      setActiveId(serviceId);
+    }
+  };
 
   return (
     <section className={styles.wrapper} id="services">
@@ -189,7 +220,9 @@ const handleToggle = (serviceId) => {
             <div className={styles.list}>
               <ul>
                 {service.details.map((item, i) => (
-                  <li key={i}>{item}</li>
+                  <li key={i}>
+                    <Link href={item.href}>{item.title}</Link>
+                  </li>
                 ))}
               </ul>
 

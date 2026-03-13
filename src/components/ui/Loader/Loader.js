@@ -16,12 +16,7 @@ export default function Loader({ onFinish }) {
 
   return (
     <div className={`${styles.loader} ${fade ? styles.hide : ""}`}>
-      <video
-        autoPlay
-        muted
-        playsInline
-        onEnded={handleVideoEnd}
-      >
+      <video autoPlay muted playsInline onEnded={handleVideoEnd}>
         <source src="/loader.mp4" type="video/mp4" />
       </video>
     </div>

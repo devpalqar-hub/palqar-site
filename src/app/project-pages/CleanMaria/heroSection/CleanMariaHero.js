@@ -6,13 +6,9 @@ import { LuArrowUpRight } from "react-icons/lu";
 export default function CleanMariaHero() {
   return (
     <section className={styles.hero}>
-
       <div className={styles.container}>
-
         {/* Badge */}
-        <div className={styles.badge}>
-          ✦ FEATURED CASE STUDY
-        </div>
+        <div className={styles.badge}>✦ FEATURED CASE STUDY</div>
 
         {/* Heading */}
         <h1 className={styles.title}>
@@ -23,8 +19,8 @@ export default function CleanMariaHero() {
 
         {/* Subtitle */}
         <p className={styles.subtitle}>
-          From a local cleaning service to a premium powerhouse.
-          We built the brand, the tools, and the growth engine.
+          From a local cleaning service to a premium powerhouse. We built the
+          brand, the tools, and the growth engine.
         </p>
 
         {/* Tags */}
@@ -36,20 +32,14 @@ export default function CleanMariaHero() {
 
         {/* Buttons */}
         <div className={styles.actions}>
-
           <a className={styles.primary}>
             VIEW LIVE PLATFORM
             <LuArrowUpRight />
           </a>
 
-          <button className={styles.secondary}>
-            OUR PROCESS
-          </button>
-
+          <button className={styles.secondary}>OUR PROCESS</button>
         </div>
-
       </div>
-
     </section>
   );
 }

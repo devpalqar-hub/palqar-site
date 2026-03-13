@@ -10,13 +10,27 @@ export const metadata = {
   title: "About Us | Palqar — Digital Agency",
   description:
     "We don't follow trends — we create them. Learn about Palqar's mission, philosophy, and the leadership team behind award-winning digital experiences.",
-  keywords: ["digital agency", "UI/UX design", "web development", "Palqar", "branding"],
+  keywords: [
+    "digital agency",
+    "UI/UX design",
+    "web development",
+    "Palqar",
+    "branding",
+  ],
   openGraph: {
     title: "About Palqar — Digital Agency",
-    description: "Challenging assumptions. Crafting digital experiences that convert, engage, and lead.",
+    description:
+      "Challenging assumptions. Crafting digital experiences that convert, engage, and lead.",
     url: "https://palqar.com/about",
     siteName: "Palqar",
-    images: [{ url: "/about/about-team.jpg", width: 1200, height: 630, alt: "Palqar Team" }],
+    images: [
+      {
+        url: "/about/about-team.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Palqar Team",
+      },
+    ],
     type: "website",
   },
   twitter: {
@@ -30,14 +44,14 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main >
-      <Hero/>
+    <main>
+      <Hero />
       <VedioFrame />
       <ServicesPreview />
-      <FeaturedProjects/>
-      <WhySection/>
-      <TestimonialsPage/>
-      <Showcase/>
+      <FeaturedProjects />
+      <WhySection />
+      <TestimonialsPage />
+      <Showcase />
     </main>
   );
 }

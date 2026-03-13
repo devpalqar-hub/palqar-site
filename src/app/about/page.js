@@ -7,23 +7,20 @@ import { ArrowRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-
 gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
-  const heroTitleRef    = useRef(null);
-  const heroImageRef    = useRef(null);
-  const philosophyRef   = useRef(null);
-  const missionRef      = useRef(null);
-  const roadmapRef      = useRef(null);
-  const teamRef         = useRef(null);
-  const storiesRef      = useRef(null);
-  const ctaRef          = useRef(null);
+  const heroTitleRef = useRef(null);
+  const heroImageRef = useRef(null);
+  const philosophyRef = useRef(null);
+  const missionRef = useRef(null);
+  const roadmapRef = useRef(null);
+  const teamRef = useRef(null);
+  const storiesRef = useRef(null);
+  const ctaRef = useRef(null);
 
   useEffect(() => {
-
     const ctx = gsap.context(() => {
-
       /* ─── Shared ease ─── */
       const ease = "power3.out";
 
@@ -39,7 +36,7 @@ export default function About() {
         .from(
           heroImageRef.current,
           { y: 40, opacity: 0, scale: 0.98, duration: 1.2 },
-          "-=0.6"
+          "-=0.6",
         );
 
       function fadeUp(target, triggerEl, vars = {}) {
@@ -48,7 +45,7 @@ export default function About() {
           opacity: 0,
           duration: 0.9,
           ease,
-          immediateRender: false,   
+          immediateRender: false,
           ...vars,
           scrollTrigger: {
             trigger: triggerEl,
@@ -96,10 +93,10 @@ export default function About() {
           duration: 0.8,
           stagger: 0.15,
           ease,
-          immediateRender: false,   
+          immediateRender: false,
           scrollTrigger: {
             trigger: missEl.querySelector(`.${styles.missionGrid}`),
-            start: "top 85%",     
+            start: "top 85%",
             toggleActions: "play none none none",
           },
         });
@@ -171,7 +168,7 @@ export default function About() {
               start: "top 82%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
         gsap.from(teamEl.querySelectorAll(`.${styles.teamCard}`), {
           y: 60,
@@ -240,7 +237,7 @@ export default function About() {
           .from(
             ctaEl.querySelector(`.${styles.buttonWrapper}`),
             { y: 24, opacity: 0, duration: 0.7, ease },
-            "-=0.5"
+            "-=0.5",
           );
       }
     });
@@ -256,11 +253,9 @@ export default function About() {
 
   return (
     <div>
-
       {/* ─── HERO ─── */}
       <section className={styles.aboutHero} aria-label="Hero">
         <div className={styles.container}>
-
           <h1 className={styles.title} ref={heroTitleRef}>
             <span>We Don't Follow</span>
             <span>We Create Trends</span>
@@ -276,10 +271,8 @@ export default function About() {
               className={styles.image}
             />
           </div>
-
         </div>
       </section>
-
 
       {/* ─── PHILOSOPHY ─── */}
       <section
@@ -288,21 +281,18 @@ export default function About() {
         ref={philosophyRef}
       >
         <div className={styles.philosophyContainer}>
-
           <div className={styles.philosophyLabel} aria-hidden="true">
             <span className={styles.labelLine}></span>
             <span className={styles.labelText}>Philosophy</span>
           </div>
 
           <h2 id="philosophy-heading" className={styles.philosophyHeading}>
-            We don't just take orders. We challenge assumptions,
-            unearth insights, and craft strategic roadmaps that align
-            with your ultimate business objectives. Logic meets magic.
+            We don't just take orders. We challenge assumptions, unearth
+            insights, and craft strategic roadmaps that align with your ultimate
+            business objectives. Logic meets magic.
           </h2>
-
         </div>
       </section>
-
 
       {/* ─── MISSION ─── */}
       <section
@@ -311,7 +301,6 @@ export default function About() {
         ref={missionRef}
       >
         <div className={styles.missionContainer}>
-
           <div className={styles.missionLabel} aria-hidden="true">
             <span className={styles.labelLine}></span>
             <span className={styles.labelText}>Our Goals</span>
@@ -323,36 +312,40 @@ export default function About() {
 
           <div className={styles.missionGrid}>
             <article className={styles.missionCard}>
-              <span className={styles.cardNumber} aria-hidden="true">01</span>
+              <span className={styles.cardNumber} aria-hidden="true">
+                01
+              </span>
               <h3>Defy Ordinary</h3>
               <p>
-                We refuse to build what has already been built. Every project is an
-                opportunity to push the boundaries of digital design.
+                We refuse to build what has already been built. Every project is
+                an opportunity to push the boundaries of digital design.
               </p>
             </article>
 
             <article className={styles.missionCard}>
-              <span className={styles.cardNumber} aria-hidden="true">02</span>
+              <span className={styles.cardNumber} aria-hidden="true">
+                02
+              </span>
               <h3>Drive Impact</h3>
               <p>
-                Beautiful pixels mean nothing without business results. We engineer
-                experiences that convert, engage, and retain.
+                Beautiful pixels mean nothing without business results. We
+                engineer experiences that convert, engage, and retain.
               </p>
             </article>
 
             <article className={styles.missionCard}>
-              <span className={styles.cardNumber} aria-hidden="true">03</span>
+              <span className={styles.cardNumber} aria-hidden="true">
+                03
+              </span>
               <h3>Empower Visionaries</h3>
               <p>
-                We partner with founders and leaders who have the courage to disrupt
-                their industries.
+                We partner with founders and leaders who have the courage to
+                disrupt their industries.
               </p>
             </article>
           </div>
-
         </div>
       </section>
-
 
       {/* ─── ROADMAP ─── */}
       <section
@@ -361,22 +354,22 @@ export default function About() {
         ref={roadmapRef}
       >
         <div className={styles.roadmapContainer}>
-
           <div className={styles.roadmapLabel} aria-hidden="true">
             <span className={styles.labelLine}></span>
             <span className={styles.labelText}>Roadmap</span>
           </div>
 
           <ol className={styles.timeline} aria-label="Company timeline">
-
             <li className={styles.timelineItem}>
               <div className={styles.timelineMarker} aria-hidden="true"></div>
               <div className={styles.timelineContent}>
-                <time className={styles.timelineYear} dateTime="2023">2023</time>
+                <time className={styles.timelineYear} dateTime="2023">
+                  2023
+                </time>
                 <h3>The Inception</h3>
                 <p>
-                  Founded in a small studio with a massive vision to disrupt
-                  the digital agency model.
+                  Founded in a small studio with a massive vision to disrupt the
+                  digital agency model.
                 </p>
               </div>
             </li>
@@ -384,11 +377,13 @@ export default function About() {
             <li className={styles.timelineItem}>
               <div className={styles.timelineMarker} aria-hidden="true"></div>
               <div className={styles.timelineContent}>
-                <time className={styles.timelineYear} dateTime="2024">2024</time>
+                <time className={styles.timelineYear} dateTime="2024">
+                  2024
+                </time>
                 <h3>Global Reach</h3>
                 <p>
-                  Expanded our team across 12 timezones, partnering with
-                  Fortune 500s and ambitious startups.
+                  Expanded our team across 12 timezones, partnering with Fortune
+                  500s and ambitious startups.
                 </p>
               </div>
             </li>
@@ -396,7 +391,9 @@ export default function About() {
             <li className={styles.timelineItem}>
               <div className={styles.timelineMarker} aria-hidden="true"></div>
               <div className={styles.timelineContent}>
-                <time className={styles.timelineYear} dateTime="2025">2025</time>
+                <time className={styles.timelineYear} dateTime="2025">
+                  2025
+                </time>
                 <h3>The Innovation Lab</h3>
                 <p>
                   Launched our internal R&amp;D division focusing on spatial
@@ -408,19 +405,19 @@ export default function About() {
             <li className={styles.timelineItem}>
               <div className={styles.timelineMarker} aria-hidden="true"></div>
               <div className={styles.timelineContent}>
-                <time className={styles.timelineYear} dateTime="2026">2026</time>
+                <time className={styles.timelineYear} dateTime="2026">
+                  2026
+                </time>
                 <h3>The Future</h3>
                 <p>
-                  Redefining the standard for digital experiences worldwide.
-                  The journey has just begun.
+                  Redefining the standard for digital experiences worldwide. The
+                  journey has just begun.
                 </p>
               </div>
             </li>
-
           </ol>
         </div>
       </section>
-
 
       {/* ─── TEAM ─── */}
       <section
@@ -429,17 +426,33 @@ export default function About() {
         ref={teamRef}
       >
         <div className={styles.teamContainer}>
-
           <span className={styles.teamIntro}>Meet Our</span>
-          <h2 id="team-heading" className={styles.teamHeading}>Leadership Team</h2>
+          <h2 id="team-heading" className={styles.teamHeading}>
+            Leadership Team
+          </h2>
 
           <div className={styles.teamGrid}>
-
             {[
-              { src: "/whysection/murali3.png", name: "Murali",   role: "Founder" },
-              { src: "/whysection/image1.png", name: "Rishan",    role: "Chief Executive Officer" },
-              { src: "/whysection/anandhu.png", name: "Anandhu", role: "Backend Developer" },
-              { src: "/whysection/reema.png", name: "Reema",      role: "Flutter Developer" },
+              {
+                src: "/whysection/murali3.png",
+                name: "Murali",
+                role: "Founder",
+              },
+              {
+                src: "/whysection/image1.png",
+                name: "Rishan",
+                role: "Chief Executive Officer",
+              },
+              {
+                src: "/whysection/anandhu.png",
+                name: "Anandhu",
+                role: "Backend Developer",
+              },
+              {
+                src: "/whysection/reema.png",
+                name: "Reema",
+                role: "Flutter Developer",
+              },
             ].map(({ src, name, role }) => (
               <article key={name} className={styles.teamCard}>
                 <div className={styles.imageWrapper}>
@@ -455,11 +468,9 @@ export default function About() {
                 <p>{role}</p>
               </article>
             ))}
-
           </div>
         </div>
       </section>
-
 
       {/* ─── STORIES ─── */}
       <section
@@ -468,18 +479,36 @@ export default function About() {
         ref={storiesRef}
       >
         <div className={styles.storiesContainer}>
-
           <h2 id="stories-heading" className={styles.storiesHeading}>
             Stories <br /> From Palqar
           </h2>
 
           <div className={styles.storiesGrid}>
-
             {[
-              { src: "/about/story-1.jpg", alt: "Team celebrating a milestone at the Palqar office", category: "Outings",         title: "Team Celebration" },
-              { src: "/about/story-2.jpg", alt: "Corporate team building activity",                   category: "Events",          title: "Team Building" },
-              { src: "/about/story-3.jpg", alt: "Office culture celebration",                         category: "Life at Palqar",  title: "Our Culture" },
-              { src: "/about/story-4.jpg", alt: "Innovation brainstorming session at Palqar",         category: "Collaboration",   title: "Innovation Sessions" },
+              {
+                src: "/about/story-1.jpg",
+                alt: "Team celebrating a milestone at the Palqar office",
+                category: "Outings",
+                title: "Team Celebration",
+              },
+              {
+                src: "/about/story-2.jpg",
+                alt: "Corporate team building activity",
+                category: "Events",
+                title: "Team Building",
+              },
+              {
+                src: "/about/story-3.jpg",
+                alt: "Office culture celebration",
+                category: "Life at Palqar",
+                title: "Our Culture",
+              },
+              {
+                src: "/about/story-4.jpg",
+                alt: "Innovation brainstorming session at Palqar",
+                category: "Collaboration",
+                title: "Innovation Sessions",
+              },
             ].map(({ src, alt, category, title }) => (
               <article key={title} className={styles.storyCard}>
                 <div className={styles.storyImageWrapper}>
@@ -495,11 +524,9 @@ export default function About() {
                 <h3 className={styles.storyTitle}>{title}</h3>
               </article>
             ))}
-
           </div>
         </div>
       </section>
-
 
       {/* ─── CTA ─── */}
       <section
@@ -521,7 +548,6 @@ export default function About() {
           </div>
         </div>
       </section>
-
     </div>
   );
 }

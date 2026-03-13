@@ -49,9 +49,9 @@
 .heroImageWrapper {
   position: relative;
   width: 100%;
-  max-width: 1099px;      
+  max-width: 1099px;
   margin: 0 auto;
-  aspect-ratio: 1099 / 720;  
+  aspect-ratio: 1099 / 720;
   border-radius: 20px;
   overflow: hidden;
   background: #111;
@@ -86,7 +86,6 @@
   }
 }
 
-
 /* ===============================
    PHILOSOPHY SECTION
 ================================= */
@@ -102,7 +101,7 @@
   padding: 0 40px;
 
   display: grid;
-  grid-template-columns: 180px 1fr; 
+  grid-template-columns: 180px 1fr;
   column-gap: 88px;
   align-items: start;
 }
@@ -136,7 +135,7 @@
   line-height: 79.2px;
   letter-spacing: -1.8px;
   color: #ffff;
-  max-width: 966px; 
+  max-width: 966px;
   margin-top: 20px;
 }
 
@@ -226,7 +225,6 @@
 
 /* ─── Individual Card ─── */
 .missionCard {
-  
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
   padding: 48px;
@@ -409,7 +407,6 @@
 ================================= */
 
 @media (max-width: 768px) {
-
   .roadmapSection {
     padding: 100px 0;
   }
@@ -534,7 +531,6 @@
 ================================= */
 
 @media (max-width: 1024px) {
-
   .teamHeading {
     font-size: clamp(40px, 6vw, 60px);
   }
@@ -543,7 +539,6 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
   }
-
 }
 
 /* ===============================
@@ -551,7 +546,6 @@
 ================================= */
 
 @media (max-width: 768px) {
-
   .teamSection {
     padding: 100px 0;
   }
@@ -569,7 +563,6 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
-
 }
 
 /* ===============================
@@ -634,7 +627,7 @@
 /* Category */
 .storyCategory {
   font-size: 14px;
-  color: #DD2F20;
+  color: #dd2f20;
   line-height: 20px;
   margin-bottom: 6px;
   font-family: var(--font-raleway);
@@ -654,7 +647,6 @@
 ================================= */
 
 @media (max-width: 1024px) {
-
   .storiesHeading {
     font-size: clamp(40px, 6vw, 60px);
   }
@@ -663,7 +655,6 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
   }
-
 }
 
 /* ===============================
@@ -671,7 +662,6 @@
 ================================= */
 
 @media (max-width: 768px) {
-
   .storiesSection {
     padding: 100px 0;
   }
@@ -689,7 +679,6 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
-
 }
 
 .initiateProject {
@@ -705,39 +694,6 @@
   align-items: center;
   justify-content: center;
 }
-
-/* .header {
-  font-weight: 900;
-  font-size: 10px;
-  line-height: 15px;
-  letter-spacing: 5.12px;
-  text-align: center;
-  text-transform: uppercase;
-  color: #0000004D;
-} */
-/* 
-.title {
-  font-family: var(--font-inter);
-  font-weight: 900;
-  color: Black;
-  font-size: 96px;
-  line-height: 81.6px;
-  letter-spacing: -4.8px;
-  text-align: center;
-} */
-
-/* .column p {
-  font-family: var(--font-inter);
-  font-weight: 300;
-  width: 555px;
-  font-style: Light;
-  font-size: 20px;
-  line-height: 32.5px;
-  letter-spacing: -0.45px;
-  text-align: center;
-  color: #00000080;
-  margin-top: 30px;
-} */
 
 .buttonWrapper {
   display: flex;
@@ -775,17 +731,6 @@
   align-items: center;
 }
 
-/* .bottom span {
-  font-family: var(--font);
-  font-weight: 900;
-  font-size: 24px;
-  line-height: 32px;
-  letter-spacing: -1.13px;
-  text-align: center;
-  color: #bcbbbb;
-  margin-top: 100px;
-} */
-
 .lets {
   font-family: var(--font-inter);
   font-weight: 700;
@@ -800,7 +745,7 @@
 }
 
 .talk {
-  color: #E52E3D;
+  color: #e52e3d;
 }
 /* =================================
    LARGE LAPTOPS (1400px ↓)
@@ -814,13 +759,11 @@
   }
 }
 
-
 /* =================================
    TABLET (1024px ↓)
 ================================= */
 
 @media (max-width: 1024px) {
-
   .column {
     gap: 16px;
     padding: 0 40px;
@@ -844,13 +787,11 @@
   }
 }
 
-
 /* =================================
    MOBILE (768px ↓)
 ================================= */
 
 @media (max-width: 768px) {
-
   .initiateProject {
     padding: 100px 0;
   }
@@ -881,16 +822,13 @@
     flex-direction: column;
     gap: 24px;
   }
-
 }
-
 
 /* =================================
    SMALL MOBILE (480px ↓)
 ================================= */
 
 @media (max-width: 480px) {
-
   .lets {
     font-size: clamp(40px, 18vw, 64px);
     letter-spacing: -1px;
@@ -899,5 +837,4 @@
   .buttonWrapper {
     height: 52px;
   }
-
 }
