@@ -10,8 +10,8 @@ export default function TechLogos() {
     { node: <SiTailwindcss />, title: "Tailwind CSS"},
     { node: <SiFlutter />, title: "Flutter" },
     { node: <SiZoho />, title: "Zoho" },
-    { node: <SiAngular /> },
-    { node: <SiJavascript /> },
-    {  node: <SiRedux />}
+    { node: <SiAngular />, title: "Angular" },
+    { node: <SiJavascript />, title: "JavaScript" },
+    { node: <SiRedux />, title: "Redux" }
   ];
 }
