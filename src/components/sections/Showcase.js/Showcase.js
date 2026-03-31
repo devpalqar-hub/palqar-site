@@ -161,7 +161,7 @@ export default function Showcase() {
 
   return (
     <section ref={container} className={styles.showcase}>
-      <div className={styles.header}>
+      {/* <div className={styles.header}>
         <h1>Let's Build What's Next</h1>
         <p>
           Whether you're launching a new idea or scaling an existing product, we
@@ -180,7 +180,7 @@ export default function Showcase() {
           </div>
           <span className={styles.cta}>Start Your Project</span>
         </div>
-      </div>
+      </div> */}
 
       <div className={styles.sliderWrapper}>
         <div className={styles.sliderRow}>

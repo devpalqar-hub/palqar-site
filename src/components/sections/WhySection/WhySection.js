@@ -199,11 +199,50 @@ export default function Whyanimate() {
   return (
     <section className={styles.wrapper}>
       <div>
-        <p className={styles.label}>Why you should partner with Palqar</p>
-        <p ref={paraRef} className={styles.para}>
-            At Palqar, we deliver tailored business solutions designed to drive growth and long-term success. From strategic planning and financial management to advanced technology implementation, our expert team works closely with you to identify opportunities, reduce risks, and build a clear roadmap to achieve your business goals.
-        </p>
+        
+          <div>
+            <p className={styles.label}>Where strategy meets execution</p>
+            <div className={styles.headerRow}>
+              <h2 className={styles.heading}>
+                A strategic partner built for{" "}
+                <span className={styles.highlight}>
+                  sustainable business growth.
+                </span>
+              </h2>
+            <a href="/contact" className={styles.primaryCta}>
+              Get a Free Consultation
+            </a>
+          </div>
         </div>
+        <p ref={paraRef} className={styles.para}>
+            Palqar brings together technology, creativity, marketing, and consulting — delivering tailored solutions that help businesses scale, convert, and grow with confidence.
+        </p>
+        <div className={styles.stats}>
+          <div className={styles.statItem}>
+            <h3>30<span>+</span></h3>
+            <p>PROJECTS DELIVERED</p>
+            <small>eCommerce, SaaS, enterprise & brand</small>
+          </div>
+
+          <div className={styles.statItem}>
+            <h3>4<span>x</span></h3>
+            <p>AVG. LEAD GROWTH</p>
+            <small>SEO, paid media & conversion strategy</small>
+          </div>
+
+          <div className={styles.statItem}>
+            <h3>99<span>%</span></h3>
+            <p>CLIENT RETENTION</p>
+            <small>Long-term partnerships, measurable ROI</small>
+          </div>
+
+          <div className={styles.statItem}>
+            <h3>10<span>+</span></h3>
+            <p>INDUSTRIES SERVED</p>
+            <small>Tech, retail, finance, healthcare & more</small>
+          </div>
+        </div>
+      </div>
       <div ref={animateRef} className={styles.animate}>
         <div className={styles.stage}>
 
