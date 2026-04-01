@@ -1,0 +1,192 @@
+.section {
+  background: black;
+  padding: 160px 20px;
+}
+
+/* header */
+
+.header {
+  max-width: 1200px;
+  margin: auto;
+  margin-bottom: 60px;
+}
+
+.header span {
+  color: #4ade80;
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 2.4px;
+}
+
+.header h2 {
+  margin-top: 6px;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 48px;
+  letter-spacing: 0px;
+  color: white;
+}
+
+/* grid */
+
+.grid {
+  max-width: 1200px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+/* card */
+
+.card {
+  background: #070707;
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  border-radius: 20px;
+
+  padding: 40px;
+}
+
+.card h3 {
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: 0.07px;
+}
+
+.subtitle {
+  color: #8a8a8a;
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+}
+
+/* search box */
+
+.searchBox {
+  background: #050505;
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  border-radius: 14px;
+
+  padding: 20px;
+
+  margin-bottom: 20px;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px;
+
+  background: #0b0b0b;
+
+  border-radius: 8px;
+
+  color: #9aa4ab;
+
+  margin-bottom: 14px;
+}
+
+/* filters */
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.filters span {
+  font-size: 12px;
+
+  background: #0b0b0b;
+
+  padding: 6px 16px;
+
+  border-radius: 14px;
+
+  color: #9aa4ab;
+}
+
+/* buttons */
+
+.hospitalBtn,
+.doctorBtn {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+
+  padding: 12px;
+
+  border-radius: 14px;
+
+  border: none;
+
+  font-size: 14px;
+}
+
+.hospitalBtn {
+  background: #17a5c6;
+  color: white;
+  font-weight: 700;
+}
+
+.doctorBtn {
+  background: #61b35c;
+  color: white;
+  font-weight: 700;
+}
+
+/* empty state */
+
+.emptyState {
+  text-align: center;
+
+  padding: 40px;
+
+  border: 1px dashed rgba(255, 255, 255, 0.06);
+
+  border-radius: 14px;
+
+  color: #9aa4ab;
+}
+
+.emptyState p {
+  margin-top: 16px;
+  font-weight: 500;
+  color: white;
+}
+
+.emptyState span {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  letter-spacing: -0.15px;
+}
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 120px 20px;
+  }
+
+  .header h2 {
+    font-size: 32px;
+  }
+}

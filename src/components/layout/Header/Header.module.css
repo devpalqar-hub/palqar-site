@@ -1,14 +1,52 @@
 
+:root {
+  --header-h:     96px;
+  --brand-red:    #dc3545;
+  --nav-gap:      36px;
+  --drawer-ease:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--brand-red);
+  z-index: 1100;
+  transition: width 0.1s linear;
+  transform-origin: left;
+  pointer-events: none;
+}
+
+/* ============================================================
+   HEADER WRAPPER
+============================================================ */
 .wrapper {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
+  height: var(--header-h);
+
+  /* Default: solid black (above fold) */
   background: #000;
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              opacity 0.45s ease;
+
+  transition:
+    transform   0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity     0.45s ease,
+    background  0.4s ease,
+    border-color 0.4s ease,
+    backdrop-filter 0.4s ease;
+}
+
+/* After scroll: glassmorphism */
+.wrapper.scrolled {
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
 .hidden {
@@ -20,9 +58,9 @@
 /* ── Navbar ── */
 .navbar {
   max-width: 1400px;
-  margin: 12px auto;
-  padding: 0 1%;
-  height: 72px;
+  margin: 0 auto;
+  padding: 0 4%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -32,36 +70,54 @@
 /* ── Logo ── */
 .logoBox {
   position: relative;
-  width: 120px;
-  height: 36px;
+  width: 180px;
+  height: 136px;
   flex-shrink: 0;
 }
 
 .logoImg {
   object-fit: contain;
-  object-position: left center;
+  object-position: left;
 }
 
-/* ── Desktop nav links ── */
 .links {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: var(--nav-gap);
   list-style: none;
 }
 
-.links a {
+.navLink {
+  position: relative;
   font-family: var(--font-inter);
-  font-size: 25px;
+  font-size: 15px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.65);
   text-decoration: none;
   letter-spacing: 0.01em;
+  padding-bottom: 4px;
   transition: color 0.2s ease;
+
+  /* Animated underline indicator */
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--brand-red);
+    border-radius: 2px;
+    transition: width 0.25s ease;
+  }
 }
 
-.links a:hover {
+.navLink:hover {
   color: #fff;
+}
+
+.navLink:hover::after {
+  width: 100%;
 }
 
 /* ── Services trigger ── */
@@ -70,41 +126,59 @@
 }
 
 .servicesLink {
-  font-family: var(--font-inter);
-  font-size: 15px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.7);
-  text-decoration: none;
-  letter-spacing: 0.01em;
-  transition: color 0.2s ease;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.servicesLinkActive,
-.servicesLink:hover {
+.servicesLinkActive {
+  color: #fff !important;
+}
+
+.servicesLinkActive::after {
+  width: 100% !important;
+}
+
+/* Chevron */
+.chevron {
+  font-size: 18px;
+  line-height: 1;
+  display: inline-block;
+  transition: transform 0.25s ease;
+  color: rgba(255, 255, 255, 0.4);
+  transform: translateY(1px);
+}
+
+.chevronOpen {
+  transform: translateY(1px) rotate(180deg);
   color: #fff;
 }
 
 /* ── Contact CTA ── */
 .contact {
   font-family: var(--font-inter);
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 800;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #fff;
   text-decoration: none;
-  padding: 12px 24px;
+  padding: 12px 26px;
   border: 1.5px solid rgba(255, 255, 255, 0.25);
   border-radius: 9999px;
-  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
   flex-shrink: 0;
+  transition:
+    background     0.25s ease,
+    border-color   0.25s ease,
+    color          0.25s ease,
+    box-shadow     0.25s ease;
 }
 
 .contact:hover {
-  background: #dc3545;
-  border-color: #dc3545;
+  background:   var(--brand-red);
+  border-color: var(--brand-red);
   color: #fff;
+  box-shadow: 0 4px 24px rgba(220, 53, 69, 0.35);
 }
 
 /* ── Hamburger ── */
@@ -139,22 +213,23 @@
 /* ============================================================
    MEGA MENU
 ============================================================ */
-
 .megaMenu {
   position: fixed;
-  top: 72px; /* sits flush below header */
+  top: var(--header-h);   /* ← uses CSS var, never hardcoded */
   left: 0;
   right: 0;
   z-index: 999;
-  background: #000;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
-  /* Animate */
   opacity: 0;
-  transform: translateY(-10px);
+  transform: translateY(-8px);
   pointer-events: none;
-  transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition:
+    opacity   0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .megaMenuVisible {
@@ -169,99 +244,240 @@
   padding: 52px 8% 60px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 40px 48px;
+  gap: 40px 0;
 }
 
 /* ── Column ── */
-
-.megaCategory {
-  font-family: var(--font-raleway);
-  font-size: 18px;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: -0.3px;
-  margin: 0 0 24px;
+.megaCol {
+  padding: 20px 36px 20px 0;
+  border-radius: 12px;
+  transition: background 0.2s ease;
 }
 
+.megaCol:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.megaCol + .megaCol {
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  padding-left: 36px;
+}
+
+/* ── Category heading ── */
+.megaCategory {
+  font-family: var(--font-raleway);
+  font-size: 17px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.2px;
+  margin: 0 0 22px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.megaNum {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--brand-red);
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+/* ── Item list ── */
 .megaList {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
-/* ── Item ── */
 .megaItem {
   font-family: var(--font-inter);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.55);
   text-decoration: none;
   letter-spacing: 0.01em;
-  transition: color 0.2s ease, padding-left 0.2s ease;
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0px;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.megaItemArrow {
+  opacity: 0;
+  font-size: 12px;
+  color: var(--brand-red);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: translateX(-4px);
+  flex-shrink: 0;
 }
 
 .megaItem:hover {
   color: #fff;
-  padding-left: 6px;
+  gap: 6px;
 }
 
-/* ── Subtle divider between columns ── */
-.megaCol + .megaCol {
-  border-left: 1px solid rgba(255, 255, 255, 0.06);
-  padding-left: 48px;
+.megaItem:hover .megaItemArrow {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* ============================================================
    MOBILE DRAWER
 ============================================================ */
-
 .drawer {
   position: fixed;
   inset: 0;
-  top: 72px;
+  top: var(--header-h);   /* ← CSS var */
   z-index: 998;
   background: #000;
   display: flex;
   flex-direction: column;
-  padding: 48px 8%;
+  padding: 40px 8% 48px;
   transform: translateX(100%);
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.4s var(--drawer-ease);
+  overflow-y: auto;
 }
 
-.drawer.open {
+.drawerOpen {
   transform: translateX(0);
 }
 
+/* ── Nav items (staggered) ── */
 .drawerLinks {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0;
   flex: 1;
 }
 
-.drawerLinks li a {
+.drawerItem {
+  opacity: 0;
+  transform: translateX(24px);
+  transition:
+    opacity   0.35s ease calc(var(--i, 0) * 60ms + 100ms),
+    transform 0.35s ease calc(var(--i, 0) * 60ms + 100ms);
+}
+
+.drawerOpen .drawerItem {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.drawerItem a {
   font-family: var(--font-raleway);
-  font-size: clamp(32px, 8vw, 52px);
+  font-size: clamp(28px, 7vw, 48px);
   font-weight: 800;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  letter-spacing: -1px;
+  letter-spacing: -0.5px;
   line-height: 1.2;
   display: block;
-  padding: 8px 0;
+  padding: 10px 0;
   transition: color 0.2s ease;
 }
 
-.drawerLinks li a:hover {
-  color: #dc3545;
+.drawerItem a:hover {
+  color: var(--brand-red);
 }
 
+/* ── Services accordion ── */
+.drawerAccordion {
+  font-family: var(--font-raleway);
+  font-size: clamp(28px, 7vw, 48px);
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.8);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px 0;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  transition: color 0.2s ease;
+}
+
+.drawerAccordion:hover {
+  color: var(--brand-red);
+}
+
+.drawerChevron {
+  font-size: 22px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.drawerChevronOpen {
+  transform: rotate(180deg);
+  color: var(--brand-red);
+}
+
+/* ── Submenu panel ── */
+.drawerSub {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s var(--drawer-ease);
+}
+
+.drawerSubOpen {
+  max-height: 9999px;
+}
+
+.drawerSubGroup {
+  padding: 16px 0 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.drawerSubGroup:last-child {
+  border-bottom: none;
+}
+
+.drawerSubHeading {
+  font-family: var(--font-inter);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 0 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.drawerSubNum {
+  color: var(--brand-red);
+  font-weight: 700;
+}
+
+.drawerSubItem {
+  display: block;
+  font-family: var(--font-inter);
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  padding: 6px 0;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.drawerSubItem:hover {
+  color: #fff;
+  padding-left: 6px;
+}
+
+/* ── Drawer contact ── */
 .drawerContact {
   font-family: var(--font-inter);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 2.4px;
   text-transform: uppercase;
@@ -273,28 +489,29 @@
   display: inline-block;
   align-self: flex-start;
   margin-top: 32px;
-  transition: background 0.25s ease, color 0.25s ease;
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .drawerContact:hover {
-  background: #dc3545;
+  background: var(--brand-red);
   color: #fff;
+  box-shadow: 0 4px 24px rgba(220, 53, 69, 0.35);
 }
 
 /* ============================================================
    RESPONSIVE
 ============================================================ */
-
 @media (max-width: 1024px) {
-  .navbar { padding: 0 5%; }
-  .links  { gap: 24px; }
-  .megaInner { padding: 40px 5% 48px; gap: 32px 36px; }
+  .navbar   { padding: 0 5%; }
+  .links    { gap: 24px; }
+  .megaInner { padding: 40px 5% 48px; }
 }
 
 @media (max-width: 768px) {
-  .links   { display: none; }
-  .contact { display: none; }
-  .hamburger { display: flex; }
+  :root { --header-h: 72px; }
 
-  .megaMenu { display: none; } /* mega menu hidden on mobile — drawer handles nav */
+  .links     { display: none; }
+  .contact   { display: none; }
+  .hamburger { display: flex; }
+  .megaMenu  { display: none; }  /* Drawer handles all nav on mobile */
 }

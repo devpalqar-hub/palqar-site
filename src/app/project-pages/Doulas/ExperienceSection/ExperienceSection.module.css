@@ -1,0 +1,193 @@
+.section {
+  background: #050505;
+  color: white;
+  padding: 120px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.tag {
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #777;
+}
+
+.title {
+  font-size: 72px;
+  font-weight: 800;
+  margin-top: 10px;
+}
+
+.title span {
+  color: #ff3b3b;
+}
+
+.subtitle {
+  max-width: 650px;
+  margin: auto;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #888;
+  letter-spacing: 1px;
+}
+
+/* MAIN LAYOUT */
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+/* PHONE */
+
+.phone,
+.phoneMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.phone img,
+.phoneMain img {
+  border-radius: 30px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.phoneMain {
+  transform: translateY(-20px);
+}
+
+.phoneLabel {
+  margin-top: 20px;
+}
+
+.phoneLabel h4 {
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.phoneLabel p {
+  font-size: 11px;
+  color: #777;
+  margin-top: 6px;
+}
+
+.red {
+  color: #ff3b3b;
+}
+
+/* FEATURES */
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.featureCard {
+  background: #0d0d0d;
+  padding: 22px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: 0.3s;
+}
+
+.featureCard:hover {
+  transform: translateY(-4px);
+  border-color: #ff3b3b;
+}
+
+.featureCard h4 {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.featureCard p {
+  font-size: 12px;
+  color: #888;
+}
+
+.techCard {
+  background: linear-gradient(
+    135deg,
+    rgba(80, 0, 120, 0.3),
+    rgba(10, 10, 10, 0.8)
+  );
+  padding: 22px;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+.techCard span {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #b46cff;
+}
+
+.techCard p {
+  font-size: 12px;
+  margin-top: 6px;
+  color: #bbb;
+}
+
+/* TABLET */
+
+@media (max-width: 1000px) {
+  .content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .features {
+    max-width: 500px;
+    margin: auto;
+  }
+
+  .phoneMain {
+    order: -1;
+    transform: none;
+  }
+
+  .title {
+    font-size: 56px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .section {
+    padding: 90px 20px;
+  }
+
+  .title {
+    font-size: 40px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+  }
+
+  .phone img,
+  .phoneMain img {
+    width: 200px;
+    height: auto;
+  }
+
+  .featureCard {
+    padding: 18px;
+  }
+}

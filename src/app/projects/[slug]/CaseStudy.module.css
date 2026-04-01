@@ -126,7 +126,7 @@
 .number {
   font-size: 12px;
   font-weight: 600;
-  color: #DC3545;
+  color: #dc3545;
   letter-spacing: 2px;
 }
 
@@ -197,9 +197,8 @@
 }
 
 .talk {
-  color: #E52E3D;
+  color: #e52e3d;
 }
-
 
 /* =================================
    LARGE DESKTOP (1400px ↓)
@@ -211,7 +210,6 @@
     letter-spacing: -6px;
   }
 }
-
 
 /* =================================
    LAPTOP (1200px ↓)
@@ -240,7 +238,6 @@
     height: 420px;
   }
 }
-
 
 /* =================================
    TABLET LANDSCAPE (1024px ↓)
@@ -316,7 +313,6 @@
     flex-wrap: wrap;
   }
 }
-
 
 /* =================================
    TABLET PORTRAIT / MOBILE (768px ↓)
@@ -409,7 +405,6 @@
     gap: 24px;
   }
 }
-
 
 /* =================================
    SMALL MOBILE (480px ↓)

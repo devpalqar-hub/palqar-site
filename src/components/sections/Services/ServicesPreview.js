@@ -1,81 +1,60 @@
 "use client";
-import { useState,useRef,useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import styles from "./ServicesPreview.module.css";
 import { LuArrowUpRight } from "react-icons/lu";
 import Image from "next/image";
 import gsap from "gsap";
+import Link from "next/link";
+import { IoIosArrowRoundForward } from "react-icons/io";
 
 const SERVICES = [
   {
     id: 1,
-    title: "Software Development",
-    details: [
-      "Responsive Web Design",
-      "Typography & Color Systems",
-      "Brand Guidelines & Visual Systems",
-    ],
-    images: [
-      "/services-preview/service3-01.png",
-      "/services-preview/service3-02.png",
-      "/services-preview/service3-03.png",
-      "/services-preview/service3-04.png"
-    ],
+    title: "Web & Technology Development",
+    description:
+      "Build scalable digital products, high-performance websites, and custom platforms engineered for speed and seamless user experience.",
+    cta: "Build Your Platform",
+    href: "/services/web-development",
   },
   {
     id: 2,
-    title: "UX UI Design",
-    details: [
-      "Brand Positioning",
-      "Messaging & Tone of Voice",
-      "Design Consultation & Audit",
-    ],
-    images: [
-      "/services-preview/service2-01.png",
-      "/services-preview/service2-02.png"
-    ],
+    title: "Branding & Creative Design",
+    description:
+      "Craft powerful brand identities with strategic design and storytelling that captures attention and builds trust.",
+    cta: "Create Your Brand",
+    href: "/services/branding",
   },
   {
     id: 3,
-    title: "Brand Consultation",
-    details: [
-      "Logo Design",
-      "Typography & Color Systems",
-      "Brand Guidelines & Visual Systems",
-    ],
-    images: [
-      "/services-preview/service1-01.png",
-      "/services-preview/service1-02.png",
-      "/services-preview/service1-03.png",
-      "/services-preview/service1-04.png"
-    ],
+    title: "Performance Marketing & Growth",
+    description:
+      "Drive measurable growth with SEO, paid campaigns, and data-driven strategies that convert traffic into revenue.",
+    cta: "Scale Your Growth",
+    href: "/services/marketing",
   },
   {
     id: 4,
-    title: "Branding and Social Media Marketing",
-    details: [
-      "Custom Brand Illustrations",
-      "Editorial & Digital Artwork",
-      "Iconography & Infographic Design",
-    ],
-    images: [
-      "/services-preview/service5-01.png",
-      "/services-preview/service5-02.png",
-      "/services-preview/service5-03.png"
-    ],
+    title: "Technology & Automation",
+    description:
+      "Automate workflows, optimize operations, and integrate smart systems to accelerate business efficiency.",
+    cta: "Automate Your Business",
+    href: "/services/automation",
   },
   {
     id: 5,
-    title: "Legal Support & Compliance",
-    details: [
-      "Concept Development",
-      "Campaign Visual Strategy",
-      "Photography & Video Direction",
-    ],
-    images: [
-      "/services-preview/service4-01.png",
-      "/services-preview/service4-02.png",
-      "/services-preview/service4-03.png"
-    ],
+    title: "Business & Growth Strategy",
+    description:
+      "Unlock opportunities with expert consulting, market insights, and strategies designed for long-term success.",
+    cta: "Plan Your Growth",
+    href: "/services/strategy",
+  },
+  {
+    id: 6,
+    title: "Not Sure Where to Start?",
+    description:
+      "Get a free 30-minute audit and discover gaps, missed opportunities, and clear steps to scale your business.",
+    cta: "Get Free Audit",
+    href: "/contact",
   },
 ];
 
@@ -94,74 +73,72 @@ export default function ServicesPreview() {
       });
     });
   }, []);
-const handleToggle = (serviceId) => {
-  const content = contentRefs.current[serviceId];
-  if (!content) return;
+  const handleToggle = (serviceId) => {
+    const content = contentRefs.current[serviceId];
+    if (!content) return;
 
-  if (activeId === serviceId) {
-    // CLOSE
-    gsap.to(content, {
-      height: 0,
-      opacity: 0,
-      y: -12,
-      duration: 0.4,
-      ease: "power2.inOut",
-    });
-    setActiveId(null);
-  } else {
-    // CLOSE PREVIOUS (if any)
-    if (activeId && contentRefs.current[activeId]) {
-      gsap.to(contentRefs.current[activeId], {
+    if (activeId === serviceId) {
+      // CLOSE
+      gsap.to(content, {
         height: 0,
         opacity: 0,
         y: -12,
-        duration: 0.3,
+        duration: 0.4,
         ease: "power2.inOut",
       });
-    }
+      setActiveId(null);
+    } else {
+      // CLOSE PREVIOUS (if any)
+      if (activeId && contentRefs.current[activeId]) {
+        gsap.to(contentRefs.current[activeId], {
+          height: 0,
+          opacity: 0,
+          y: -12,
+          duration: 0.3,
+          ease: "power2.inOut",
+        });
+      }
 
-    // OPEN
-    gsap.set(content, { height: "auto", opacity: 1, y: 0 });
+      // OPEN
+      gsap.set(content, { height: "auto", opacity: 1, y: 0 });
 
-    gsap.from(content, {
-      height: 0,
-      opacity: 0,
-      y: -12,
-      duration: 0.5,
-      ease: "power3.out",
-    });
+      gsap.from(content, {
+        height: 0,
+        opacity: 0,
+        y: -12,
+        duration: 0.5,
+        ease: "power3.out",
+      });
 
-    // LIST STAGGER
-    gsap.from(
-      content.querySelectorAll("li"),
-      {
+      // LIST STAGGER
+      gsap.from(content.querySelectorAll("li"), {
         y: 12,
         opacity: 0,
         stagger: 0.06,
         duration: 0.4,
         ease: "power2.out",
-      }
-    );
+      });
 
-    // IMAGE STAGGER
-    gsap.from(
-      content.querySelectorAll(`.${styles.thumb}`),
-      {
+      // IMAGE STAGGER
+      gsap.from(content.querySelectorAll(`.${styles.thumb}`), {
         y: 20,
         opacity: 0,
         stagger: 0.08,
         duration: 0.45,
         ease: "power3.out",
-      }
-    );
+      });
 
-    setActiveId(serviceId);
-  }
-};
+      setActiveId(serviceId);
+    }
+  };
 
   return (
     <section className={styles.wrapper} id="services">
-      <p className={styles.label}>Most demanded services offered by us</p>
+      <p className={styles.label}>WHAT WE DO</p>
+
+      <h2 className={styles.heading}>
+        Growth, <span className={styles.highlight}>Technology</span> & Marketing Solutions
+      </h2>
 
       {SERVICES.map((service) => (
         <div
@@ -186,29 +163,20 @@ const handleToggle = (serviceId) => {
               {service.id < 10 ? `0${service.id}` : service.id}
             </div>
 
-            <div className={styles.list}>
-              <ul>
-                {service.details.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
+            <div className={styles.info}>
+              <p className={styles.description}>{service.description}</p>
 
-              <div className={styles.images}>
-                {service.images.map((img, i) => (
-                  <div key={i} className={styles.thumb}>
-                    <Image
-                      src={img}
-                      alt={`${service.title} preview ${i + 1}`}
-                      width={80}
-                      height={80}
-                      className={styles.thumbImage}
-                    />
-                  </div>
-                ))}
-              </div>
+              <Link href={service.href} className={styles.cta}>
+                {service.cta} <IoIosArrowRoundForward size={20}/>
+              </Link>
             </div>
 
-            <h4>{service.title}</h4>
+            {/* NEW RIGHT SIDE */}
+            <div className={styles.rightPanel}>
+              <Link href={service.href} className={styles.ctaButton}>
+                Get Started
+              </Link>
+            </div>
           </div>
         </div>
       ))}

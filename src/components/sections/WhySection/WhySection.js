@@ -9,22 +9,16 @@ import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
 
 const IMAGES = [
-  "/whysection/img1.png",
+  "/whysection/murali3.png",
+  "/whysection/image1.png",
+  "/whysection/anandhu.png",
+  "/whysection/reema.png",
+  "/whysection/devan.png",
+  "/whysection/Fayaz.png",
+  "/whysection/sai.png",
+  "/whysection/sona.png",
+  "/whysection/adheena.png",
   "/whysection/img2.png",
-  "/whysection/img3.png",
-  "/whysection/img4.png",
-  "/whysection/img5.png",
-  "/whysection/img6.png",
-  "/whysection/img7.png",
-  "/whysection/img8.jpg",
-  "/whysection/img1.png",
-  "/whysection/img2.png",
-  "/whysection/img3.png",
-  "/whysection/img4.png",
-  "/whysection/img5.png",
-  "/whysection/img6.png",
-  "/whysection/img7.png",
-  "/whysection/img8.jpg",
 ];
 
 const chunkArray = (arr, size) => {
@@ -35,19 +29,24 @@ const chunkArray = (arr, size) => {
   return chunks;
 };
 const paddedImages = [...IMAGES];
-while (paddedImages.length % 4 !== 0) {
+while (paddedImages.length % 2 !== 0) {
   paddedImages.push(IMAGES[paddedImages.length % IMAGES.length]);
 }
 
-const imageLayers = chunkArray(paddedImages, 4);
+const imageLayers = chunkArray(paddedImages, 2);
 
 const CARD_SIZES = [
-  { w: 280, h: 220 },
-  { w: 320, h: 260 },
-  { w: 360, h: 280 },
-  { w: 300, h: 240 },
-  { w: 380, h: 300 },
-  { w: 260, h: 200 },
+  { w: 380, h: 570 }, // tall
+  { w: 340, h: 520 }, // shorter
+
+  { w: 350, h: 560 }, // medium
+  { w: 390, h: 620 }, // tallest
+
+  { w: 360, h: 540 },
+  { w: 420, h: 580 },
+
+  { w: 340, h: 600 },
+  { w: 380, h: 520 },
 ];
 
 const generateCardSizes = (layersCount) => {
@@ -56,7 +55,7 @@ const generateCardSizes = (layersCount) => {
 
   for (let l = 0; l < layersCount; l++) {
     const layerSizes = [];
-    for (let c = 0; c < 4; c++) {
+    for (let c = 0; c < 2; c++) {
       layerSizes.push(CARD_SIZES[seed % CARD_SIZES.length]);
       seed++;
     }
@@ -100,10 +99,9 @@ export default function Whyanimate() {
         trigger: animate,
         start: "top top",
         end: "+=200%",
-        scrub: true,
+        scrub: 0,
         pin: true,
         anticipatePin: 1,
-        fastScrollEnd: true,
       },
     });
 
@@ -112,16 +110,16 @@ export default function Whyanimate() {
       const cards = layer.querySelectorAll(`.${styles.card}`);
 
       gsap.set(cards, {
-        x: (cardIndex) => (cardIndex % 2 === 0 ? -20 : 20),
-        y: (cardIndex) => (cardIndex < 2 ? -20 : 20),
+        x: (i) => (i === 0 ? -30 : 30),
+        y: 0,
       });
 
       // Front layer zooms away
       tl.to(layer, {
-        scale: 4,
+        scale: 2.2,
         opacity: 0,
-        filter: "blur(6px)",
-        duration: 2,
+        filter: "blur(1px)",
+        duration: 1.8,
         ease: "none",
       });
 
@@ -129,8 +127,8 @@ export default function Whyanimate() {
         {
           x: 0,
           y: 0,
-          duration: 2,
-          ease: "power1.out",
+          duration: 1.8,
+          ease: "none",
         },
         "<" 
       );
@@ -142,16 +140,16 @@ export default function Whyanimate() {
             {
               opacity: 0,
               scale: 0.6,
-              filter: "blur(10px)",
+              filter: "blur(3px)",
             },
             {
               opacity: 1,
               scale: 1,
               filter: "blur(0px)",
-              duration: 1.4,
-              ease: "power2.out",
+              duration: 1.8,
+              ease: "none",
             },
-            "-=1.6"
+            "<"
           );
         }
     });
@@ -201,11 +199,50 @@ export default function Whyanimate() {
   return (
     <section className={styles.wrapper}>
       <div>
-        <p className={styles.label}>Most demanded services offered by us</p>
-        <p ref={paraRef} className={styles.para}>
-            At Palqar, we deliver tailored business solutions designed to drive growth and long-term success. From strategic planning and financial management to advanced technology implementation, our expert team works closely with you to identify opportunities, reduce risks, and build a clear roadmap to achieve your business goals.
-        </p>
+        
+          <div>
+            <p className={styles.label}>Where strategy meets execution</p>
+            <div className={styles.headerRow}>
+              <h2 className={styles.heading}>
+                A strategic partner built for{" "}
+                <span className={styles.highlight}>
+                  sustainable business growth.
+                </span>
+              </h2>
+            <a href="/contact" className={styles.primaryCta}>
+              Get a Free Consultation
+            </a>
+          </div>
         </div>
+        <p ref={paraRef} className={styles.para}>
+            Palqar brings together technology, creativity, marketing, and consulting — delivering tailored solutions that help businesses scale, convert, and grow with confidence.
+        </p>
+        <div className={styles.stats}>
+          <div className={styles.statItem}>
+            <h3>30<span>+</span></h3>
+            <p>PROJECTS DELIVERED</p>
+            <small>eCommerce, SaaS, enterprise & brand</small>
+          </div>
+
+          <div className={styles.statItem}>
+            <h3>4<span>x</span></h3>
+            <p>AVG. LEAD GROWTH</p>
+            <small>SEO, paid media & conversion strategy</small>
+          </div>
+
+          <div className={styles.statItem}>
+            <h3>99<span>%</span></h3>
+            <p>CLIENT RETENTION</p>
+            <small>Long-term partnerships, measurable ROI</small>
+          </div>
+
+          <div className={styles.statItem}>
+            <h3>10<span>+</span></h3>
+            <p>INDUSTRIES SERVED</p>
+            <small>Tech, retail, finance, healthcare & more</small>
+          </div>
+        </div>
+      </div>
       <div ref={animateRef} className={styles.animate}>
         <div className={styles.stage}>
 
@@ -215,59 +252,31 @@ export default function Whyanimate() {
             ref={(el) => (layersRef.current[layerIndex] = el)}
             className={styles.layer}
           >
-            <div className={`${styles.card} ${styles.tl}`}
-            style={{
-              width: CARD_DIMENSIONS[layerIndex][0].w,
-              height: CARD_DIMENSIONS[layerIndex][0].h,
-            }}>
+            <div className={`${styles.card} ${styles.left}`}
+              style={{
+                width: CARD_DIMENSIONS[layerIndex][0].w,
+                height: CARD_DIMENSIONS[layerIndex][0].h,
+              }}>
               <Image
                 src={layerImages[0]}
                 alt=""
                 fill
                 className={styles.cardImage}
-                sizes="350px"
+                sizes="(max-width: 768px) 40vw, 350px"
               />
             </div>
 
-            <div className={`${styles.card} ${styles.tr}`}
-            style={{
-              width: CARD_DIMENSIONS[layerIndex][1].w,
-              height: CARD_DIMENSIONS[layerIndex][1].h,
-            }}>
+            <div className={`${styles.card} ${styles.right}`}
+              style={{
+                width: CARD_DIMENSIONS[layerIndex][1].w,
+                height: CARD_DIMENSIONS[layerIndex][1].h,
+              }}>
               <Image
                 src={layerImages[1]}
                 alt=""
                 fill
                 className={styles.cardImage}
-                sizes="350px"
-              />
-            </div>
-
-            <div className={`${styles.card} ${styles.bl}`}
-            style={{
-              width: CARD_DIMENSIONS[layerIndex][2].w,
-              height: CARD_DIMENSIONS[layerIndex][2].h,
-            }}>
-              <Image
-                src={layerImages[2]}
-                alt=""
-                fill
-                className={styles.cardImage}
-                sizes="350px"
-              />
-            </div>
-
-            <div className={`${styles.card} ${styles.br}`}
-            style={{
-              width: CARD_DIMENSIONS[layerIndex][3].w,
-              height: CARD_DIMENSIONS[layerIndex][3].h,
-            }}>
-              <Image
-                src={layerImages[3]}
-                alt=""
-                fill
-                className={styles.cardImage}
-                sizes="350px"
+                sizes="(max-width: 768px) 40vw, 350px"
               />
             </div>
           </div>

@@ -1,0 +1,146 @@
+.section {
+  background: black;
+  padding: 120px 20px;
+}
+
+/* goals */
+
+.goals {
+  max-width: 1200px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+
+  margin-bottom: 120px;
+}
+
+.goalCard {
+  background: #080808;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  border-radius: 14px;
+
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.goalIcon {
+  color: #22c4ff;
+}
+
+.goalCard p {
+  color: #ffffffe5;
+  font-size: 15px;
+}
+
+/* header */
+
+.header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.header span {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 2.4px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #22c4ff;
+}
+
+.header h2 {
+  margin-top: 8px;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 48px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: white;
+}
+
+/* scope grid */
+
+.scopeGrid {
+  max-width: 1280px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* scope cards */
+
+.scopeCard {
+  background: #ffffff05;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  padding: 40px;
+
+  border-radius: 16px;
+
+  position: relative;
+}
+
+.number {
+  width: 36px;
+  height: 36px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    rgba(23, 165, 198, 0.2) 0%,
+    rgba(97, 179, 92, 0.2) 100%
+  );
+  border: 1px solid #ffffff1a;
+  color: #61b35c;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+
+  margin-bottom: 18px;
+}
+
+.scopeCard h4 {
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.scopeCard p {
+  color: #ffffff80;
+  font-size: 14px;
+  line-height: 1.6;
+}
+@media (max-width: 900px) {
+  .goals {
+    grid-template-columns: 1fr;
+  }
+
+  .scopeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 120px 20px;
+  }
+
+  .header h2 {
+    font-size: 32px;
+  }
+}

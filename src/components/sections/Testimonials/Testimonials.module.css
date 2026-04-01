@@ -1,50 +1,78 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Testimonials.module.css  —  mobile-first
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 .mainWrapper {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #000;
+  color: #fff;
   min-height: 100vh;
+  font-family: var(--font-dm-sans);
 }
 
+/* ─── Header ─────────────────────────────────────────────────────────────── */
 .headerSection {
-  padding: 100px 0 50px;
+  padding: 72px 24px 40px;
   text-align: center;
 }
+
 .title {
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(2.4rem, 10vw, 6rem);
   font-weight: 800;
-  background: linear-gradient(180deg, #ffffff 40%, #555555 100%);
-  -webkit-background-clip: text; /* Existing vendor-prefixed property */
-  background-clip: text;         /* Add this standard property for compatibility */
+  background: linear-gradient(180deg, #ffffff 20%, rgba(153,153,153,0) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: -2px;
-  margin-top: 50px;
+  margin: 0;
 }
 
+/* ─── MOBILE: plain stacked cards (no ScrollStack) ───────────────────────── */
+.mobileCards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 20px 60px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ─── DESKTOP: ScrollStack wrapper (hidden on mobile via JSX) ────────────── */
 .stackContainer {
   width: 90%;
   max-width: 700px;
   margin: 0 auto;
 }
 
+/* ─── Shared card styles ─────────────────────────────────────────────────── */
 .cardContent {
-  background-color: #e5e5e5;
+  background-color: #d9d9d9;
   color: #1a1a1a;
-  padding: 3rem;
-  border-radius: 40px;
-  min-height: 400px;
+  padding: 2rem;
+  border-radius: 32px;
+  min-height: 420px;
   display: flex;
   flex-direction: column;
 }
 
 .companyName {
-  font-weight: 700;
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
+  font-weight: 500;
+  font-size: 20px;
+  margin-bottom: 20px;
+  display: block;
 }
 
 .quote {
-  font-size: 1.5rem;
-  line-height: 1.4;
   flex-grow: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.quote p {
+  color: rgba(0,0,0,0.7);
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 1.5;
+  margin: 0;
 }
 
 .authorBox {
@@ -55,44 +83,56 @@
 }
 
 .avatar {
-  width: 60px;
-  height: 60px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   object-fit: cover;
+  flex-shrink: 0;
 }
 
-.authorMeta h4 {
-  margin: 0;
-  font-size: 1.2rem;
+.authorMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.authorMeta p {
+.authorName {
   margin: 0;
-  font-size: 0.8rem;
-  color: #666;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(0,0,0,0.7);
+}
+
+.authorRole {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(0,0,0,0.7);
   font-weight: 700;
 }
+
+/* ─── Logos ──────────────────────────────────────────────────────────────── */
 .logoSection {
-  margin-top: 150px; 
   text-align: center;
-  padding-bottom: 100px;
+  padding: 80px 20px 80px;
 }
 
 .logoHeading {
-  font-size: 2rem;
+  font-size: clamp(1.2rem, 4vw, 2rem);
   font-weight: 300;
-  margin-bottom: 80px;
-  color: #ffffff;
-  opacity: 0.8;
+  margin: 0 0 48px;
+  color: rgba(255,255,255,0.8);
 }
 
+/* Reset list styles — semantic <ul> for SEO/accessibility */
 .logoGrid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 60px;
-  max-width: 1100px;
+  list-style: none;
+  padding: 0;
   margin: 0 auto;
-  padding: 0 20px;
+  max-width: 1100px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
   align-items: center;
   justify-items: center;
 }
@@ -105,28 +145,49 @@
 
 .logoImg {
   width: 100%;
-  max-width: 130px; 
+  max-width: 100px;
   height: auto;
   object-fit: contain;
-  /* Automatically turns dark logos into white to match the theme */
-  filter: brightness(0) invert(1); 
-  opacity: 0.6;
+  filter: brightness(0) invert(1);
+  opacity: 0.55;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .logoImg:hover {
   opacity: 1;
-  transform: translateY(-5px);
+  transform: translateY(-4px);
 }
 
-/* Responsive Grid */
-@media (max-width: 1024px) {
-  .logoGrid { grid-template-columns: repeat(3, 1fr); }
+/* ═══════════════════════════════════════════════════════════════════════════
+   TABLET  ≥ 640 px
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (min-width: 640px) {
+  .cardContent  { padding: 2.5rem; border-radius: 40px; min-height: 460px; }
+  .companyName  { font-size: 22px; }
+  .quote p      { font-size: 22px; }
+  .avatar       { width: 72px; height: 72px; }
+  .authorName   { font-size: 22px; }
+
+  .logoGrid     { grid-template-columns: repeat(4, 1fr); gap: 48px; }
+  .logoImg      { max-width: 110px; }
 }
 
-@media (max-width: 600px) {
-  .logoGrid { 
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px; 
-  }
+/* ═══════════════════════════════════════════════════════════════════════════
+   DESKTOP  ≥ 1024 px
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (min-width: 1024px) {
+  .headerSection { padding: 100px 0 50px; }
+
+  /* Card restores original desktop sizes */
+  .cardContent  { padding: 3rem; border-radius: 40px; min-height: 500px; }
+  .companyName  { font-size: 24px; margin-bottom: 29px; }
+  .quote p      { font-size: 24px; }
+  .avatar       { width: 82px; height: 82px; }
+  .authorName   { font-size: 27px; }
+  .authorRole   { font-size: 14px; }
+
+  /* Logo section gets more breathing room after scroll-stack */
+  .logoSection  { padding-top: 300px; }
+  .logoGrid     { grid-template-columns: repeat(6, 1fr); gap: 60px; }
+  .logoImg      { max-width: 130px; }
 }

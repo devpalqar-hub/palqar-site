@@ -1,0 +1,114 @@
+/* ─── Section ──────────────────────────────────────────────────────────── */
+
+.section {
+  background: black;
+  color: white;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+
+  /* Clip cards that start below — NOT on .right */
+  overflow: hidden;
+}
+
+/* ─── Grid ──────────────────────────────────────────────────────────────── */
+
+.container {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  max-width: 1400px;
+  width: 100%;
+  margin: auto;
+  align-items: center;
+}
+
+/* ─── Left ──────────────────────────────────────────────────────────────── */
+
+.left {
+  position: sticky;
+  top: 120px;
+}
+
+.left h2 {
+  font-size: clamp(60px, 7vw, 110px);
+  line-height: 1.05;
+  font-weight: 700;
+}
+
+/* ─── Right ─────────────────────────────────────────────────────────────── */
+
+.right {
+  position: relative;
+  height: 340px;
+  /* overflow: visible — cards animate in from below, must NOT be clipped here */
+}
+
+/* ─── Cards ─────────────────────────────────────────────────────────────── */
+
+.card {
+  position: absolute;
+  inset: 0;
+
+  background: #111;
+  border-radius: 28px;
+  padding: 50px;
+
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  transform-origin: top center;
+  will-change: transform;
+  font-family: var(--font-raleway);
+}
+
+.card h3 {
+  font-size: 35px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.card p {
+  font-size: 24px;
+  line-height: 1.6;
+  color: #bcbcbc;
+}
+
+.icon {
+  margin-bottom: 18px;
+  color: white;
+}
+
+/* ─── Mobile — plain vertical scroll, no GSAP ──────────────────────────── */
+
+@media (max-width: 900px) {
+  .section {
+    min-height: auto;
+    padding: 120px 24px;
+    display: block;
+    overflow: visible;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .left {
+    position: relative;
+    top: auto;
+    margin-bottom: 40px;
+  }
+
+  .right {
+    position: relative;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .card {
+    position: relative;
+    inset: auto;
+    width: 100%;
+  }
+}

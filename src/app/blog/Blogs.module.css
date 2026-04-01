@@ -155,7 +155,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.25s ease, transform 0.25s ease;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
 }
 
 .card:hover .arrowBtn {
@@ -304,11 +306,7 @@
 .smallOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.7) 0%,
-    transparent 60%
-  );
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 60%);
   display: flex;
   align-items: flex-end;
   padding: 20px;
@@ -373,7 +371,9 @@
   color: #dc3545;
   opacity: 0;
   transform: translateX(-8px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .cardLink:hover .readMoreLink {
@@ -416,7 +416,9 @@
   text-transform: uppercase;
   margin-top: 20px;
   cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
 }
 
 .buttonWrapper:hover {
@@ -526,9 +528,19 @@
   }
 
   /* CTA */
-  .column { gap: 16px; padding: 0 40px; }
-  .lets { font-size: clamp(80px, 14vw, 140px); letter-spacing: -4px; }
-  .buttonWrapper { width: 240px; height: 60px; font-size: 11px; }
+  .column {
+    gap: 16px;
+    padding: 0 40px;
+  }
+  .lets {
+    font-size: clamp(80px, 14vw, 140px);
+    letter-spacing: -4px;
+  }
+  .buttonWrapper {
+    width: 240px;
+    height: 60px;
+    font-size: 11px;
+  }
 }
 
 /* Mobile */
@@ -569,11 +581,25 @@
   }
 
   /* CTA */
-  .initiateProject { padding: 60px 0 100px; }
-  .column { padding: 0 20px; gap: 14px; }
-  .lets { font-size: clamp(48px, 16vw, 90px); letter-spacing: -2px; }
-  .buttonWrapper { width: 100%; max-width: 260px; height: 56px; }
-  .arrowRight { padding: 8px; }
+  .initiateProject {
+    padding: 60px 0 100px;
+  }
+  .column {
+    padding: 0 20px;
+    gap: 14px;
+  }
+  .lets {
+    font-size: clamp(48px, 16vw, 90px);
+    letter-spacing: -2px;
+  }
+  .buttonWrapper {
+    width: 100%;
+    max-width: 260px;
+    height: 56px;
+  }
+  .arrowRight {
+    padding: 8px;
+  }
 }
 
 /* Small mobile */
@@ -591,5 +617,7 @@
     letter-spacing: -1px;
   }
 
-  .buttonWrapper { height: 52px; }
+  .buttonWrapper {
+    height: 52px;
+  }
 }
