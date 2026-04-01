@@ -4,7 +4,8 @@ import ServicesPreview from "@/components/sections/Services/ServicesPreview";
 import WhySection from "@/components/sections/WhySection/WhySection";
 import Showcase from "@/components/sections/Showcase.js/Showcase";
 import TestimonialsPage from "@/components/sections/Testimonials/Testimonials";
-import VedioFrame from "@/components/sections/VedioFrame/VedioFrame";
+import TextSection from "@/components/sections/TextSection/TextSection";
+import VideoSection from "@/components/sections/VideoSection/VideoSection";
 
 export const metadata = {
   title: "About Us | Palqar — Digital Agency",
@@ -46,7 +47,8 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <VedioFrame />
+      <TextSection/>
+      <VideoSection/>
       <ServicesPreview />
       <FeaturedProjects />
       <WhySection />

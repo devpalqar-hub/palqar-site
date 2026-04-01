@@ -1,0 +1,164 @@
+.section {
+  height: 200vh;
+  background: #000;
+  position: relative;
+}
+
+/* STICKY SAME AS OLD */
+.sticky {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10vh;
+  gap: 40px;
+  overflow: hidden;
+}
+
+/* EXACT OLD TYPOGRAPHY */
+.para {
+  font-family: var(--font-dm-sans);
+  max-width: 1320px;
+  width: 100%;
+
+  font-weight: 200;
+  font-size: 56px;
+  line-height: 75px;
+  letter-spacing: 1.8px;
+
+  text-align: center;
+  margin-top: 50px;
+
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* LETTER EFFECT */
+.char {
+  color: rgba(255, 255, 255, 0.35);
+  transition: color 0.12s linear;
+}
+.active {
+  color: #ffffff;
+}
+
+/* CTA SAME AS OLD */
+.ctaWrap {
+  margin-top: 40px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  height: 65px;
+  padding: 23px 12px 23px 36px;
+
+  background: #dc3545;
+  border-radius: 50px;
+
+  color: white;
+  font-weight: 600;
+  font-size: 14.6px;
+  letter-spacing: 1.17px;
+  text-transform: uppercase;
+
+  box-shadow: 0 8px 28px rgba(220, 53, 69, 0.35);
+  margin: 30px;
+  flex-shrink: 0;
+}
+
+.cta:hover {
+  background: #ff1f1f;
+  transform: translateY(-2px);
+}
+
+.ctaText {
+  white-space: nowrap;
+}
+
+/* AVATARS SAME */
+.avatars {
+  display: flex;
+  align-items: center;
+}
+
+.avatars img {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 3px solid #7a0c12;
+  margin-left: -14px;
+}
+
+.avatars img:first-child {
+  margin-left: 0;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1400px) {
+  .para {
+    font-size: clamp(24px, 3.2vw, 40px);
+    line-height: 1.5;
+    letter-spacing: 1.2px;
+    margin-top: 20px;
+    padding: 0 32px;
+  }
+}
+/* Tablet */
+@media (max-width: 1024px) {
+  .para {
+    font-size: clamp(24px, 3.2vw, 40px);
+    line-height: 1.5;
+    padding: 0 32px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .section {
+    height: 180vh;
+  }
+
+  .sticky {
+    padding: 20vh 20px 24px;
+    gap: 20px;
+  }
+
+  .para {
+    font-size: clamp(20px, 5vw, 30px);
+    letter-spacing: 0.8px;
+  }
+
+  .cta {
+    height: 50px;
+    font-size: 13px;
+  }
+
+  .avatars img {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+/* ── Small mobile ── */
+@media (max-width: 480px) {
+  .sticky {
+    padding: 8vh 16px 20px;
+    gap: 16px;
+  }
+
+  .para {
+    font-size: clamp(20px, 4.8vw, 28px);
+    line-height: 1.95;
+    letter-spacing: 0.4px;
+  }
+
+  .cta {
+    height: 42px;
+    font-size: 13px;
+  }
+}

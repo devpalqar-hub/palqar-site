@@ -12,12 +12,24 @@
 }
 
 .loader video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: clamp(140px, 40vw, 320px);
+  height: auto;
+  object-fit: contain;
 }
 
 .hide {
   opacity: 0;
   pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .loader video {
+    width: 60vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .loader video {
+    width: 70vw;
+  }
 }
