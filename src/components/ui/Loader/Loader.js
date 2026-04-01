@@ -1,22 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./Loader.module.css";
 
 export default function Loader({ onFinish }) {
   const [fade, setFade] = useState(false);
+  const videoRef = useRef(null);
 
-  const handleVideoEnd = () => {
-    setFade(true);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setFade(true);
 
-    setTimeout(() => {
-      onFinish();
-    }, 600);
-  };
+      setTimeout(() => {
+        onFinish();
+      }, 600);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [onFinish]);
 
   return (
     <div className={`${styles.loader} ${fade ? styles.hide : ""}`}>
-      <video autoPlay muted playsInline onEnded={handleVideoEnd}>
+      <video ref={videoRef} autoPlay muted playsInline>
         <source src="/loader.mp4" type="video/mp4" />
       </video>
     </div>

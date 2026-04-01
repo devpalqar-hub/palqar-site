@@ -5,114 +5,56 @@ import { LuArrowUpRight } from "react-icons/lu";
 import Image from "next/image";
 import gsap from "gsap";
 import Link from "next/link";
+import { IoIosArrowRoundForward } from "react-icons/io";
 
 const SERVICES = [
   {
     id: 1,
-    title: "Code",
-    details: [
-      {
-        title: "Enterprise Management Solutions",
-        href: "/services/enterprise-management-solutions",
-      },
-      { title: "Website & CMS Solutions", href: "/services/website-cms-solutions" },
-      {
-        title: "Custom Application Development",
-        href: "/services/custom-application-development",
-      },
-      { title: "Enterprise eCommerce Platform", href: "/services/enterprise-ecommerce-platform" },
-      { title: "SaaS Solutions", href: "/services/saas-solutions" },
-      {
-        title: "Advanced Technology Solutions",
-        href: "/services/advanced-technology-solutions",
-      },
-      { title: "Design & Experience", href: "/services/design-experience" },
-      { title: "Cybersecurity Solutions", href: "/services/cybersecurity-solutions" },
-    ],
-    images: [
-      "/services-preview/service3-01.png",
-      "/services-preview/service3-02.png",
-      "/services-preview/service3-03.png",
-      "/services-preview/service3-04.png",
-    ],
+    title: "Web & Technology Development",
+    description:
+      "Build scalable digital products, high-performance websites, and custom platforms engineered for speed and seamless user experience.",
+    cta: "Build Your Platform",
+    href: "/services/web-development",
   },
   {
     id: 2,
-    title: "Creativity",
-    details: [
-      { title: "Branding & Identity", href: "/services/branding-identity" },
-      { title: "Design & Collateral", href: "/services/design-collateral" },
-      {
-        title: "Content & Storytelling",
-        href: "/services/content-storytelling",
-      },
-      { title: "Media Production", href: "/services/media-production" },
-      {
-        title: "Advertising & Communication",
-        href: "/services/advertising-communication",
-      },
-      {
-        title: "Extended Creative Edge",
-        href: "/services/extended-creative-edge",
-      },
-    ],
-    images: [
-      "/services-preview/service2-01.png",
-      "/services-preview/service2-02.png",
-    ],
+    title: "Branding & Creative Design",
+    description:
+      "Craft powerful brand identities with strategic design and storytelling that captures attention and builds trust.",
+    cta: "Create Your Brand",
+    href: "/services/branding",
   },
   {
     id: 3,
-    title: "Conversion",
-    details: [
-      {
-        title: "Performance Marketing",
-        href: "/services/performance-marketing",
-      },
-      { title: "Influencer Marketing", href: "/services/influencer-marketing" },
-      { title: "Video Marketing", href: "/services/video-marketing" },
-      { title: "360° Marketing", href: "/services/360-marketing" },
-      { title: "Theatre Commercials", href: "/services/theatre-commercials" },
-      { title: "SEO", href: "/services/seo" },
-      { title: "Marketing Automation", href: "/services/marketing-automation" },
-    ],
-    images: [
-      "/services-preview/service1-01.png",
-      "/services-preview/service1-02.png",
-      "/services-preview/service1-03.png",
-      "/services-preview/service1-04.png",
-    ],
+    title: "Performance Marketing & Growth",
+    description:
+      "Drive measurable growth with SEO, paid campaigns, and data-driven strategies that convert traffic into revenue.",
+    cta: "Scale Your Growth",
+    href: "/services/marketing",
   },
   {
     id: 4,
-    title: "Consulting",
-    details: [
-      {
-        title: "Business & Corporate Strategy",
-        href: "/services/business-corporate-strategy",
-      },
-      {
-        title: "Marketing & Brand Strategy",
-        href: "/services/marketing-brand-strategy",
-      },
-      {
-        title: "Operational & Organizational Strategy",
-        href: "/services/operational-organizational-strategy",
-      },
-      {
-        title: "Innovation & Digital Transformation",
-        href: "/services/innovation-digital-transformation",
-      },
-      {
-        title: "Product, Market & Financial Strategy",
-        href: "/services/product-market-financial-strategy",
-      },
-    ],
-    images: [
-      "/services-preview/service5-01.png",
-      "/services-preview/service5-02.png",
-      "/services-preview/service5-03.png",
-    ],
+    title: "Technology & Automation",
+    description:
+      "Automate workflows, optimize operations, and integrate smart systems to accelerate business efficiency.",
+    cta: "Automate Your Business",
+    href: "/services/automation",
+  },
+  {
+    id: 5,
+    title: "Business & Growth Strategy",
+    description:
+      "Unlock opportunities with expert consulting, market insights, and strategies designed for long-term success.",
+    cta: "Plan Your Growth",
+    href: "/services/strategy",
+  },
+  {
+    id: 6,
+    title: "Not Sure Where to Start?",
+    description:
+      "Get a free 30-minute audit and discover gaps, missed opportunities, and clear steps to scale your business.",
+    cta: "Get Free Audit",
+    href: "/contact",
   },
 ];
 
@@ -192,7 +134,11 @@ export default function ServicesPreview() {
 
   return (
     <section className={styles.wrapper} id="services">
-      <p className={styles.label}>Most demanded services offered by us</p>
+      <p className={styles.label}>WHAT WE DO</p>
+
+      <h2 className={styles.heading}>
+        Growth, <span className={styles.highlight}>Technology</span> & Marketing Solutions
+      </h2>
 
       {SERVICES.map((service) => (
         <div
@@ -217,31 +163,20 @@ export default function ServicesPreview() {
               {service.id < 10 ? `0${service.id}` : service.id}
             </div>
 
-            <div className={styles.list}>
-              <ul>
-                {service.details.map((item, i) => (
-                  <li key={i}>
-                    <Link href={item.href}>{item.title}</Link>
-                  </li>
-                ))}
-              </ul>
+            <div className={styles.info}>
+              <p className={styles.description}>{service.description}</p>
 
-              <div className={styles.images}>
-                {service.images.map((img, i) => (
-                  <div key={i} className={styles.thumb}>
-                    <Image
-                      src={img}
-                      alt={`${service.title} preview ${i + 1}`}
-                      width={80}
-                      height={80}
-                      className={styles.thumbImage}
-                    />
-                  </div>
-                ))}
-              </div>
+              <Link href={service.href} className={styles.cta}>
+                {service.cta} <IoIosArrowRoundForward size={20}/>
+              </Link>
             </div>
 
-            <h4>{service.title}</h4>
+            {/* NEW RIGHT SIDE */}
+            <div className={styles.rightPanel}>
+              <Link href={service.href} className={styles.ctaButton}>
+                Get Started
+              </Link>
+            </div>
           </div>
         </div>
       ))}

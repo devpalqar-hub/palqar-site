@@ -126,45 +126,23 @@ export default function Hero() {
         <p className={styles.kicker}>30+ PROJECTS DELIVERED</p>
 
         <h1 className={styles.title}>
-          POWERING <br /> POSSIBILITIES
+          Built to Grow <br />  Designed to Convert
         </h1>
 
         <p className={styles.desc}>
-          A consulting-led team focused on one metric: qualified leads.
-          Strategy, execution and optimisation across LinkedIn, paid search, and
-          modern SEO built for steady growth.
+          From custom web development and brand identity to performance marketing and business consulting — one integrated team, measurable results.
         </p>
 
         <div className={styles.ctaWrap}>
           <Link className={styles.cta} href="/contact">
-            <span className={styles.ctaText}>LET&apos;S TALK</span>
-            <div className={styles.avatars}>
-              <Image
-                height={36}
-                width={36}
-                src="/image1.jpg"
-                alt="Team member 1"
-                priority
-              />
-              <Image
-                height={36}
-                width={36}
-                src="/image2.jpg"
-                alt="Team member 2"
-                priority
-              />
-              <Image
-                height={36}
-                width={36}
-                src="/image3.jpg"
-                alt="Team member 3"
-                priority
-              />
-            </div>
+            <span className={styles.ctaText}>Get Started</span>
+          </Link>
+          <Link className={styles.ctatwo} href="/contact">
+            <span className={styles.ctaText}>Free Audit</span>
           </Link>
         </div>
 
-        <div className={styles.logoStrip}>
+        {/* <div className={styles.logoStrip}>
           <div className={styles.logoViewport}>
             <LogoLoop
               logos={logos}
@@ -180,7 +158,7 @@ export default function Hero() {
               ariaLabel="Technologies we use"
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
