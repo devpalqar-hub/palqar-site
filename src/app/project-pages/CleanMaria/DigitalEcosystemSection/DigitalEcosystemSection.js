@@ -2,14 +2,10 @@
 
 import styles from "./DigitalEcosystemSection.module.css";
 
-export default function DigitalEcosystemSection(){
-
-  return(
-
+export default function DigitalEcosystemSection() {
+  return (
     <section className={styles.section}>
-
       <div className={styles.container}>
-
         {/* Badge */}
 
         <div className={styles.badge}>
@@ -21,7 +17,7 @@ export default function DigitalEcosystemSection(){
 
         <h2 className={styles.title}>
           THE DIGITAL
-          <br/>
+          <br />
           <span>ECOSYSTEM.</span>
         </h2>
 
@@ -29,14 +25,9 @@ export default function DigitalEcosystemSection(){
 
         <p className={styles.subtitle}>
           From consumer friction to operational excellence.
-          <br/>
-          A unified platform for the modern home services economy.
+          <br />A unified platform for the modern home services economy.
         </p>
-
       </div>
-
     </section>
-
-  )
-
+  );
 }

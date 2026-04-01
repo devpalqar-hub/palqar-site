@@ -99,10 +99,9 @@ export default function Whyanimate() {
         trigger: animate,
         start: "top top",
         end: "+=200%",
-        scrub: true,
+        scrub: 0,
         pin: true,
         anticipatePin: 1,
-        fastScrollEnd: true,
       },
     });
 
@@ -117,10 +116,10 @@ export default function Whyanimate() {
 
       // Front layer zooms away
       tl.to(layer, {
-        scale: 4,
+        scale: 2.2,
         opacity: 0,
-        filter: "blur(6px)",
-        duration: 2,
+        filter: "blur(1px)",
+        duration: 1.8,
         ease: "none",
       });
 
@@ -128,8 +127,8 @@ export default function Whyanimate() {
         {
           x: 0,
           y: 0,
-          duration: 2,
-          ease: "power1.out",
+          duration: 1.8,
+          ease: "none",
         },
         "<" 
       );
@@ -141,16 +140,16 @@ export default function Whyanimate() {
             {
               opacity: 0,
               scale: 0.6,
-              filter: "blur(10px)",
+              filter: "blur(3px)",
             },
             {
               opacity: 1,
               scale: 1,
               filter: "blur(0px)",
-              duration: 1.4,
-              ease: "power2.out",
+              duration: 1.8,
+              ease: "none",
             },
-            "-=1.6"
+            "<"
           );
         }
     });
@@ -224,7 +223,7 @@ export default function Whyanimate() {
                 alt=""
                 fill
                 className={styles.cardImage}
-                sizes="350px"
+                sizes="(max-width: 768px) 40vw, 350px"
               />
             </div>
 
@@ -238,7 +237,7 @@ export default function Whyanimate() {
                 alt=""
                 fill
                 className={styles.cardImage}
-                sizes="350px"
+                sizes="(max-width: 768px) 40vw, 350px"
               />
             </div>
           </div>

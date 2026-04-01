@@ -1,197 +1,196 @@
-.section{
-  position:relative;
+.section {
+  position: relative;
 
-  padding:180px 20px;
+  padding: 180px 20px;
 
-  background:radial-gradient(
-    circle at top,
-    #062c2e,
-    #021a1b
-  );
+  background: radial-gradient(circle at top, #062c2e, #021a1b);
 
-  text-align:center;
+  text-align: center;
 
-  overflow:hidden;
+  overflow: hidden;
 }
 
 /* container */
 
-.container{
-  max-width:700px;
-  margin:auto;
+.container {
+  max-width: 700px;
+  margin: auto;
 }
 
 /* title */
 
-.title{
-  font-size:56px;
-  color:white;
-  font-weight:800;
+.title {
+  font-size: 96px;
+  color: white;
+  font-weight: 900;
+  line-height: 96px;
+  letter-spacing: -4.8px;
 }
 
-.subtitle{
-  margin-top:18px;
+.subtitle {
+  margin-top: 18px;
 
-  color:#9aa4ab;
+  color: #9aa4ab;
 
-  font-size:14px;
-  line-height:1.7;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 24px;
+  line-height: 39px;
+  letter-spacing: 2.47px;
+  text-align: center;
+  text-transform: uppercase;
 
-  letter-spacing:1px;
-
-  margin-bottom:60px;
+  margin-bottom: 60px;
 }
 
 /* form */
 
-.form{
-  background:#050505;
+.form {
+  background: #050505;
 
-  border:1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 
-  padding:40px;
+  padding: 40px;
 
-  border-radius:16px;
+  border-radius: 16px;
 }
 
 /* row */
 
-.row{
-  display:flex;
-  gap:16px;
+.row {
+  display: flex;
+  gap: 16px;
 }
 
 /* fields */
 
-.field{
-  text-align:left;
-  flex:1;
-  margin-bottom:16px;
+.field {
+  text-align: left;
+  flex: 1;
+  margin-bottom: 16px;
 }
 
-.label{
-  display:block;
-
-  font-size:10px;
-  letter-spacing:2px;
-
-  color:#7a7a7a;
-
-  margin-bottom:6px;
+.label {
+  display: block;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 15px;
+  letter-spacing: 2.12px;
+  text-transform: uppercase;
+  color: #7a7a7a;
+  margin-bottom: 6px;
 }
 
 .input,
-.textarea{
-  width:100%;
+.textarea {
+  width: 100%;
 
-  background:#0a0a0a;
+  background: #0a0a0a;
 
-  border:1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 
-  padding:12px;
+  padding: 12px;
 
-  border-radius:6px;
+  border-radius: 6px;
 
-  color:white;
+  color: white;
 
-  font-size:13px;
+  font-size: 13px;
 }
 
-.textarea{
-  min-height:120px;
+.textarea {
+  min-height: 120px;
 }
 
 /* button */
 
-.button{
-  margin-top:14px;
+.button {
+  margin-top: 14px;
 
-  width:100%;
+  width: 100%;
 
-  background:white;
+  background: white;
 
-  color:black;
-
-  font-size:12px;
-
-  letter-spacing:2px;
-
-  padding:14px;
-
-  border-radius:6px;
-
-  cursor:pointer;
+  color: black;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 3.6px;
+  text-transform: uppercase;
+  padding: 14px;
+  cursor: pointer;
 }
 
 /* demo */
 
-.demo{
-  margin-top:50px;
+.demo {
+  margin-top: 50px;
 }
 
-.demo span{
-  display:block;
+.demo span {
+  display: block;
 
-  font-size:10px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #7a7a7a;
+  font-style: italic;
 
-  color:#7a7a7a;
+  letter-spacing: 3.12px;
 
-  letter-spacing:2px;
-
-  margin-bottom:6px;
+  margin-bottom: 6px;
 }
 
-.demo a{
-  color:#20c4ff;
+.demo a {
+  color: #00f2ff;
 
-  font-size:12px;
+  font-size: 14px;
+  font-weight: 700;
 
-  letter-spacing:2px;
+  letter-spacing: 1.25px;
+  line-height: 20px;
 }
 
 /* dashed circle */
 
-.circle{
-  position:absolute;
+.circle {
+  position: absolute;
 
-  top:-120px;
-  left:-120px;
+  top: -120px;
+  left: -120px;
 
-  width:320px;
-  height:320px;
+  width: 320px;
+  height: 320px;
 
-  border:2px dashed rgba(255,255,255,0.08);
+  border: 2px dashed rgba(255, 255, 255, 0.08);
 
-  border-radius:50%;
+  border-radius: 50%;
 }
 
 /* star */
 
-.star{
-  position:absolute;
+.star {
+  position: absolute;
 
-  bottom:-80px;
-  right:-80px;
+  bottom: -80px;
+  right: -80px;
 
-  width:220px;
-  height:220px;
+  width: 220px;
+  height: 220px;
 
-  border:2px solid rgba(255,255,255,0.05);
+  border: 2px solid rgba(255, 255, 255, 0.05);
 
-  transform:rotate(45deg);
+  transform: rotate(45deg);
 }
-@media(max-width:768px){
+@media (max-width: 768px) {
+  .title {
+    font-size: 36px;
+  }
 
-.title{
-font-size:36px;
-}
+  .row {
+    flex-direction: column;
+  }
 
-.row{
-flex-direction:column;
-}
-
-.section{
-padding:120px 20px;
-}
-
+  .section {
+    padding: 120px 20px;
+  }
 }

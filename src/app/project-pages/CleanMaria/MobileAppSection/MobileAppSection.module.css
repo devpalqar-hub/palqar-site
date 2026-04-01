@@ -16,22 +16,22 @@
 }
 
 .title {
-font-weight: 900;
-font-size: 30px;
-line-height: 36px;
-letter-spacing: -1.1px;
-text-transform: uppercase;
-color: #ffff;
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -1.1px;
+  text-transform: uppercase;
+  color: #ffff;
 }
 
 .subtitle {
-font-weight: 700;
-font-style: bold;
-font-size: 10px;
-line-height: 15px;
-letter-spacing: 3.12px;
-text-transform: uppercase;
-color: #FFFFFF66;
+  font-weight: 700;
+  font-style: bold;
+  font-size: 10px;
+  line-height: 15px;
+  letter-spacing: 3.12px;
+  text-transform: uppercase;
+  color: #ffffff66;
 }
 
 .dots {
@@ -58,7 +58,7 @@ color: #FFFFFF66;
   border-radius: 50%;
   background: #1e1d1d;
   transition: background 0.3s;
-} 
+}
 
 /* ── STAGE ── */
 
@@ -96,8 +96,14 @@ color: #FFFFFF66;
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ── PHONE FRAME ── */
@@ -127,7 +133,7 @@ color: #FFFFFF66;
 .labelsRow {
   display: flex;
   justify-content: space-between;
-  padding: 0 40px;       /* aligns roughly under each phone */
+  padding: 0 40px; /* aligns roughly under each phone */
   margin-top: -50px;
 }
 

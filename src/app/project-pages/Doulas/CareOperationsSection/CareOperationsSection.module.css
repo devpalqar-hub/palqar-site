@@ -1,0 +1,148 @@
+.section {
+  background: #050505;
+  color: white;
+  padding: 120px 20px;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1300px;
+  margin: auto;
+}
+
+/* HEADER */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 80px;
+  gap: 40px;
+}
+
+.tag {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #777;
+}
+
+.title {
+  font-size: 68px;
+  font-weight: 800;
+  margin-top: 10px;
+}
+
+.title span {
+  color: #ff3b3b;
+}
+
+.description {
+  max-width: 320px;
+  font-size: 12px;
+  color: #888;
+  letter-spacing: 1px;
+  text-align: right;
+}
+
+/* DASHBOARD */
+
+.dashboardWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 90px;
+}
+
+.mainImage {
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+.mainImage img {
+  border-radius: 16px;
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.7);
+}
+
+.sideImage {
+  opacity: 0.8;
+}
+
+.sideImage img {
+  border-radius: 16px;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+}
+
+/* STATS */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.statCard {
+  background: linear-gradient(
+    145deg,
+    rgba(40, 10, 40, 0.5),
+    rgba(10, 10, 10, 0.9)
+  );
+  padding: 26px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: left;
+}
+
+.statCard span {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #777;
+}
+
+.statCard h3 {
+  margin-top: 8px;
+  font-size: 24px;
+}
+
+/* TABLET */
+
+@media (max-width: 1000px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .description {
+    text-align: left;
+  }
+
+  .dashboardWrapper {
+    flex-direction: column;
+  }
+
+  .sideImage {
+    display: none;
+  }
+
+  .mainImage {
+    transform: none;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 40px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
