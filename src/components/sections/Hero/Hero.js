@@ -134,10 +134,10 @@ export default function Hero() {
         </p>
 
         <div className={styles.ctaWrap}>
-          <Link className={styles.cta} href="/contact">
+          <Link className={styles.cta} href="/contact#contact-form">
             <span className={styles.ctaText}>Get Started</span>
           </Link>
-          <Link className={styles.ctatwo} href="/contact">
+          <Link className={styles.ctatwo} href="/contact#contact-form">
             <span className={styles.ctaText}>Free Audit</span>
           </Link>
         </div>

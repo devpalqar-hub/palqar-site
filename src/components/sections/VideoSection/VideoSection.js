@@ -36,13 +36,12 @@ export default function VideoSection() {
           </button>
         </div>
 
-        <Link href="/contact" className={styles.cta}>
+        <Link href="/contact#contact-form" className={styles.cta}>
           <div className={styles.arrow}>
             <ArrowRight size={16} />
           </div>
           <span>Start Your Project</span>
         </Link>
-
       </div>
     </section>
   );

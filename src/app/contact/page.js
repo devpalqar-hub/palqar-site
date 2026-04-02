@@ -21,7 +21,7 @@ const COUNTRIES = [
 /* ─────────────────────────────────────────────────────
    PHONE FIELD
 ───────────────────────────────────────────────────── */
-function PhoneField() {
+function PhoneField({ onChange, value }) {
   const [country, setCountry] = useState(COUNTRIES[0]);
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
@@ -41,47 +41,40 @@ function PhoneField() {
       </label>
       <div className={styles.phoneRow}>
         <div ref={ref} className={styles.flagWrap}>
-          <button
-            type="button"
-            className={`${styles.flagBtn} ${open ? styles.flagBtnOpen : ""}`}
-            onClick={() => setOpen(!open)}
-          >
-            <span className={styles.flagEmoji}>{country.flag}</span>
-            <span className={styles.dialCode}>{country.dial}</span>
-            <ChevronDown size={13} className={styles.chevron} />
+          <button type="button" className={`${styles.flagBtn}`} onClick={() => setOpen(!open)}>
+            <span>{country.flag}</span>
+            <span>{country.dial}</span>
+            <ChevronDown size={13} />
           </button>
-
-          {open && (
-            <div className={styles.dropdown}>
-              {COUNTRIES.map((c) => (
-                <button
-                  key={c.code}
-                  type="button"
-                  className={`${styles.dropdownItem} ${country.code === c.code ? styles.dropdownItemActive : ""}`}
-                  onClick={() => { setCountry(c); setOpen(false); }}
-                >
-                  <span className={styles.cFlag}>{c.flag}</span>
-                  <span className={styles.cDial}>{c.dial}</span>
-                  <span className={styles.cCode}>{c.code}</span>
-                </button>
-              ))}
-            </div>
-          )}
         </div>
+
         <input
           type="tel"
+          name="phone"
           placeholder="Phone number"
           className={`${styles.input} ${styles.phoneInput}`}
+          onChange={onChange}
+          value={value}
         />
       </div>
     </div>
   );
 }
 
+
 /* ─────────────────────────────────────────────────────
    FIELD
 ───────────────────────────────────────────────────── */
-function Field({ label, required, placeholder, type = "text", full = false }) {
+function Field({
+  label,
+  name,
+  required,
+  placeholder,
+  type = "text",
+  full = false,
+  onChange,
+  value,
+}) {
   return (
     <div className={`${styles.fieldGroup} ${full ? styles.fieldFull : styles.fieldHalf}`}>
       <label className={styles.label}>
@@ -89,8 +82,11 @@ function Field({ label, required, placeholder, type = "text", full = false }) {
       </label>
       <input
         type={type}
+        name={name}
         placeholder={placeholder}
         className={styles.input}
+        onChange={onChange}
+        value={value}
       />
     </div>
   );
@@ -99,15 +95,18 @@ function Field({ label, required, placeholder, type = "text", full = false }) {
 /* ─────────────────────────────────────────────────────
    TEXTAREA
 ───────────────────────────────────────────────────── */
-function TextArea({ label, required, placeholder }) {
+function TextArea({ label, name, required, placeholder, onChange, value }) {
   return (
     <div className={`${styles.fieldGroup} ${styles.fieldFull}`}>
       <label className={styles.label}>
         {label} {required && <span className={styles.req}>*</span>}
       </label>
       <textarea
+        name={name}
         placeholder={placeholder}
         className={styles.textarea}
+        onChange={onChange}
+        value={value}
       />
     </div>
   );
@@ -116,33 +115,67 @@ function TextArea({ label, required, placeholder }) {
 /* ─────────────────────────────────────────────────────
    FILE UPLOAD
 ───────────────────────────────────────────────────── */
-function FileUpload({ label, id }) {
+function FileUpload({ label, setImageUrl }) {
   const [fileName, setFileName] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    setFileName(file.name);
+    setLoading(true);
+
+    try {
+      const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const res = await fetch(`${BASE_URL}/s3/upload`, {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      console.log("S3 Upload:", data);
+
+      // ✅ SAVE URL to parent
+      setImageUrl(data.url);
+
+    } catch (err) {
+      console.error("Upload failed:", err);
+      alert("File upload failed ❌");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className={styles.fieldFull}>
       <label className={styles.fileUpload}>
         <Paperclip size={20} className={styles.fileIcon} />
         <div>
-          <p className={styles.fileUploadTitle}>{fileName || label}</p>
-          <p className={styles.fileUploadMeta}>Max 10 MB · pdf, doc, png, jpeg, docx</p>
+          <p className={styles.fileUploadTitle}>
+            {loading ? "Uploading..." : fileName || label}
+          </p>
+          <p className={styles.fileUploadMeta}>
+            Max 10 MB · pdf, doc, png, jpeg, docx
+          </p>
         </div>
-        <input
-          type="file"
-          hidden
-          onChange={(e) => e.target.files[0] && setFileName(e.target.files[0].name)}
-        />
+        <input type="file" hidden onChange={handleFileChange} />
       </label>
     </div>
   );
 }
-
 /* ─────────────────────────────────────────────────────
    PHONE FIELD HALF WRAPPER
 ───────────────────────────────────────────────────── */
-function PhoneFieldHalf() {
+function PhoneFieldHalf({ onChange, value }) {
   return (
     <div className={styles.fieldHalf}>
-      <PhoneField />
+      <PhoneField onChange={onChange} value={value} />
     </div>
   );
 }
@@ -150,10 +183,10 @@ function PhoneFieldHalf() {
 /* ─────────────────────────────────────────────────────
    SUBMIT BUTTON
 ───────────────────────────────────────────────────── */
-function SubmitBtn({ label = "Submit Inquiry" }) {
+function SubmitBtn({ label = "Submit Inquiry", onClick }) {
   return (
     <div className={`${styles.fieldFull} ${styles.submitWrap}`}>
-      <button type="button" className={styles.submitBtn}>
+      <button type="button" className={styles.submitBtn} onClick={onClick}>
         {label}
         <span className={styles.submitArrow}>
           <ArrowUpRight size={16} />
@@ -166,24 +199,34 @@ function SubmitBtn({ label = "Submit Inquiry" }) {
 /* ─────────────────────────────────────────────────────
    FORM PANELS
 ───────────────────────────────────────────────────── */
-function WorkEnquiryForm() {
+function WorkEnquiryForm({ formData, handleChange, handleSubmit,setImageUrl }) {
   return (
     <div className={styles.formGrid}>
-      <Field label="Full Name"             required placeholder="Enter your full name"          />
-      <Field label="Company / Brand Name"  required placeholder="Enter your company name"       />
-      <Field label="Designation / Role"    required placeholder="Enter your designation"        />
-      <Field label="Email Address"         required placeholder="Enter your email address" type="email" />
-      <PhoneFieldHalf />
-      <Field label="Service Interested In" required placeholder="e.g., Web Development, Branding" />
-      <Field label="Project Budget Range"  required placeholder="e.g., $5,000 – $10,000"       />
-      <Field label="Project Timeline / Expected Start Date" required placeholder="e.g., Next Month, Q3 2025" full />
-      <TextArea label="Message / Brief about your project" required placeholder="Tell us more about your vision, goals, and any specific requirements…" />
-      <FileUpload label="Add an attachment (Optional)" />
-      <SubmitBtn />
+
+      <Field label="Full Name" name="fullName" required placeholder="Enter your full name" onChange={handleChange} value={formData.fullName} />
+      <Field label="Company / Brand Name" name="companyBrandName" required placeholder="Enter your company name" onChange={handleChange} value={formData.companyBrandName} />
+      <Field label="Designation / Role" name="designationRole" required placeholder="Enter your designation" onChange={handleChange} value={formData.designationRole} />
+      <Field label="Email Address" name="emailAddress" type="email" required placeholder="Enter your email address" onChange={handleChange} value={formData.emailAddress} />
+
+      <PhoneFieldHalf onChange={handleChange} value={formData.phone} />
+
+      <Field label="Service Interested In" name="serviceInterested" required placeholder="e.g., Web Development" onChange={handleChange} value={formData.serviceInterested} />
+      <Field label="Project Budget Range" name="budget" required placeholder="e.g., $5,000 – $10,000" onChange={handleChange} value={formData.budget} />
+
+      <Field label="Project Timeline / Expected Start Date" name="projectTimelineExpectedStart" required full placeholder="Next Month" onChange={handleChange} value={formData.projectTimelineExpectedStart} />
+
+      <TextArea label="Message" name="messageBrief" required placeholder="Describe your project..." onChange={handleChange} value={formData.messageBrief} />
+
+      <FileUpload
+        label="Add an attachment (Optional)"
+        setImageUrl={setImageUrl}
+      />
+
+      <SubmitBtn onClick={handleSubmit} />
+
     </div>
   );
 }
-
 // function PeopleTalentForm() {
 //   return (
 //     <div className={styles.formGrid}>
@@ -202,40 +245,57 @@ function WorkEnquiryForm() {
 //   );
 // }
 
-function CustomerSupportForm() {
+function CustomerSupportForm({ formData, handleChange, handleSubmit,setImageUrl }) {
   return (
     <div className={styles.formGrid}>
-      <Field label="Full Name"                   required placeholder="Enter your full name"             full />
-      <Field label="Registered Email / Client ID" required placeholder="Enter your email or Client ID"  />
-      <Field label="Project / Service Name"       required placeholder="Enter the project or service name" />
-      <Field label="Email Address"                required placeholder="Enter your email address" type="email" />
-      <PhoneFieldHalf />
-      <Field label="Type of Issue"                required placeholder="e.g., Technical, Billing, General Inquiry" full />
-      <TextArea label="Description of Issue"      required placeholder="Describe your issue in as much detail as possible…" />
-      <FileUpload label="Upload Screenshots / Files (Optional)" />
-      <SubmitBtn label="Submit Support Request" />
+
+      <Field label="Full Name" name="fullName" required full placeholder="Enter your full name" onChange={handleChange} value={formData.fullName} />
+
+      <Field label="Registered Email / Client ID" name="clientId" required placeholder="Enter your email or Client ID" onChange={handleChange} value={formData.clientId} />
+
+      <Field label="Project / Service Name" name="serviceInterested" required placeholder="Enter project name" onChange={handleChange} value={formData.serviceInterested} />
+
+      <Field label="Email Address" name="emailAddress" type="email" required placeholder="Enter your email" onChange={handleChange} value={formData.emailAddress} />
+
+      <PhoneFieldHalf onChange={handleChange} value={formData.phone} />
+
+      <Field label="Type of Issue" name="typeOfIssue" required full placeholder="Technical, Billing..." onChange={handleChange} value={formData.typeOfIssue} />
+
+      <TextArea label="Description of Issue" name="messageBrief" required placeholder="Describe issue..." onChange={handleChange} value={formData.messageBrief} />
+
+      <FileUpload label="Upload Screenshots / Files (Optional)" setImageUrl={setImageUrl}/>
+
+      <SubmitBtn onClick={handleSubmit} />
+
     </div>
   );
 }
-
-function PartnershipForm() {
+function PartnershipForm({ formData, handleChange, handleSubmit,setImageUrl }) {
   return (
     <div className={styles.formGrid}>
-      <Field label="Full Name"                        required placeholder="Enter your full name"                  />
-      <Field label="Company / Organization Name"      required placeholder="Enter your company name"               />
-      <Field label="Designation / Role"               required placeholder="Enter your designation"                />
-      <Field label="Email Address"                    required placeholder="Enter your email address" type="email" />
-      <PhoneFieldHalf />
-      <Field label="Partnership Type"                 required placeholder="e.g., Agency, Tech Partner, Reseller"  />
-      <Field label="Existing Clients or Key Markets"  required placeholder="Enter your key clients or target markets" />
-      <Field label="Website / Portfolio"                       placeholder="https://yourcompany.com" type="url"    />
-      <TextArea label="Objective of Partnership" required placeholder="Describe what you're hoping to achieve through this collaboration…" />
-      <FileUpload label="Add Supporting Documents (Optional)" />
-      <SubmitBtn label="Submit Partnership Request" />
+
+      <Field label="Full Name" name="fullName" required placeholder="Enter your full name" onChange={handleChange} value={formData.fullName} />
+      <Field label="Company / Organization Name" name="companyBrandName" required placeholder="Enter your company name" onChange={handleChange} value={formData.companyBrandName} />
+      <Field label="Designation / Role" name="designationRole" required placeholder="Enter your role" onChange={handleChange} value={formData.designationRole} />
+      <Field label="Email Address" name="emailAddress" type="email" required placeholder="Enter your email" onChange={handleChange} value={formData.emailAddress} />
+
+      <PhoneFieldHalf onChange={handleChange} value={formData.phone} />
+
+      <Field label="Partnership Type" name="partnershipType" required placeholder="Agency, Tech Partner..." onChange={handleChange} value={formData.partnershipType} />
+
+      <Field label="Existing Clients or Key Markets" name="existingClientsOrKeyMarkets" required placeholder="Enter markets" onChange={handleChange} value={formData.existingClientsOrKeyMarkets} />
+
+      <Field label="Website / Portfolio" name="websitePortfolio" placeholder="https://..." onChange={handleChange} value={formData.websitePortfolio} />
+
+      <TextArea label="Objective of Partnership" name="messageBrief" required placeholder="Describe goal..." onChange={handleChange} value={formData.messageBrief} />
+
+      <FileUpload label="Add Supporting Documents (Optional)" setImageUrl={setImageUrl}/>
+
+      <SubmitBtn onClick={handleSubmit} />
+
     </div>
   );
 }
-
 /* ─────────────────────────────────────────────────────
    TABS CONFIG
 ───────────────────────────────────────────────────── */
@@ -338,9 +398,118 @@ function LocationSection() {
 /* ─────────────────────────────────────────────────────
    MAIN PAGE
 ───────────────────────────────────────────────────── */
+
+
 export default function Contact() {
   const [activeTab, setActiveTab] = useState("work");
   const current = TABS.find((t) => t.id === activeTab);
+  const [formData, setFormData] = useState({
+  formType: "WORK_ENQUIRY",
+  fullName: "",
+  companyBrandName: "",
+  designationRole: "",
+  emailAddress: "",
+  phone: "",
+  serviceInterested: "",
+  budget: "",
+  projectTimelineExpectedStart: "",
+  messageBrief: "",
+  imageUrl: "",
+  clientId: "",
+  typeOfIssue: "",
+  partnershipType: "",
+  existingClientsOrKeyMarkets: "",
+  websitePortfolio: "",
+});
+
+const handleChange = (e) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value,
+  });
+};
+
+
+const handleSubmit = async () => {
+  try {
+    const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+    console.log("BASE_URL:", BASE_URL);
+    const payload = {
+      ...formData,
+
+      // ✅ ensure correct formType
+      formType:
+        activeTab === "work"
+          ? "WORK_ENQUIRY"
+          : activeTab === "support"
+          ? "CUSTOMER_SUPPORT"
+          : "PARTNERSHIP",
+
+      // ✅ ensure clientId always exists
+      clientId: formData.clientId || "WEB_USER",
+
+      // ✅ remove empty fields (optional but safer)
+      imageUrl: formData.imageUrl || "",
+    };
+
+    console.log("PAYLOAD 👉", payload); // 🔥 DEBUG
+
+    const res = await fetch(`${BASE_URL}/contact-forms`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    // ❗ handle API errors properly
+    if (!res.ok) {
+      const errorData = await res.json();
+      console.error("API ERROR:", errorData);
+      alert(errorData.message || "Submission failed ❌");
+      return;
+    }
+
+    const data = await res.json();
+
+    console.log("SUCCESS:", data);
+
+    // ✅ success UI
+    alert("Form submitted successfully ✅");
+
+    // ✅ reset form (optional but recommended)
+    setFormData({
+      formType: "WORK_ENQUIRY",
+      fullName: "",
+      companyBrandName: "",
+      designationRole: "",
+      emailAddress: "",
+      phone: "",
+      serviceInterested: "",
+      budget: "",
+      projectTimelineExpectedStart: "",
+      messageBrief: "",
+      imageUrl: "",
+      clientId: "",
+      typeOfIssue: "",
+      partnershipType: "",
+      existingClientsOrKeyMarkets: "",
+      websitePortfolio: "",
+    });
+
+  } catch (error) {
+    console.error("ERROR:", error);
+    alert("Something went wrong ❌");
+  }
+};
+
+
+const setImageUrl = (url) => {
+  setFormData((prev) => ({
+    ...prev,
+    imageUrl: url,
+  }));
+};
 
   return (
     <main className={styles.contactPage}>
@@ -377,7 +546,7 @@ export default function Contact() {
       </header>
 
       {/* ── FORM SECTION ── */}
-      <section className={styles.formSection}>
+      <section id="contact-form" className={styles.formSection}>
 
         {/* Tabs */}
         <div className={styles.tabs}>
@@ -400,7 +569,12 @@ export default function Contact() {
             <p className={styles.panelDesc}>{current.desc}</p>
           </div>
           <div key={activeTab} className={styles.panelBody}>
-            <current.Form />
+            <current.Form
+              formData={formData}
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+              setImageUrl={setImageUrl}
+            />
           </div>
         </div>
 

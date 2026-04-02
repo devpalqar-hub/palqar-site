@@ -52,7 +52,7 @@ export default function TextSection() {
         </p>
 
         <div className={styles.ctaWrap}>
-          <Link href="/contact" className={styles.cta}>
+          <Link href="/contact#contact-form" className={styles.cta}>
             <span className={styles.ctaText}>Get Started</span>
 
             <div className={styles.avatars}>
