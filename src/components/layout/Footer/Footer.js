@@ -2,8 +2,9 @@
 import Image from "next/image";
 import styles from "./Footer.module.css";
 import Hyperspeed from "@/components/ui/FooterAnimation/FooterAnimation";
-
+import { useRouter } from "next/navigation";
 export default function Footer() {
+  const router = useRouter();
   return (
     <footer className={styles.footer}>
 
@@ -29,7 +30,12 @@ export default function Footer() {
                 placeholder="Enter Your Email..."
                 className={styles.input}
               />
-              <button className={styles.button}>Contact us</button>
+              <button
+                className={styles.button}
+                onClick={() => router.push("/contact#contact-form")}
+              >
+                Contact us
+              </button>
             </div>
           </div>
 

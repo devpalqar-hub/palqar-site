@@ -209,7 +209,7 @@ export default function Whyanimate() {
                   sustainable business growth.
                 </span>
               </h2>
-            <a href="/contact" className={styles.primaryCta}>
+            <a href="/contact#contact-form" className={styles.primaryCta}>
               Get a Free Consultation
             </a>
           </div>
