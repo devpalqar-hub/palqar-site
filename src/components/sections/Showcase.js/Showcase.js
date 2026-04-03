@@ -5,7 +5,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import styles from "./Showcase.module.css";
-import { ArrowRight } from "lucide-react";
 
 export default function Showcase() {
   const container = useRef(null);
@@ -129,7 +128,7 @@ export default function Showcase() {
       });
 
       // Scroll velocity nudge
-      ScrollTrigger.create({
+      const velocityTrigger = ScrollTrigger.create({
         trigger: container.current,
         start: "top bottom",
         end: "bottom top",
@@ -149,7 +148,7 @@ export default function Showcase() {
       return () => {
         cancelAnimationFrame(raf);
         autoPlay.kill();
-        ScrollTrigger.getAll().forEach((t) => t.kill());
+        velocityTrigger.kill();
         cards.forEach((card) => {
           card.removeEventListener("mouseenter", pause);
           card.removeEventListener("mouseleave", play);
@@ -186,7 +185,13 @@ export default function Showcase() {
         <div className={styles.sliderRow}>
           {images.map((src, i) => (
             <div key={i} className={styles.card}>
-              <img src={src} alt={`Project ${i + 1}`} draggable={false} />
+              <img
+                src={src}
+                alt={`Project ${i + 1}`}
+                draggable={false}
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           ))}
         </div>

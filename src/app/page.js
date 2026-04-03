@@ -1,3 +1,4 @@
+import styles from "./page.module.css";
 import FeaturedProjects from "@/components/sections/FeaturedProjects/FeaturedProjects";
 import Hero from "@/components/sections/Hero/Hero";
 import ServicesPreview from "@/components/sections/Services/ServicesPreview";
@@ -8,47 +9,84 @@ import TextSection from "@/components/sections/TextSection/TextSection";
 import VideoSection from "@/components/sections/VideoSection/VideoSection";
 
 export const metadata = {
-  title: "About Us | Palqar — Digital Agency",
+  title: "Palqar | Web Development, Branding, Marketing & Growth",
   description:
-    "We don't follow trends — we create them. Learn about Palqar's mission, philosophy, and the leadership team behind award-winning digital experiences.",
+    "Palqar helps ambitious businesses grow with custom web development, branding, performance marketing, automation, and growth strategy.",
   keywords: [
     "digital agency",
+    "performance marketing",
+    "business growth strategy",
+    "automation services",
     "UI/UX design",
     "web development",
     "Palqar",
     "branding",
   ],
   openGraph: {
-    title: "About Palqar — Digital Agency",
+    title: "Palqar | Web Development, Branding, Marketing & Growth",
     description:
-      "Challenging assumptions. Crafting digital experiences that convert, engage, and lead.",
-    url: "https://palqar.com/about",
+      "Custom web development, branding, performance marketing, automation, and consulting delivered by one integrated growth team.",
+    url: "https://palqar.com",
     siteName: "Palqar",
     images: [
       {
-        url: "/about/about-team.jpg",
+        url: "/hero-poster.png",
         width: 1200,
         height: 630,
-        alt: "Palqar Team",
+        alt: "Palqar digital growth and development services",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Palqar",
-    description: "We don't follow trends — we create them.",
-    images: ["/about/about-team.jpg"],
+    title: "Palqar | Web Development, Branding, Marketing & Growth",
+    description:
+      "Web development, branding, marketing, automation, and consulting for ambitious businesses.",
+    images: ["/hero-poster.png"],
   },
-  alternates: { canonical: "https://palqar.com/about" },
+  alternates: { canonical: "https://palqar.com" },
 };
 
 export default function Home() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://palqar.com/#organization",
+        name: "Palqar",
+        url: "https://palqar.com",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://palqar.com/hero-poster.png",
+        },
+        description:
+          "Palqar helps ambitious businesses grow through web development, branding, performance marketing, automation, and consulting.",
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://palqar.com/#website",
+        url: "https://palqar.com",
+        name: "Palqar",
+        publisher: {
+          "@id": "https://palqar.com/#organization",
+        },
+      },
+    ],
+  };
+
   return (
-    <main>
+    <main className={styles.page}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
+      />
       <Hero />
-      <TextSection/>
-      <VideoSection/>
+      <TextSection />
+      <VideoSection />
       <ServicesPreview />
       <FeaturedProjects />
       <WhySection />

@@ -11,8 +11,12 @@ const PROJECTS = [
     id: 1,
     slug: "zodo",
     title: "ZodoAI",
-    logo: "/featured-projects/zodo/logo.svg",
+    logo: "/featured-projects/zodo/zodo-logo.png",
     logoClass: "zodoLogo",
+    logoWidth: 800,
+    logoHeight: 600,
+    logoFit: "cover",
+    logoPosition: "center center",
     desc:"With ZODO AI, managing your health becomes easier than ever.Schedule consultations quickly and access expert advice in seconds.Stay informed with real-time updates and personalized support.Your journey to better health starts here.",
     bg: "#01B18A",
     media: [
@@ -28,6 +32,10 @@ const PROJECTS = [
     title: "CleanMaria",
     logo: "/featured-projects/cleanmaria/logo.svg",
     logoClass: "cleanmariaLogo",
+    logoWidth: 215,
+    logoHeight: 98,
+    logoFit: "contain",
+    logoPosition: "left center",
     desc:"Book your cleaning in seconds with our easy platform while trusted professionals handle every detail. Enjoy flexible scheduling that fits your routine and relax knowing your home will be left fresh, spotless, and beautifully clean.",
     bg: "linear-gradient(180deg, #000000 10%, #333333 80%, #111111 95%)",
     media: [
@@ -47,6 +55,10 @@ const PROJECTS = [
     title: "Bambini Doulas",
     logo: "/featured-projects/bambinidoulas/logo.svg",
     logoClass: "bambiniLogo",
+    logoWidth: 240,
+    logoHeight: 85,
+    logoFit: "contain",
+    logoPosition: "left center",
     desc: "Personalized doula support for every stage of your journey.Compassionate professionals guiding you through pregnancy and beyond.Feel confident, supported, and cared for every step of the way.",
     bg: "linear-gradient(65deg, #A739FF 0%, #6b2bb3 40%, #08060A 82%)",
     media: [
@@ -75,17 +87,27 @@ export default function FeaturedProjects() {
         <p className={styles.label}>Featured Projects</p>
 
         <div className={styles.controls}>
-          <button className={styles.recent}>
+          <div className={styles.recent} aria-hidden="true">
             RECENT PROJECTS
             <div>
               <LuArrowUpRight/>
             </div>
-          </button>
+          </div>
           <div className={styles.divider}></div>
-          <button className={styles.navigate} onClick={() => scroll("left")}>
+          <button
+            className={styles.navigate}
+            type="button"
+            aria-label="Scroll featured projects left"
+            onClick={() => scroll("left")}
+          >
             <IoIosArrowBack />
           </button>
-          <button className={styles.navigate} onClick={() => scroll("right")}>
+          <button
+            className={styles.navigate}
+            type="button"
+            aria-label="Scroll featured projects right"
+            onClick={() => scroll("right")}
+          >
             <IoIosArrowForward />
           </button>
         </div>
@@ -103,9 +125,13 @@ export default function FeaturedProjects() {
               <Image
                 src={p.logo}
                 alt={`${p.title} logo`}
-                width={230}
-                height={56}
+                width={p.logoWidth}
+                height={p.logoHeight}
                 className={`${styles.logo} ${styles[p.logoClass]}`}
+                style={{
+                  objectFit: p.logoFit,
+                  objectPosition: p.logoPosition,
+                }}
               />
               <p>{p.desc}</p>
             </Link>

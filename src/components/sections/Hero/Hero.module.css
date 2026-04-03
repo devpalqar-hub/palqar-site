@@ -111,6 +111,7 @@
   letter-spacing: 1.17px;
   text-transform: uppercase;
   cursor: pointer;
+  text-decoration: none;
   transition: all 0.25s ease;
   box-shadow: 0 8px 28px rgba(220, 53, 69, 0.35);
 }
@@ -135,6 +136,7 @@
   letter-spacing: 1.17px;
   text-transform: uppercase;
   cursor: pointer;
+  text-decoration: none;
   transition: all 0.25s ease;
   box-shadow: 0 8px 28px rgba(220, 53, 69, 0.35);
 }
@@ -385,9 +387,20 @@
     font-size: 15px;
   }
 
-  .cta {
-    height: 58px;
-    padding: 18px 12px 18px 28px;
+  .ctaWrap {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .cta,
+  .ctatwo {
+    width: 100%;
+    min-height: 54px;
+    height: auto;
+    justify-content: center;
+    padding: 16px 20px;
     font-size: 13px;
   }
 
@@ -450,12 +463,10 @@
     margin-top: 32px;
   }
 
-  .cta {
-    width: 100%;
-    justify-content: space-between;
-    padding: 16px 12px 16px 24px;
-    height: auto;
-    min-height: 56px;
+  .cta,
+  .ctatwo {
+    min-height: 52px;
+    padding: 14px 18px;
   }
 
   .avatars img {
