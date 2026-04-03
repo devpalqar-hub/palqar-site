@@ -11,6 +11,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  min-height: 100svh;
   padding: 10vh;
   gap: 40px;
   overflow: hidden;
@@ -64,6 +66,7 @@
   font-size: 14.6px;
   letter-spacing: 1.17px;
   text-transform: uppercase;
+  text-decoration: none;
 
   box-shadow: 0 8px 28px rgba(220, 53, 69, 0.35);
   margin: 30px;
@@ -120,22 +123,36 @@
 /* Mobile */
 @media (max-width: 768px) {
   .section {
-    height: 180vh;
+    height: auto;
   }
 
   .sticky {
-    padding: 20vh 20px 24px;
-    gap: 20px;
+    position: relative;
+    min-height: auto;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 56px 24px 40px;
+    gap: 24px;
   }
 
   .para {
     font-size: clamp(20px, 5vw, 30px);
-    letter-spacing: 0.8px;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+    text-align: left;
+    margin-top: 0;
+    padding: 0;
+  }
+
+  .ctaWrap {
+    width: 100%;
+    margin-top: 0;
   }
 
   .cta {
     height: 50px;
     font-size: 13px;
+    margin: 0;
   }
 
   .avatars img {
@@ -147,18 +164,19 @@
 /* ── Small mobile ── */
 @media (max-width: 480px) {
   .sticky {
-    padding: 8vh 16px 20px;
+    padding: 48px 16px 32px;
     gap: 16px;
   }
 
   .para {
     font-size: clamp(20px, 4.8vw, 28px);
-    line-height: 1.95;
+    line-height: 1.55;
     letter-spacing: 0.4px;
   }
 
   .cta {
-    height: 42px;
-    font-size: 13px;
+    height: 46px;
+    font-size: 12px;
+    padding: 16px 10px 16px 20px;
   }
 }

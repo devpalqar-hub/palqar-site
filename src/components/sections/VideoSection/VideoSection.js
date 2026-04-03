@@ -22,26 +22,36 @@ export default function VideoSection() {
   return (
     <section className={styles.section}>
       <div className={styles.sticky}>
-        
-        <div className={styles.videoCard}>
-          <video ref={videoRef} muted={muted} loop playsInline onPlay={(e) => e.currentTarget.classList.add(styles.visible)}>
-            <source src="/website-video.webm" type="video/webm" />
-          </video>
+        <div className={styles.content}>
+          <div className={styles.videoCard}>
+            <video
+              ref={videoRef}
+              muted={muted}
+              loop
+              playsInline
+              preload="metadata"
+              onPlay={(e) => e.currentTarget.classList.add(styles.visible)}
+            >
+              <source src="/website-video.webm" type="video/webm" />
+            </video>
 
-          <button
-            className={styles.muteBtn}
-            onClick={() => setMuted(!muted)}
-          >
-            {muted ? <LuVolumeX size={18} /> : <LuVolume2 size={18} />}
-          </button>
-        </div>
-
-        <Link href="/contact#contact-form" className={styles.cta}>
-          <div className={styles.arrow}>
-            <ArrowRight size={16} />
+            <button
+              className={styles.muteBtn}
+              onClick={() => setMuted(!muted)}
+              aria-label={muted ? "Unmute video" : "Mute video"}
+              type="button"
+            >
+              {muted ? <LuVolumeX size={18} /> : <LuVolume2 size={18} />}
+            </button>
           </div>
-          <span>Start Your Project</span>
-        </Link>
+
+          <Link href="/contact#contact-form" className={styles.cta}>
+            <div className={styles.arrow}>
+              <ArrowRight size={16} />
+            </div>
+            <span className={styles.ctaLabel}>Start Your Project</span>
+          </Link>
+        </div>
       </div>
     </section>
   );

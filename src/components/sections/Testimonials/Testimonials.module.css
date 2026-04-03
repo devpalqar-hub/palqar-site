@@ -5,13 +5,12 @@
 .mainWrapper {
   background-color: #000;
   color: #fff;
-  min-height: 100vh;
   font-family: var(--font-dm-sans);
 }
 
 /* ─── Header ─────────────────────────────────────────────────────────────── */
 .headerSection {
-  padding: 72px 24px 40px;
+  padding: 56px 20px 28px;
   text-align: center;
 }
 
@@ -30,8 +29,8 @@
 .mobileCards {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 0 20px 60px;
+  gap: 16px;
+  padding: 0 16px 40px;
   max-width: 700px;
   margin: 0 auto;
 }
@@ -113,13 +112,13 @@
 /* ─── Logos ──────────────────────────────────────────────────────────────── */
 .logoSection {
   text-align: center;
-  padding: 80px 20px 80px;
+  padding: 48px 16px 56px;
 }
 
 .logoHeading {
   font-size: clamp(1.2rem, 4vw, 2rem);
   font-weight: 300;
-  margin: 0 0 48px;
+  margin: 0 0 32px;
   color: rgba(255,255,255,0.8);
 }
 
@@ -168,6 +167,11 @@
   .avatar       { width: 72px; height: 72px; }
   .authorName   { font-size: 22px; }
 
+  .headerSection { padding: 72px 24px 32px; }
+  .mobileCards   { padding: 0 20px 48px; }
+  .logoSection   { padding: 64px 20px 72px; }
+  .logoHeading   { margin-bottom: 40px; }
+
   .logoGrid     { grid-template-columns: repeat(4, 1fr); gap: 48px; }
   .logoImg      { max-width: 110px; }
 }
@@ -176,7 +180,7 @@
    DESKTOP  ≥ 1024 px
    ═══════════════════════════════════════════════════════════════════════════ */
 @media (min-width: 1024px) {
-  .headerSection { padding: 100px 0 50px; }
+  .headerSection { padding: 88px 0 40px; }
 
   /* Card restores original desktop sizes */
   .cardContent  { padding: 3rem; border-radius: 40px; min-height: 500px; }
@@ -187,7 +191,7 @@
   .authorRole   { font-size: 14px; }
 
   /* Logo section gets more breathing room after scroll-stack */
-  .logoSection  { padding-top: 300px; }
+  .logoSection  { padding-top: clamp(160px, 16vw, 220px); }
   .logoGrid     { grid-template-columns: repeat(6, 1fr); gap: 60px; }
   .logoImg      { max-width: 130px; }
 }

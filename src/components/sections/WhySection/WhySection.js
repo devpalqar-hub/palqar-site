@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./WhySection.module.css";
@@ -18,7 +18,7 @@ const IMAGES = [
   "/whysection/sai.png",
   "/whysection/sona.png",
   "/whysection/adheena.png",
-  "/whysection/img2.png",
+  "/whysection/agnes.png",
 ];
 
 const chunkArray = (arr, size) => {
@@ -67,137 +67,170 @@ const generateCardSizes = (layersCount) => {
 const CARD_DIMENSIONS = generateCardSizes(imageLayers.length);
 
 export default function Whyanimate() {
+  const sectionRef = useRef(null);
   const animateRef = useRef(null);
   const layersRef = useRef([]);
   const textRef = useRef(null);
   const paraRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    const section = sectionRef.current;
     const animate = animateRef.current;
-    const layers = layersRef.current;
+    const layers = layersRef.current.filter(Boolean);
     const text = textRef.current;
-    
+    const para = paraRef.current;
 
-    if (!animate || !text || layers.length === 0) return;
+    if (!section || !animate || !text || layers.length === 0) return;
 
-    // INITIAL STATE
-    layers.forEach((layer, i) => {
-      gsap.set(layer, {
-        opacity: i === 0 ? 1 : 0,
-        scale: i === 0 ? 1 : 0.9,
-        filter: i === 0 ? "blur(0px)" : "blur(12px)",
-      });
-    });
+    const originalParaText = para?.textContent ?? "";
+    const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
 
-    gsap.set(text, {
-      opacity: 0,
-      scale: 0.96,
-    });
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: animate,
-        start: "top top",
-        end: "+=200%",
-        scrub: 0,
-        pin: true,
-        anticipatePin: 1,
-      },
-    });
-
-    layers.forEach((layer, i) => {
-
-      const cards = layer.querySelectorAll(`.${styles.card}`);
-
-      gsap.set(cards, {
-        x: (i) => (i === 0 ? -30 : 30),
-        y: 0,
-      });
-
-      // Front layer zooms away
-      tl.to(layer, {
-        scale: 2.2,
-        opacity: 0,
-        filter: "blur(1px)",
-        duration: 1.8,
-        ease: "none",
-      });
-
-       tl.to(cards,
+      mm.add(
         {
-          x: 0,
-          y: 0,
-          duration: 1.8,
-          ease: "none",
+          isMobile: "(max-width: 767px)",
+          isTablet: "(min-width: 768px) and (max-width: 991px)",
+          isDesktop: "(min-width: 992px)",
         },
-        "<" 
-      );
+        (context) => {
+          const { isMobile, isTablet } = context.conditions;
+          const scrollDistance = isMobile
+            ? window.innerHeight * 1.15
+            : isTablet
+              ? window.innerHeight * 1.75
+              : window.innerHeight * 2.1;
 
-      // Next layer fades in + sharpens
-        if (layers[i + 1]) {
-          tl.fromTo(
-            layers[i + 1],
-            {
-              opacity: 0,
-              scale: 0.6,
-              filter: "blur(3px)",
+          gsap.set(animate, {
+            autoAlpha: 0,
+          });
+
+          layers.forEach((layer, layerIndex) => {
+            gsap.set(layer, {
+              opacity: layerIndex === 0 ? 1 : 0,
+              scale: layerIndex === 0 ? 1 : 0.9,
+              filter: layerIndex === 0 ? "blur(0px)" : "blur(12px)",
+            });
+
+            const cards = layer.querySelectorAll(`.${styles.card}`);
+            gsap.set(cards, {
+              x: (cardIndex) => (cardIndex === 0 ? -30 : 30),
+              y: 0,
+              yPercent: -50,
+            });
+          });
+
+          gsap.set(text, {
+            opacity: 0,
+            scale: 0.96,
+          });
+
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: animate,
+              start: "top top",
+              end: `+=${scrollDistance}`,
+              scrub: 0.8,
+              pin: true,
+              anticipatePin: 1,
+              invalidateOnRefresh: true,
+              fastScrollEnd: true,
             },
-            {
-              opacity: 1,
-              scale: 1,
-              filter: "blur(0px)",
+          });
+
+          tl.to(animate, {
+            autoAlpha: 1,
+            duration: 0.45,
+            ease: "none",
+          });
+
+          layers.forEach((layer, layerIndex) => {
+            const cards = layer.querySelectorAll(`.${styles.card}`);
+
+            tl.to(layer, {
+              scale: isMobile ? 1.8 : 2.2,
+              opacity: 0,
+              filter: "blur(1px)",
               duration: 1.8,
               ease: "none",
-            },
-            "<"
-          );
-        }
-    });
+            });
 
-    // Final text
-    tl.to(text, {
-      opacity: 1,
-      scale: 1,
-      duration: 1.2,
-      ease: "expo.out",
-    });
+            tl.to(
+              cards,
+              {
+                x: 0,
+                y: 0,
+                duration: 1.8,
+                ease: "none",
+              },
+              "<",
+            );
 
-    // ===== PARAGRAPH LETTER ANIMATION =====
-    const para = paraRef.current;
-    if (para) {
-      const text = para.innerText;
-      para.innerHTML = text
-        .split("")
-        .map(
-          (char) =>
-            `<span style="opacity:0.3; display:inline-block">${
-              char === " " ? "&nbsp;" : char
-            }</span>`
-        )
-        .join("");
+            if (layers[layerIndex + 1]) {
+              tl.fromTo(
+                layers[layerIndex + 1],
+                {
+                  opacity: 0,
+                  scale: 0.6,
+                  filter: "blur(3px)",
+                },
+                {
+                  opacity: 1,
+                  scale: 1,
+                  filter: "blur(0px)",
+                  duration: 1.8,
+                  ease: "none",
+                },
+                "<",
+              );
+            }
+          });
 
-      const letters = para.querySelectorAll("span");
-
-      gsap.to(letters, {
-        opacity: 1,
-        duration: 0.6,
-        stagger: 0.015,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: animate,
-          start: "top 120%",
+          tl.to(text, {
+            opacity: 1,
+            scale: 1,
+            duration: 1.2,
+            ease: "none",
+          });
         },
-      });
-    }
+      );
+
+      if (para && originalParaText) {
+        para.innerHTML = originalParaText
+          .split("")
+          .map(
+            (char) =>
+              `<span style="opacity:0.3; display:inline-block">${
+                char === " " ? "&nbsp;" : char
+              }</span>`,
+          )
+          .join("");
+
+        const letters = para.querySelectorAll("span");
+
+        gsap.to(letters, {
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.015,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: para,
+            start: "top 85%",
+          },
+        });
+      }
+    }, section);
+
+    const refreshTimer = setTimeout(() => ScrollTrigger.refresh(), 300);
 
     return () => {
-      tl.scrollTrigger?.kill();
-      tl.kill();
+      clearTimeout(refreshTimer);
+      if (para) para.textContent = originalParaText;
+      ctx.revert();
     };
   }, []);
 
   return (
-    <section className={styles.wrapper}>
+    <section ref={sectionRef} className={styles.wrapper}>
       <div>
         
           <div>
@@ -254,29 +287,29 @@ export default function Whyanimate() {
           >
             <div className={`${styles.card} ${styles.left}`}
               style={{
-                width: CARD_DIMENSIONS[layerIndex][0].w,
-                height: CARD_DIMENSIONS[layerIndex][0].h,
+                "--card-width": `${CARD_DIMENSIONS[layerIndex][0].w}px`,
+                aspectRatio: `${CARD_DIMENSIONS[layerIndex][0].w} / ${CARD_DIMENSIONS[layerIndex][0].h}`,
               }}>
               <Image
                 src={layerImages[0]}
                 alt=""
                 fill
                 className={styles.cardImage}
-                sizes="(max-width: 768px) 40vw, 350px"
+                sizes="(max-width: 480px) 46vw, (max-width: 768px) 43vw, (max-width: 992px) 38vw, 31vw"
               />
             </div>
 
             <div className={`${styles.card} ${styles.right}`}
               style={{
-                width: CARD_DIMENSIONS[layerIndex][1].w,
-                height: CARD_DIMENSIONS[layerIndex][1].h,
+                "--card-width": `${CARD_DIMENSIONS[layerIndex][1].w}px`,
+                aspectRatio: `${CARD_DIMENSIONS[layerIndex][1].w} / ${CARD_DIMENSIONS[layerIndex][1].h}`,
               }}>
               <Image
                 src={layerImages[1]}
                 alt=""
                 fill
                 className={styles.cardImage}
-                sizes="(max-width: 768px) 40vw, 350px"
+                sizes="(max-width: 480px) 46vw, (max-width: 768px) 43vw, (max-width: 992px) 38vw, 31vw"
               />
             </div>
           </div>

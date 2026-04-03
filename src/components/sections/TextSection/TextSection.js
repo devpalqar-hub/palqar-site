@@ -5,15 +5,30 @@ import styles from "./TextSection.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
-const TEXT = `Driven by strategy, delivered through expertise — specializing in web development, digital marketing, branding, and business consulting. We help ambitious businesses improve online visibility, generate high-quality leads, and build scalable strategies that deliver measurable results — all through one integrated team`;
+const TEXT =
+  "Driven by strategy, delivered through expertise, specializing in web development, digital marketing, branding, and business consulting. We help ambitious businesses improve online visibility, generate high-quality leads, and build scalable strategies that deliver measurable results through one integrated team.";
 
 export default function TextSection() {
   const sectionRef = useRef(null);
   const [progress, setProgress] = useState(0);
+  const [isMobileLayout, setIsMobileLayout] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 768px)");
+    const updateLayout = () => setIsMobileLayout(media.matches);
+    updateLayout();
+    media.addEventListener("change", updateLayout);
+    return () => media.removeEventListener("change", updateLayout);
+  }, []);
 
   useEffect(() => {
     const section = sectionRef.current;
-    if (!section) return;
+    if (!section) return undefined;
+
+    if (isMobileLayout) {
+      setProgress(1);
+      return undefined;
+    }
 
     const handleScroll = () => {
       const rect = section.getBoundingClientRect();
@@ -27,7 +42,7 @@ export default function TextSection() {
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isMobileLayout]);
 
   const letters = TEXT.split("");
   const textProgress = Math.min(1, progress * 1.4);
@@ -35,21 +50,25 @@ export default function TextSection() {
   return (
     <section ref={sectionRef} className={styles.section}>
       <div className={styles.sticky}>
-        <p className={styles.para}>
-          {letters.map((char, i) => {
-            const reveal = i / letters.length;
-            const active = textProgress > reveal;
+        {isMobileLayout ? (
+          <p className={styles.para}>{TEXT}</p>
+        ) : (
+          <p className={styles.para}>
+            {letters.map((char, i) => {
+              const reveal = i / letters.length;
+              const active = textProgress > reveal;
 
-            return (
-              <span
-                key={i}
-                className={`${styles.char} ${active ? styles.active : ""}`}
-              >
-                {char}
-              </span>
-            );
-          })}
-        </p>
+              return (
+                <span
+                  key={i}
+                  className={`${styles.char} ${active ? styles.active : ""}`}
+                >
+                  {char}
+                </span>
+              );
+            })}
+          </p>
+        )}
 
         <div className={styles.ctaWrap}>
           <Link href="/contact#contact-form" className={styles.cta}>

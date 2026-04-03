@@ -2,7 +2,6 @@
 import { useState, useRef, useEffect } from "react";
 import styles from "./ServicesPreview.module.css";
 import { LuArrowUpRight } from "react-icons/lu";
-import Image from "next/image";
 import gsap from "gsap";
 import Link from "next/link";
 import { IoIosArrowRoundForward } from "react-icons/io";
