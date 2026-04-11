@@ -1,6 +1,6 @@
 "use client";
 
-import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiFlutter, SiZoho, SiAngular, SiJavascript, SiRedux } from "react-icons/si";
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiFlutter, SiZoho, SiAngular, SiJavascript, SiRedux, SiGoogleads, SiMeta, SiOdoo, SiWhatsapp, SiInstagram, SiTiktok} from "react-icons/si";
 
 export default function TechLogos() {
   return [

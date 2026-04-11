@@ -7,6 +7,7 @@ import { Smooch_Sans } from "next/font/google";
 import { DM_Sans } from "next/font/google";
 import { Raleway } from "next/font/google";
 import { Inter } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -125,6 +126,7 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </LoaderWrapper>
+        <GoogleAnalytics gaId="G-2E9T08NKSG" />
       </body>
     </html>
   );
