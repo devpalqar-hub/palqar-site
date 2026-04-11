@@ -60,7 +60,7 @@
 .title {
   font-size: clamp(42px, 7vw, 86px);
   line-height: 1.13;
-  letter-spacing: clamp(3px, 0.7vw, 7.2px);
+  /* letter-spacing: clamp(3px, 0.7vw, 7.2px); */
   font-weight: 600;
   background: linear-gradient(
     to right,

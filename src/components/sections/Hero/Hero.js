@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./Hero.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import LogoLoop from "@/components/ui/LogoLoop";
 
 export default function Hero() {
   const videoRef = useRef(null);
@@ -125,7 +126,7 @@ export default function Hero() {
       )}
 
       <div className={styles.content}>
-        <p className={styles.kicker}>30+ PROJECTS DELIVERED</p>
+        {/* <p className={styles.kicker}>200+ PROJECTS DELIVERED</p> */}
 
         <h1 className={styles.title}>
           Built to Grow <br /> Designed to Convert
@@ -133,9 +134,11 @@ export default function Hero() {
 
         <p className={styles.desc}>
           From custom web development and brand identity to performance
-          marketing and business consulting, one integrated team with
-          measurable results.
+          marketing and business consulting, one integrated team with measurable
+          results.
         </p>
+
+        {/* <LogoLoop className={styles.logoLoop} /> */}
 
         <div className={styles.ctaWrap}>
           <Link className={styles.cta} href="/contact#contact-form">
