@@ -1,6 +1,11 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   EXISTING STYLES — unchanged
+══════════════════════════════════════════════════════════════════════════════ */
+
 .wrapper {
-  background: #0e0f11;
-  padding: clamp(48px, 5vw, 60px);
+  background: #000000;
+  padding: 0;
+  height: 800vh; /* Pre-allocate total scroll space for desktop */
 }
 
 .headerRow {
@@ -10,7 +15,6 @@
   gap: 24px 40px;
 }
 
-/* CTA BUTTON */
 .primaryCta {
   display: inline-flex;
   align-items: center;
@@ -26,7 +30,6 @@
   transition: all 0.3s ease;
 }
 
-/* HOVER */
 .primaryCta:hover {
   background: #ff4d5a;
   transform: translateY(-2px);
@@ -69,9 +72,7 @@
   max-width: 1100px;
 }
 
-/* ========================= */
-/* STATS GRID */
-/* ========================= */
+/* ── Stats ── */
 .stats {
   margin-bottom: clamp(72px, 12vw, 150px);
   display: grid;
@@ -90,7 +91,6 @@
   border-right: none;
 }
 
-/* NUMBER */
 .statItem h3 {
   font-size: 42px;
   font-weight: 600;
@@ -102,7 +102,6 @@
   color: #dc3545;
 }
 
-/* TITLE */
 .statItem p {
   font-size: 13px;
   letter-spacing: 1px;
@@ -111,68 +110,80 @@
   line-height: 1.5;
 }
 
-/* DESCRIPTION */
 .statItem small {
   font-size: 12px;
   color: #ffffff50;
   line-height: 1.5;
 }
 
+/* ── 3D Animate wrapper ── */
 .animate {
+  position: sticky;
+  top: 0;
   height: 100svh;
   min-height: 560px;
+  overflow: hidden;
+  background: #000000;
 }
 
+/* ── Stage ── */
 .stage {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  perspective: 1400px;
+  perspective: 1800px;
+  perspective-origin: 50% 50%;
   transform-style: preserve-3d;
 }
 
-.card,
-.layer {
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-}
-
-/* One layer = one set of 2 cards */
+/* ── Layer ── */
 .layer {
   position: absolute;
   inset: 0;
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
 }
 
-/* Card */
+.tunnelContainer {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Card ── */
 .card {
   position: absolute;
-  width: min(var(--card-width), 31vw);
-  max-width: 100%;
-  background: #e6e6e6;
+  background: #111;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
-  will-change: transform, opacity, filter;
-  transform-origin: center;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
+  pointer-events: none;
 }
 
 .cardImage {
   object-fit: cover;
-  transform: scale(1.05);
+  filter: grayscale(100%) contrast(1.1);
+  transition: transform 0.6s ease;
 }
 
-.left {
-  left: clamp(0px, 8%, 96px);
-  top: 50%;
+.card:hover .cardImage {
+  transform: scale(1.1);
+  filter: grayscale(0%) contrast(1.1);
 }
 
-.right {
-  right: clamp(0px, 8%, 96px);
-  top: 50%;
-}
-
-/* Center text */
+/* ── Text overlay ── */
 .text {
   position: absolute;
   inset: 0;
@@ -184,7 +195,9 @@
   padding: 24px clamp(96px, 16vw, 220px);
   text-align: center;
   pointer-events: none;
-  z-index: 2;
+  transform: translateZ(60px);
+  z-index: 10;
+  will-change: transform, opacity;
 }
 
 .text h3 {
@@ -220,6 +233,229 @@
   line-height: 1.2;
 }
 
+/* ══════════════════════════════════════════════════════════════════════════════
+   INFINITE MARQUEE GALLERY — new styles
+══════════════════════════════════════════════════════════════════════════════ */
+
+/*
+ * marqueeSection: full-width, fixed-height container sitting flush below
+ * the 3D scroll section. Background matches the wrapper (#0e0f11 ≈ near-black)
+ * so it reads as one continuous dark section but the marquee itself
+ * uses pure #000 for maximum contrast with the B&W portraits.
+ */
+.marqueeSection {
+  position: relative;
+  width: 100%;
+  background: #000000;
+  /* Height = tallest card (500px) + max lane offset (144px) + top/bottom breathing */
+  height: 720px;
+  overflow: hidden;
+  /* Negative margin pulls it flush against the 3D block with no gap */
+  margin-top: 0;
+}
+
+/*
+ * marqueeViewport: clips the scrolling track and applies the edge fades.
+ * The mask-image creates a soft fade-to-transparent at both horizontal edges
+ * so cards "emerge from" and "disappear into" darkness — no hard cutoff.
+ */
+.marqueeViewport {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 48px;
+
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 7%,
+    #000 93%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 7%,
+    #000 93%,
+    transparent 100%
+  );
+}
+
+/*
+ * marqueeTrack: the scrolling belt.
+ *
+ * KEY TRICK — seamless loop:
+ *   The track contains 2× the images (MARQUEE_DOUBLED).
+ *   @keyframes marquee moves it from 0 → -50%.
+ *   -50% is exactly one full set of images wide.
+ *   When the animation resets from -50% back to 0, the second copy
+ *   is visually identical to where the first started → invisible loop.
+ *
+ * will-change: transform → GPU compositor layer → zero jitter.
+ */
+.marqueeTrack {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding-left: 18px;
+
+  animation: marqueeScroll 38s linear infinite;
+  will-change: transform;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/*
+ * marqueeCard: individual portrait tile.
+ * Dimensions are set via inline style (width, height, marginTop for the lane offset).
+ * overflow: hidden clips the scale(1.06) photo overscan.
+ * The hover lift/scale is pure CSS — independent of the marquee animation.
+ */
+.marqueeCard {
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.5s ease;
+}
+
+.marqueeCard:hover {
+  transform: scale(1.04) translateY(-10px);
+  box-shadow: 0 36px 72px rgba(0, 0, 0, 0.85);
+  z-index: 10;
+}
+
+/*
+ * marqueePhoto: the Next.js <Image> fill.
+ * grayscale(100%) enforces B&W even if the source image is colour.
+ * scale(1.06) overscan prevents white edges during the card hover scale.
+ * The hover transition brightens slightly for a "coming to life" feel.
+ */
+.marqueePhoto {
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.06) brightness(0.9);
+  transform: scale(1.06);
+  transition:
+    filter 0.5s ease,
+    transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.marqueeCard:hover .marqueePhoto {
+  filter: grayscale(85%) contrast(1.1) brightness(1);
+  transform: scale(1.12);
+}
+
+/*
+ * marqueeOverlay: bottom vignette on each card.
+ * Adds subtle depth + makes the gallery read as a cohesive dark composition.
+ * Fades out on hover so the face is fully visible.
+ */
+.marqueeOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.marqueeCard:hover .marqueeOverlay {
+  opacity: 0.3;
+}
+
+/* ── Glassmorphism pill ─────────────────────────────────────────────────────── */
+.pill {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 14px 14px 28px;
+
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(24, 24, 24, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+
+  white-space: nowrap;
+}
+
+.pillText {
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: -0.01em;
+  user-select: none;
+}
+
+.pillBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.pillBtn:hover {
+  background: rgba(255, 255, 255, 0.13);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: scale(1.07);
+}
+
+.pillBtn:active {
+  transform: scale(0.95);
+}
+
+/* Two-line hamburger / equals icon */
+.pillLines {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.pillLines span {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: 2px;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════════════════════════════ */
+
 @media (max-width: 992px) {
   .wrapper {
     padding: 56px 32px;
@@ -247,6 +483,10 @@
     border-right: none;
   }
 
+  .stage {
+    perspective: 800px;
+  }
+
   .card {
     width: min(var(--card-width), 38vw);
   }
@@ -267,11 +507,16 @@
     white-space: normal;
     text-wrap: balance;
   }
+
+  .marqueeSection {
+    height: 560px;
+  }
 }
 
 @media (max-width: 768px) {
   .wrapper {
     padding: 48px 24px;
+    height: 600vh;
   }
 
   .headerRow {
@@ -313,10 +558,13 @@
     min-height: 390px;
   }
 
+  .stage {
+    perspective: 700px;
+  }
+
   .left {
     left: -5%;
   }
-
   .right {
     right: -5%;
   }
@@ -339,7 +587,6 @@
     gap: 10px;
     max-width: 100%;
   }
-
   .row {
     gap: 8px;
   }
@@ -347,6 +594,29 @@
   .tag {
     padding: 10px 14px;
     font-size: clamp(12px, 3.6vw, 18px);
+  }
+
+  .marqueeSection {
+    height: 440px;
+  }
+
+  .pill {
+    bottom: 1.25rem;
+    padding: 12px 12px 12px 22px;
+    gap: 14px;
+  }
+
+  .pillText {
+    font-size: 13px;
+  }
+
+  .pillBtn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .pillLines span {
+    width: 14px;
   }
 }
 
@@ -370,6 +640,10 @@
     min-height: 360px;
   }
 
+  .stage {
+    perspective: 600px;
+  }
+
   .card {
     width: min(var(--card-width), 46vw);
   }
@@ -391,5 +665,16 @@
   .right {
     right: -10%;
     top: 54%;
+  }
+
+  .marqueeSection {
+    height: 360px;
+  }
+
+  .pill {
+    left: 1rem;
+    right: 1rem;
+    transform: none;
+    justify-content: space-between;
   }
 }

@@ -1,8 +1,15 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
+import dynamic from "next/dynamic";
 import styles from "./Footer.module.css";
-import Hyperspeed from "@/components/ui/FooterAnimation/FooterAnimation";
 import { useRouter } from "next/navigation";
+
+const Hyperspeed = dynamic(
+  () => import("@/components/ui/FooterAnimation/FooterAnimation"),
+  { ssr: false, loading: () => <div style={{ background: "#000", width: "100%", height: "100%" }} /> }
+);
+
 export default function Footer() {
   const router = useRouter();
   return (
@@ -45,21 +52,21 @@ export default function Footer() {
             <div className={styles.templateColumn}>
               <h4 className={styles.columnTitle}>Template Pages</h4>
               <ul className={styles.linkList}>
-                <li>Home</li>
-                <li>About</li>
-                <li>Portfolio</li>
-                <li>Contact</li>
-                <li>FAQ</li>
+                <li><Link href="/">Home</Link></li>
+                <li><Link href="/about">About</Link></li>
+                <li><Link href="/industries">Portfolio</Link></li>
+                <li><Link href="/contact">Contact</Link></li>
+                <li><Link href="/blog">Blog</Link></li>
               </ul>
             </div>
 
             <div className={styles.socialColumn}>
               <h4 className={styles.columnTitle}>Social</h4>
               <ul className={styles.linkList}>
-                <li>Twitter (X)</li>
-                <li>Instagram</li>
-                <li>Youtube</li>
-                <li>Framer</li>
+                <li><a href="https://x.com/palqar" target="_blank" rel="noopener noreferrer">Twitter (X)</a></li>
+                <li><a href="https://instagram.com/palqar" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                <li><a href="https://youtube.com/@palqar" target="_blank" rel="noopener noreferrer">Youtube</a></li>
+                <li><a href="https://framer.com" target="_blank" rel="noopener noreferrer">Framer</a></li>
               </ul>
             </div>
 
@@ -85,7 +92,7 @@ export default function Footer() {
             width={1400}
             height={1200}
             className={styles.bigLogo}
-            priority
+            loading="lazy"
           />
         </div>
 
@@ -101,4 +108,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+}
