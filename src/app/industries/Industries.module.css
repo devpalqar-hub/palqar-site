@@ -1,68 +1,41 @@
 /* ===============================
-   WORKS HERO SECTION
+   INDUSTRIES PAGE
 ================================= */
 
-.worksPage {
-  background: #000;
+.industriesPage {
+  background: #ffffff;
+  color: #000000;
   min-height: 100vh;
+  font-family: var(--font-raleway);
+  padding-bottom: 100px;
 }
 
+/* ===============================
+   HERO SECTION
+================================= */
+
 .heroSection {
-  padding: 160px 0 140px;
-  text-align: center;
-  position: relative;
+  padding: 290px 0 190px;
+  text-align: left;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 0 40px;
 }
 
-/* ===============================
-   LABEL
-================================= */
-
-.label {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 20px;
-  border-radius: 999px;
-  border: 1px solid #82141f65;
-  background: rgba(229, 46, 61, 0.08);
-  font-family: var(--font-dm-sans);
-  text-transform: uppercase;
-  color: #912b36;
-  margin-bottom: 40px;
-  font-weight: 700;
-  font-style: Bold;
-  font-size: 12px;
-  line-height: 16px;
-  letter-spacing: 2.4px;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.dot {
-  width: 6px;
-  height: 6px;
-  background: #912b36;
-  border-radius: 50%;
-}
-
-/* ===============================
-   HEADING
-================================= */
-
 .heroHeading {
-  font-family: var(--font-dm-sans);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: var(--font-raleway);
   font-weight: 800;
-  font-size: 120px;
-  line-height: 0.9;
-  letter-spacing: -4px;
-  color: #bbb9b9;
-  margin-bottom: 40px;
+  font-size: 100px;
+  line-height: 1;
+  letter-spacing: -2px;
+  color: #000000;
+  max-width: 1000px;
 }
 
 .heroHeading span {
@@ -70,212 +43,89 @@
 }
 
 /* ===============================
-   SUBTEXT
+   LIST SECTION
 ================================= */
 
-.subtext {
-  font-family: var(--font-dm-sans);
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 32.5px;
-  color: #99A1AF;
-  max-width: 646px;
-  margin: 0 auto 60px;
-}
-
-/* ===============================
-   FILTER TABS
-================================= */
-
-.filterWrapper {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.filterBtn {
+.sectionContainer {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 22px;
-  border-radius: 999px;
-  border: none;
-  background: transparent;
-  font-family: var(--font-dm-sans);
-  font-size: 14px;
+  gap: 100px;
+}
+
+.listSection {
+  padding: 40px 0 100px;
+}
+
+.listItem {
+  display: flex;
+  /* align-items: flex-start; */
+  /* justify-content: space-between; */
+  padding: 80px 0;
+  border-top: 1px solid #eaeaea;
+  gap: 250px;
+}
+
+.listItem:last-child {
+  border-bottom: 1px solid #eaeaea;
+}
+
+.itemLeft {
+  flex: 0 0 500px;
+  /* Fixed width for text area as requested previously */
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.itemTextContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.itemNumber {
+  font-size: 68px;
   font-weight: 700;
-  line-height: 20px;
-  letter-spacing: 0.7px;
-  color: #6A7282;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.filterBtn svg {
-  color: inherit;
+  color: #000000;
+  line-height: 1;
 }
 
-.filterBtn:hover {
-  color: #fff;
+.itemTitle {
+  font-size: 68px;
+  font-weight: 700;
+  color: #000000;
+  line-height: 1.1;
+  letter-spacing: -1px;
 }
 
-.active {
-  background: #e52e3d;
-  color: #fff;
-  box-shadow: 0 0 20px rgba(229, 46, 61, 0.4);
-}
-/* ===============================
-   RESPONSIVE
-================================= */
-
-@media (max-width: 1200px) {
-  .heroHeading {
-    font-size: clamp(60px, 10vw, 100px);
-  }
+.itemDescription {
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #4b5563;
+  /* padding removed to fix broken layout with large text */
 }
 
-@media (max-width: 768px) {
-
-  .heroSection {
-    padding: 120px 0 100px;
-  }
-
-  .container {
-    padding: 0 20px;
-  }
-
-  .heroHeading {
-    font-size: clamp(40px, 12vw, 64px);
-    letter-spacing: -2px;
-  }
-
-  .subtext {
-    font-size: 16px;
-  }
-
-  .filterWrapper {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .filterBtn {
-    font-size: 13px;
-    padding: 10px 16px;
-  }
+.itemRight {
+  flex: 1;
+  width: 100%;
 }
 
-@media (max-width: 480px) {
-  .heroHeading {
-    font-size: clamp(36px, 14vw, 52px);
-  }
-
-  .subtext {
-    font-size: 15px;
-  }
-}
-
-/* ===============================
-   WORKS GRID SECTION
-================================= */
-
-.worksGridSection {
-  background: #000;
-  padding: 120px 0 160px;
-}
-
-.worksGridContainer {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 40px;
-}
-
-/* GRID LAYOUT */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-}
-
-/* Default card */
-.card {
-  position: relative;
-  overflow: hidden;
-  background: #111;
-  cursor: pointer;
-}
-
-/* Large cards (top two) */
-.large {
-  aspect-ratio: 4 / 5;
-}
-
-/* Smaller cards */
-.card:not(.large) {
-  aspect-ratio: 4 / 5;
-}
-
-/* Image wrapper */
 .imageWrapper {
   position: relative;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 24px;
   overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .imageWrapper img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
+  transition: transform 0.5s ease;
 }
 
-.card:hover img {
-  transform: scale(1.08);
-}
-
-/* Overlay */
-.overlay {
-  position: absolute;
-  bottom: 30px;
-  left: 30px;
-  color: #fff;
-}
-
-.category {
-    font-family: var(--font-dm-sans);
-    font-weight: 700;
-    font-style: Bold;
-    font-size: 14px;
-    line-height: 16px;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    color: #DC3545;
-    margin-bottom: 10px;
-}
-
-.overlay h3 {
-    font-family: var(--font-dm-sans);
-    font-weight: 700;
-    font-style: Bold;
-    font-size: 48px;
-    line-height: 48px;
-    letter-spacing: -2.4px;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-}
-
-.overlay p {
-    font-family: var(--font-dm-sans);
-    font-weight: 400;
-    font-style: Regular;
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: 0.7px;
-    text-transform: uppercase;
-    color: #bdbdbd;
+.imageWrapper:hover img {
+  transform: scale(1.05);
 }
 
 /* ===============================
@@ -283,142 +133,76 @@
 ================================= */
 
 @media (max-width: 1024px) {
-  .grid {
-    gap: 30px;
+  .heroHeading {
+    font-size: 64px;
   }
 
-  .overlay h3 {
-    font-size: 22px;
-  }
-}
-
-@media (max-width: 768px) {
-
-  .worksGridSection {
-    padding: 80px 0 120px;
+  .itemTitle,
+  .itemNumber {
+    font-size: 36px;
   }
 
-  .worksGridContainer {
-    padding: 0 20px;
+  .itemDescription {
+    font-size: 16px;
   }
 
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .large,
-  .card:not(.large) {
-    aspect-ratio: 4 / 5;
-  }
-
-  .overlay {
-    bottom: 20px;
-    left: 20px;
-  }
-
-  .overlay h3 {
-    font-size: 20px;
-  }
-}
-
-/* ===============================
-   CTA SECTION
-================================= */
-
-.ctaSection {
-  background: #000;
-  padding: 200px 0;
-  text-align: center;
-}
-
-.ctaContainer {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 40px;
-}
-
-/* Heading */
-.ctaHeading {
-  font-family: var(--font-dm-sans);
-  font-weight: 900;
-  font-size: 96px;
-  line-height: 96px;
-  letter-spacing: -4.8px;
-  margin-bottom: 60px;
-}
-
-.white {
-  display: block;
-  color: #f5f4f3;
-}
-
-.red {
-  display: block;
-  color: #e52e3d;
-}
-
-/* Button */
-.ctaButton {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  padding: 22px 48px;
-  border-radius: 999px;
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  background: transparent;
-  font-family: var(--font-dm-sans);
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 4px;
-  line-height: 28px;
-  text-transform: uppercase;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.ctaButton:hover {
-  background: #fff;
-  color: #000;
-}
-
-.arrow {
-  transition: transform 0.3s ease;
-}
-
-.ctaButton:hover .arrow {
-  transform: translateX(6px);
-}
-
-/* ===============================
-   RESPONSIVE
-================================= */
-
-@media (max-width: 1200px) {
-  .ctaHeading {
-    font-size: clamp(60px, 10vw, 90px);
+  .listItem {
+    gap: 40px;
+    padding: 60px 0;
   }
 }
 
 @media (max-width: 768px) {
-
-  .ctaSection {
-    padding: 120px 0;
+  .heroSection {
+    padding: 120px 0 60px;
   }
 
-  .ctaContainer {
+  .container {
     padding: 0 20px;
   }
 
-  .ctaHeading {
-    font-size: clamp(36px, 12vw, 60px);
-    letter-spacing: -1px;
+  .heroHeading {
+    font-size: clamp(40px, 8vw, 56px);
   }
 
-  .ctaButton {
-    padding: 18px 32px;
-    font-size: 14px;
-    letter-spacing: 2px;
+  .listItem {
+    flex-direction: column;
+    gap: 40px;
+    padding: 50px 0;
+  }
+
+  .itemLeft {
+    flex: none;
+    width: 100%;
+    gap: 16px;
+    max-width: 100%;
+  }
+
+  .itemNumber,
+  .itemTitle {
+    font-size: 32px;
+  }
+
+  .itemDescription {
+    margin-top: 5px;
+  }
+
+  .itemRight {
+    max-width: 100%;
+  }
+
+  .imageWrapper {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroHeading {
+    font-size: clamp(32px, 10vw, 40px);
+  }
+
+  .itemNumber,
+  .itemTitle {
+    font-size: 28px;
   }
 }

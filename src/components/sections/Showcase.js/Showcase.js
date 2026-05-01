@@ -4,7 +4,9 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import Image from "next/image";
 import styles from "./Showcase.module.css";
+import { ArrowRight } from "lucide-react";
 
 export default function Showcase() {
   const container = useRef(null);
@@ -160,7 +162,7 @@ export default function Showcase() {
 
   return (
     <section ref={container} className={styles.showcase}>
-      {/* <div className={styles.header}>
+      <div className={styles.header}>
         <h1>Let's Build What's Next</h1>
         <p>
           Whether you're launching a new idea or scaling an existing product, we
@@ -179,18 +181,19 @@ export default function Showcase() {
           </div>
           <span className={styles.cta}>Start Your Project</span>
         </div>
-      </div> */}
+      </div>
 
       <div className={styles.sliderWrapper}>
         <div className={styles.sliderRow}>
           {images.map((src, i) => (
             <div key={i} className={styles.card}>
-              <img
+              <Image
                 src={src}
-                alt={`Project ${i + 1}`}
+                alt={`Palqar featured digital product or branding project ${i + 1}`}
+                fill
+                sizes="(max-width: 640px) 160px, (max-width: 900px) 200px, 280px"
+                style={{ objectFit: "cover" }}
                 draggable={false}
-                loading="lazy"
-                decoding="async"
               />
             </div>
           ))}

@@ -1,5 +1,8 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* Your variables */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -39,16 +42,13 @@
   }
 }
 
-/* ── Global resets ── */
-/* html,
+/* Global styles */
+html,
 body {
-  overflow-x: hidden;  
-  max-width: 100%;
-} */
-html, body {
   background: #000;
   font-family: var(--font-inter);
 }
+
 *,
 *::before,
 *::after {

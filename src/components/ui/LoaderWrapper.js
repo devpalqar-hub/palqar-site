@@ -13,7 +13,16 @@ export default function LoaderWrapper({ children }) {
   return (
     <>
       {loading && <Loader onFinish={() => setLoading(false)} />}
-      {!loading && children}
+      <div
+        style={{
+          visibility: loading ? "hidden" : "visible",
+          opacity: loading ? 0 : 1,
+          transition: "opacity 0.3s ease",
+        }}
+        aria-hidden={loading}
+      >
+        {children}
+      </div>
     </>
   );
 }

@@ -1,193 +1,51 @@
-"use client";
-
-import { useState } from "react";
+import IndustriesClient from "./IndustriesClient";
 import styles from "./Industries.module.css";
-import { Globe, Megaphone, Monitor, PenTool } from "lucide-react";
-import Link from "next/link";
 
-export default function WorksPage() {
-  const [active, setActive] = useState("all");
+export const metadata = {
+  title: "Industries We Serve | Palqar",
+  description:
+    "Discover Palqar's industry-focused digital solutions for Health-Tech, E-commerce, AI, Manufacturing, Automotive, Real Estate, and more.",
+  alternates: { canonical: "https://palqar.com/industries" },
+};
 
+const industriesData = [
+  { id: "01", title: "Health-Tech", description: "Secure, compliant digital experiences that improve patient outcomes, streamline operations, and build trust in healthcare brands.", image: "/industries/healthcare.png", alt: "Health-Tech" },
+  { id: "02", title: "Ecom", description: "Digital solutions that enhance online visibility, optimize customer journeys, and drive conversions.", image: "/industries/ecom.png", alt: "ecom" },
+  { id: "03", title: "Fashion and Retail", description: "Immersive brand experiences that captivate audiences and elevate fashion and retail presence.", image: "/industries/fashion.png", alt: "fashion and retail" },
+  { id: "04", title: "AI", description: "Intelligent platforms and AI-driven systems designed to automate processes and unlock new insights.", image: "/industries/AI.png", alt: "Ai" },
+  { id: "05", title: "HVAC", description: "Robust digital solutions for HVAC businesses to streamline booking, quoting, and customer management.", image: "/industries/HVAC.png", alt: "HVAC" },
+  { id: "06", title: "Manufacturing", description: "Industrial-grade platforms that optimize supply chain visibility and showcase manufacturing capabilities.", image: "/industries/manufacturing.png", alt: "manufacturing" },
+  { id: "07", title: "Automotive and Mobility", description: "Next-generation digital showrooms and mobility solutions that drive the automotive industry forward.", image: "/industries/automotive.png", alt: "automotive and mobility" },
+  { id: "08", title: "FMCG", description: "Engaging digital campaigns and platforms designed to move fast-moving consumer goods at scale.", image: "/industries/fmcg.png", alt: "FMCG" },
+  { id: "09", title: "F&B", description: "Mouth-watering digital experiences and ordering systems for the food and beverage industry.", image: "/industries/fb.png", alt: "F&B" }, // 🔥 fixed filename
+  { id: "10", title: "Govt and Public Sector", description: "Accessible, secure, and transparent digital portals built for government and public services.", image: "/industries/govt.png", alt: "govt and public sector" },
+  { id: "11", title: "Retail and Ecom", description: "Omnichannel retail platforms designed to unify in-store and online customer experiences.", image: "/industries/retail.png", alt: "retail and ecommerce" },
+  { id: "12", title: "Media and Entertainment", description: "Captivating digital streaming and content delivery platforms for the entertainment industry.", image: "/industries/media.png", alt: "media and entertainment" },
+  { id: "13", title: "Real Estate", description: "Immersive property viewing platforms and digital listing solutions for real estate professionals.", image: "/industries/realEstate.png", alt: "real estate" },
+  { id: "14", title: "LegalTech", description: "Secure, confidential, and highly professional digital infrastructure for legal practices.", image: "/industries/legalTech.png", alt: "LegalTech" },
+  { id: "15", title: "JanSan", description: "B2B portals and procurement platforms tailored for the Janitorial and Sanitation industry.", image: "/industries/janSan.png", alt: "JanSan" }
+];
+
+export default function IndustriesPage() {
   return (
-    <main className={styles.worksPage}>
+    <main className={styles.industriesPage}>
+      {/* HERO SECTION */}
       <section className={styles.heroSection}>
         <div className={styles.container}>
-
-          <div className={styles.label}>
-            <span className={styles.dot}></span>
-            <span>Selected Works 2025–2026</span>
-          </div>
-
           <h1 className={styles.heroHeading}>
-            <span>WE BUILD</span>
-            <span>LEGACIES</span>
+            <span>Industry-Focused</span>
+            <span>Digital Solutions for</span>
+            <span>Growing Brands</span>
           </h1>
-
-          <p className={styles.subtext}>
-            From silent disruptors to market leaders. We partner with
-            visionaries to define the next era of digital culture.
-          </p>
-
-          <div className={styles.filterWrapper}>
-
-            <button
-              className={`${styles.filterBtn} ${
-                active === "all" ? styles.active : ""
-              }`}
-              onClick={() => setActive("all")}
-            >
-              <Globe
-                size={16}
-                className={`${styles.icon} ${
-                  active === "all" ? styles.activeIcon : ""
-                }`}
-              />
-              ALL PROJECTS
-            </button>
-
-            <button
-              className={`${styles.filterBtn} ${
-                active === "branding" ? styles.active : ""
-              }`}
-              onClick={() => setActive("branding")}
-            >
-              <PenTool
-                size={16}
-                className={`${styles.icon} ${
-                  active === "branding" ? styles.activeIcon : ""
-                }`}
-              />
-              BRANDING
-            </button>
-
-            <button
-              className={`${styles.filterBtn} ${
-                active === "marketing" ? styles.active : ""
-              }`}
-              onClick={() => setActive("marketing")}
-            >
-              <Megaphone
-                size={16}
-                className={`${styles.icon} ${
-                  active === "marketing" ? styles.activeIcon : ""
-                }`}
-              />
-              MARKETING
-            </button>
-
-            <button
-              className={`${styles.filterBtn} ${
-                active === "web" ? styles.active : ""
-              }`}
-              onClick={() => setActive("web")}
-            >
-              <Monitor
-                size={16}
-                className={`${styles.icon} ${
-                  active === "web" ? styles.activeIcon : ""
-                }`}
-              />
-              WEB & MOBILE
-            </button>
-
-          </div>
-
         </div>
       </section>
 
-      {/* ================= WORKS GRID ================= */}
-
-    <section className={styles.worksGridSection}>
-     <div className={styles.worksGridContainer}>
-
-        <div className={styles.grid}>
-
-        {/* Large Left */}
-        <div className={`${styles.card} ${styles.large}`}>
-            <div className={styles.imageWrapper}>
-            <img src="/image1.jpg" alt="Ethereal Identity" />
-            <div className={styles.overlay}>
-                <span className={styles.category}>Branding</span>
-                <h3>ETHEREAL IDENTITY</h3>
-                <p>Nebula Corp</p>
-            </div>
-            </div>
+      {/* LIST SECTION */}
+      <section className={styles.listSection}>
+        <div className={styles.container}>
+          <IndustriesClient industriesData={industriesData} />
         </div>
-
-        {/* Large Right */}
-        <div className={`${styles.card} ${styles.large}`}>
-            <div className={styles.imageWrapper}>
-            <img src="/image2.jpg" alt="Cyber City Campaign" />
-            <div className={styles.overlay}>
-                <span className={styles.category}>Marketing</span>
-                <h3>CYBER CITY CAMPAIGN</h3>
-            </div>
-            </div>
-        </div>
-
-        {/* Small */}
-        <div className={styles.card}>
-            <div className={styles.imageWrapper}>
-            <img src="/image3.jpg" alt="Fintech Revolution" />
-            <div className={styles.overlay}>
-                <span className={styles.category}>Applications</span>
-                <h3>FINTECH REVOLUTION</h3>
-            </div>
-            </div>
-        </div>
-
-        <div className={styles.card}>
-            <div className={styles.imageWrapper}>
-            <img src="/img4.jpeg" alt="Glass Dimension" />
-            <div className={styles.overlay}>
-                <span className={styles.category}>Branding</span>
-                <h3>GLASS DIMENSION</h3>
-            </div>
-            </div>
-        </div>
-
-        <div className={styles.card}>
-            <div className={styles.imageWrapper}>
-            <img src="/img1.jpeg" alt="Immersive Web" />
-            <div className={styles.overlay}>
-                <span className={styles.category}>Applications</span>
-                <h3>IMMERSIVE WEB</h3>
-            </div>
-            </div>
-        </div>
-
-        <div className={styles.card}>
-            <div className={styles.imageWrapper}>
-            <img src="/about/story-1.jpg" alt="Noir Packaging" />
-            <div className={styles.overlay}>
-                <span className={styles.category}>Branding</span>
-                <h3>NOIR PACKAGING</h3>
-            </div>
-            </div>
-        </div>
-
-        </div>
-
-     </div>
-    </section>
-
-    {/* ================= CTA SECTION ================= */}
-
-    <section className={styles.ctaSection}>
-        <div className={styles.ctaContainer}>
-
-            <h2 className={styles.ctaHeading}>
-            <span className={styles.white}>READY TO MAKE</span>
-            <span className={styles.red}>HISTORY?</span>
-            </h2>
-
-            <Link className={styles.ctaButton} href="/contact">
-            START A PROJECT
-            <span className={styles.arrow}>→</span>
-            </Link>
-
-        </div>
-     </section>
+      </section>
     </main>
   );
 }

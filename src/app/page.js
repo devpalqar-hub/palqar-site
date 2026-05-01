@@ -1,12 +1,15 @@
+import dynamic from 'next/dynamic';
 import styles from "./page.module.css";
-import FeaturedProjects from "@/components/sections/FeaturedProjects/FeaturedProjects";
 import Hero from "@/components/sections/Hero/Hero";
-import ServicesPreview from "@/components/sections/Services/ServicesPreview";
-import WhySection from "@/components/sections/WhySection/WhySection";
-import Showcase from "@/components/sections/Showcase.js/Showcase";
-import TestimonialsPage from "@/components/sections/Testimonials/Testimonials";
-import TextSection from "@/components/sections/TextSection/TextSection";
-import VideoSection from "@/components/sections/VideoSection/VideoSection";
+
+// Dynamically import heavy components to reduce initial JS payload
+const FeaturedProjects = dynamic(() => import("@/components/sections/FeaturedProjects/FeaturedProjects"));
+const ServicesPreview = dynamic(() => import("@/components/sections/Services/ServicesPreview"));
+const WhySection = dynamic(() => import("@/components/sections/WhySection/WhySection"));
+const Showcase = dynamic(() => import("@/components/sections/Showcase.js/Showcase"));
+const TestimonialsPage = dynamic(() => import("@/components/sections/Testimonials/Testimonials"));
+const TextSection = dynamic(() => import("@/components/sections/TextSection/TextSection"));
+const VideoSection = dynamic(() => import("@/components/sections/VideoSection/VideoSection"));
 
 export const metadata = {
   title: "Palqar | Web Development, Branding, Marketing & Growth",

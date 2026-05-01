@@ -49,7 +49,7 @@ export default function Hero() {
     <section className={styles.hero}>
       <Image
         src="/hero-poster.png"
-        alt=""
+        alt="Palqar Digital Growth Agency - Web Development, Branding, and Performance Marketing"
         fill
         priority
         sizes="100vw"
@@ -63,7 +63,7 @@ export default function Hero() {
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="none"
         poster="/hero-poster.png"
         onLoadedData={() => setLoaded(true)}
       >

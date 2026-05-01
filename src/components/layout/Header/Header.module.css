@@ -23,55 +23,54 @@
 ============================================================ */
 .wrapper {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 1400px;
   z-index: 1000;
-  height: var(--header-h);
-
-  /* Default: solid black (above fold) */
-  background: #000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-
+  height: 72px; /* Slimmer height for modern look */
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px; /* Floating pill design */
   transition:
-    transform   0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    opacity     0.45s ease,
-    background  0.4s ease,
-    border-color 0.4s ease,
-    backdrop-filter 0.4s ease;
+    transform 0.4s cubic-bezier(0.2, 0, 0.2, 1),
+    width 0.4s ease,
+    background 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
-/* After scroll: glassmorphism */
 .wrapper.scrolled {
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border-bottom-color: rgba(255, 255, 255, 0.1);
+  top: 12px;
+  width: 90%;
+  background: rgba(0, 0, 0, 0.95);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
 }
 
 .hidden {
-  transform: translateY(-100%);
+  transform: translate(-50%, -150%);
   opacity: 0;
   pointer-events: none;
 }
 
 /* ── Navbar ── */
 .navbar {
-  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 4%;
+  padding: 0 24px;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  gap: 20px;
 }
 
 /* ── Logo ── */
 .logoBox {
   position: relative;
-  width: 180px;
-  height: 136px;
+  width: 140px;
+  height: 48px;
   flex-shrink: 0;
 }
 
@@ -90,34 +89,33 @@
 .navLink {
   position: relative;
   font-family: var(--font-inter);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
-  letter-spacing: 0.01em;
-  padding-bottom: 4px;
-  transition: color 0.2s ease;
-
-  /* Animated underline indicator */
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background: var(--brand-red);
-    border-radius: 2px;
-    transition: width 0.25s ease;
-  }
+  letter-spacing: 0.02em;
+  transition: color 0.3s ease;
 }
 
 .navLink:hover {
   color: #fff;
 }
 
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: var(--brand-red);
+  border-radius: 50%;
+  transform: translateX(-50%) scale(0);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
 .navLink:hover::after {
-  width: 100%;
+  transform: translateX(-50%) scale(1);
 }
 
 /* ── Services trigger ── */
@@ -157,28 +155,27 @@
 /* ── Contact CTA ── */
 .contact {
   font-family: var(--font-inter);
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  color: #fff;
+  color: #000;
+  background: #ffffff;
   text-decoration: none;
-  padding: 12px 26px;
-  border: 1.5px solid rgba(255, 255, 255, 0.25);
-  border-radius: 9999px;
+  padding: 10px 20px;
+  border-radius: 100px;
   flex-shrink: 0;
   transition:
-    background     0.25s ease,
-    border-color   0.25s ease,
-    color          0.25s ease,
-    box-shadow     0.25s ease;
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .contact:hover {
-  background:   var(--brand-red);
-  border-color: var(--brand-red);
+  background: var(--brand-red);
   color: #fff;
-  box-shadow: 0 4px 24px rgba(220, 53, 69, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -5px rgba(220, 53, 69, 0.4);
 }
 
 /* ── Hamburger ── */
@@ -215,27 +212,32 @@
 ============================================================ */
 .megaMenu {
   position: fixed;
-  top: var(--header-h);   /* ← uses CSS var, never hardcoded */
-  left: 0;
-  right: 0;
+  top: 104px; /* Matches 24px top + 72px height + 8px gap */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 1400px;
   z-index: 999;
-  background: rgba(0, 0, 0, 0.92);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px;
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6);
 
   opacity: 0;
-  transform: translateY(-8px);
-  pointer-events: none;
+  visibility: hidden;
+  transform: translate(-50%, -10px);
   transition:
-    opacity   0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity 0.4s ease,
+    transform 0.4s cubic-bezier(0.2, 0, 0.2, 1),
+    visibility 0.4s;
 }
 
 .megaMenuVisible {
   opacity: 1;
-  transform: translateY(0);
-  pointer-events: all;
+  visibility: visible;
+  transform: translate(-50%, 0);
 }
 
 .megaInner {
@@ -249,18 +251,11 @@
 
 /* ── Column ── */
 .megaCol {
-  padding: 20px 36px 20px 0;
-  border-radius: 12px;
-  transition: background 0.2s ease;
-}
-
-.megaCol:hover {
-  background: rgba(255, 255, 255, 0.03);
+  padding: 0 24px;
 }
 
 .megaCol + .megaCol {
-  border-left: 1px solid rgba(255, 255, 255, 0.06);
-  padding-left: 36px;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* ── Category heading ── */
@@ -330,12 +325,12 @@
 .drawer {
   position: fixed;
   inset: 0;
-  top: var(--header-h);   /* ← CSS var */
+  top: 0;
   z-index: 998;
   background: #000;
   display: flex;
   flex-direction: column;
-  padding: 40px 8% 48px;
+  padding: 120px 8% 48px; /* Extra top padding for floating header */
   transform: translateX(100%);
   transition: transform 0.4s var(--drawer-ease);
   overflow-y: auto;

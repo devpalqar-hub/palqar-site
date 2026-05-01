@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
+import { Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
@@ -28,11 +28,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
+
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -119,7 +115,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${smoochSans.variable} ${dmSans.variable} ${raleway.variable} ${inter.variable} ${jetbrains.variable}`}
+        className={`${geistSans.variable} ${smoochSans.variable} ${dmSans.variable} ${raleway.variable} ${inter.variable} ${jetbrains.variable}`}
       >
         <LoaderWrapper>
           <Header />

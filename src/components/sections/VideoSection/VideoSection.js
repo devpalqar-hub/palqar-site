@@ -29,7 +29,7 @@ export default function VideoSection() {
               muted={muted}
               loop
               playsInline
-              preload="metadata"
+              preload="none"
               onPlay={(e) => e.currentTarget.classList.add(styles.visible)}
             >
               <source src="/website-video.webm" type="video/webm" />
