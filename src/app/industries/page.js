@@ -17,7 +17,7 @@ const industriesData = [
   { id: "06", title: "Manufacturing", description: "Industrial-grade platforms that optimize supply chain visibility and showcase manufacturing capabilities.", image: "/industries/manufacturing.png", alt: "manufacturing" },
   { id: "07", title: "Automotive and Mobility", description: "Next-generation digital showrooms and mobility solutions that drive the automotive industry forward.", image: "/industries/automotive.png", alt: "automotive and mobility" },
   { id: "08", title: "FMCG", description: "Engaging digital campaigns and platforms designed to move fast-moving consumer goods at scale.", image: "/industries/fmcg.png", alt: "FMCG" },
-  { id: "09", title: "F&B", description: "Mouth-watering digital experiences and ordering systems for the food and beverage industry.", image: "/industries/fb.png", alt: "F&B" }, // 🔥 fixed filename
+  { id: "09", title: "F&B", description: "Mouth-watering digital experiences and ordering systems for the food and beverage industry.", image: "/industries/fb.png", alt: "F&B" },
   { id: "10", title: "Govt and Public Sector", description: "Accessible, secure, and transparent digital portals built for government and public services.", image: "/industries/govt.png", alt: "govt and public sector" },
   { id: "11", title: "Retail and Ecom", description: "Omnichannel retail platforms designed to unify in-store and online customer experiences.", image: "/industries/retail.png", alt: "retail and ecommerce" },
   { id: "12", title: "Media and Entertainment", description: "Captivating digital streaming and content delivery platforms for the entertainment industry.", image: "/industries/media.png", alt: "media and entertainment" },

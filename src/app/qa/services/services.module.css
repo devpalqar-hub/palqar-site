@@ -1,0 +1,231 @@
+.root {
+  background: #000000;
+  color: #ffffff;
+  min-height: 100vh;
+  font-family: var(--font-inter), sans-serif;
+  padding-bottom: 120px;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ── Hero ── */
+.hero {
+  padding: 160px 0 100px;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #dc3545;
+  margin-bottom: 24px;
+}
+
+.heading {
+  font-family: var(--font-raleway), sans-serif;
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  letter-spacing: -0.02em;
+}
+
+.heading em {
+  font-style: italic;
+  font-weight: 400;
+  color: #dc3545;
+}
+
+.subheading {
+  font-size: 18px;
+  color: #888;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── Grid ── */
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.08); /* Grid line color */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 60px;
+}
+
+.serviceCard {
+  background: #000000;
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.serviceCard:hover {
+  background: #080808;
+}
+
+.serviceCard::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #dc3545;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.serviceCard:hover::after {
+  transform: scaleX(1);
+}
+
+.cardNum {
+  font-size: 11px;
+  font-weight: 700;
+  color: #444;
+  margin-bottom: 40px;
+  letter-spacing: 0.1em;
+}
+
+.title {
+  font-family: var(--font-raleway), sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.desc {
+  font-size: 15px;
+  color: #777;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  min-height: 48px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.listItem {
+  font-size: 14px;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: color 0.2s ease;
+}
+
+.listItem a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.listItem a:hover {
+  color: #dc3545;
+  padding-left: 4px;
+}
+
+.listItem::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  background: #333;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.exploreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+  text-decoration: none;
+  transition: gap 0.3s ease;
+}
+
+.exploreLink:hover {
+  gap: 20px;
+  color: #dc3545;
+}
+
+/* ── Audit Card (Last) ── */
+.auditCard {
+  background: #0a0a0a;
+  border: 1px solid #dc3545;
+}
+
+.auditIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(220, 53, 69, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dc3545;
+  margin-bottom: 32px;
+}
+
+.auditBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 32px;
+  background: #dc3545;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+
+.auditBtn:hover {
+  background: #ff1f1f;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(220, 53, 69, 0.4);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1200px) {
+  .servicesGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .servicesGrid { grid-template-columns: 1fr; }
+  .container { padding: 0 24px; }
+  .hero { padding: 120px 0 60px; }
+  .serviceCard { padding: 48px 32px; }
+}

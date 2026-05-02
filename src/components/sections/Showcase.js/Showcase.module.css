@@ -1,270 +1,102 @@
-/* ─────────────────────────────────────────
-   SHOWCASE SECTION
-───────────────────────────────────────── */
 .showcase {
-  background: #ffffff;
-  padding: 40px 0 0;
-  text-align: center;
+  background: #000;
+  padding: 160px 0;
   overflow: hidden;
-  width: 100%;
+  position: relative;
 }
 
-/* ─────────────────────────────────────────
-   HEADER
-───────────────────────────────────────── */
 .header {
-  padding: 0 24px;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+  text-align: center;
+  margin-bottom: 80px;
 }
 
 .header h1 {
-  font-size: 80px;
-  font-weight: 800;
-  letter-spacing: -3px;
-  margin: 0 0 16px;
-  line-height: 1.05;
-  color: #111;
+  font-family: var(--font-raleway);
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: 32px;
 }
 
 .header p {
-  max-width: 620px;
-  margin: 0 auto 36px;
-  color: #86868b;
-  font-size: 17px;
+  font-size: 18px;
+  color: #888;
+  max-width: 600px;
+  margin: 0 auto 40px;
   line-height: 1.6;
 }
 
-@keyframes slideRight {
-  0% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(5px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-.ctaText {
-  line-height: 1;
-}
-
-/* ─────────────────────────────────────────
-   SLIDER
-   Cards are absolutely positioned by GSAP.
-   sliderWrapper provides the perspective
-   container and height.
-───────────────────────────────────────── */
-.sliderWrapper {
-  position: relative;
-  width: 100%;
-  /*
-    Height must be tall enough to show the tallest card (center, scale=1)
-    plus any vertical drop for edge cards.
-    Card height = 420px → add padding top/bottom for shadow breathing room.
-  */
-  height: 560px;
-  margin-top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /*
-    perspective on the wrapper creates the 3D depth.
-    GSAP also sets transformPerspective per-card, but
-    this wrapper perspective controls the scene globally.
-  */
-  perspective: 1400px;
-  perspective-origin: 50% 45%;
-}
-
-.sliderRow {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform-style: preserve-3d;
-}
-
-/* ─────────────────────────────────────────
-   CARD
-───────────────────────────────────────── */
-.card {
-  position: absolute;
-
-  /* Base size at scale=1 (center card) */
-  width: 280px;
-  height: 410px;
-
-  border-radius: 28px;
-  overflow: hidden;
-  background: #111;
-
-  /*
-    Rich shadow — deeper for center card because it's the visual focus.
-    GSAP controls z-index so center always renders on top.
-  */
-  box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.18),
-    0 60px 100px rgba(0, 0, 0, 0.12);
-
-  will-change: transform, opacity;
-  transform-style: preserve-3d;
-
-  /* Smooth opacity transitions only (transform handled by GSAP lerp) */
-  transition: opacity 0.25s ease;
-
-  cursor: pointer;
-}
-
-.card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  user-select: none;
-  pointer-events: none; /* prevent drag ghosts */
-}
 .ctaWrapper {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  height: 52px;
-  border-radius: 50px;
-  padding: 6px 22px 6px 6px;
-  background: #f5f4f3;
+  gap: 16px;
+  background: #fff;
+  padding: 12px 24px;
+  border-radius: 100px;
   cursor: pointer;
-  transition: opacity 0.05s linear;
-  will-change: opacity;
-}
-.arrowRight {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 35px;
-  background: #dc3545;
-  color: #fff;
-  padding: 11px;
+  transition: all 0.3s ease;
 }
 
 .cta {
-  font-family: "Inter", sans-serif;
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 1;
+  color: #000;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.arrowRight {
+  width: 32px;
+  height: 32px;
+  background: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+/* Marquee Row */
+.sliderWrapper {
+  margin-top: 40px;
+  position: relative;
+  width: 100%;
+  display: flex;
+}
+
+.sliderRow {
+  display: flex;
+  gap: 40px;
   white-space: nowrap;
-  color: #111;
 }
-.cta:hover .arrowRight span {
-  animation: slideRight 0.45s ease-in-out;
-}
-/* ─────────────────────────────────────────
-   RESPONSIVE
-───────────────────────────────────────── */
 
-/* ── Tablet landscape ≤ 1200px ── */
-@media (max-width: 1200px) {
+.card {
+  position: relative;
+  width: 380px;
+  height: 480px;
+  border-radius: 20px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
   .header h1 {
-    font-size: 66px;
-    letter-spacing: -2.5px;
+    font-size: 42px;
   }
-
-  .sliderWrapper {
-    height: 500px;
-  }
-
+  
   .card {
-    width: 240px;
+    width: 260px;
     height: 360px;
-    border-radius: 24px;
-  }
-}
-
-/* ── Tablet portrait ≤ 900px ── */
-@media (max-width: 900px) {
-  .header h1 {
-    font-size: 52px;
-    letter-spacing: -2px;
   }
 
   .header p {
     font-size: 16px;
-    max-width: 520px;
-  }
-
-  .sliderWrapper {
-    height: 420px;
-    perspective: 1100px;
-  }
-
-  .card {
-    width: 200px;
-    height: 300px;
-    border-radius: 20px;
-  }
-}
-
-/* ── Mobile ≤ 640px ── */
-@media (max-width: 640px) {
-  .showcase {
-    padding: 24px 0 0;
-  }
-
-  .header h1 {
-    font-size: 38px;
-    letter-spacing: -1.5px;
-  }
-
-  .header p {
-    font-size: 15px;
-    padding: 0 16px;
-  }
-
-  .cta {
-    font-size: 14px;
-    padding: 7px 22px 7px 7px;
-    gap: 10px;
-  }
-
-  .arrow {
-    width: 34px;
-    height: 34px;
-    font-size: 14px;
-  }
-
-  .sliderWrapper {
-    height: 340px;
-    perspective: 900px;
-  }
-
-  .card {
-    width: 160px;
-    height: 238px;
-    border-radius: 16px;
-    box-shadow:
-      0 12px 28px rgba(0, 0, 0, 0.18),
-      0 36px 60px rgba(0, 0, 0, 0.1);
-  }
-}
-
-/* ── Small mobile ≤ 400px ── */
-@media (max-width: 400px) {
-  .header h1 {
-    font-size: 30px;
-    letter-spacing: -1px;
-  }
-
-  .sliderWrapper {
-    height: 290px;
-    perspective: 750px;
-  }
-
-  .card {
-    width: 136px;
-    height: 200px;
-    border-radius: 14px;
   }
 }

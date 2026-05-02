@@ -4,6 +4,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import styles from "./Footer.module.css";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const Hyperspeed = dynamic(
   () => import("@/components/ui/FooterAnimation/FooterAnimation"),
@@ -12,6 +13,36 @@ const Hyperspeed = dynamic(
 
 export default function Footer() {
   const router = useRouter();
+  const [times, setTimes] = useState({ qa: "", usa: "", in: "" });
+
+  useEffect(() => {
+    const updateTimes = () => {
+      const now = new Date();
+      const format = (tz) => now.toLocaleTimeString("en-GB", { 
+        hour12: false, 
+        hour: "2-digit", 
+        minute: "2-digit",
+        timeZone: tz
+      });
+
+      setTimes({
+        qa: format("Asia/Qatar"),
+        usa: format("America/New_York"),
+        in: format("Asia/Kolkata")
+      });
+    };
+
+    updateTimes();
+    const interval = setInterval(updateTimes, 60000); // Update every minute
+    return () => clearInterval(interval);
+  }, []);
+
+  const regions = [
+    { id: "qa", name: "Qatar", time: times.qa, path: "/qa/services" },
+    { id: "usa", name: "USA", time: times.usa, path: "/usa/services" },
+    { id: "in", name: "India", time: times.in, path: "/in/services" }
+  ];
+
   return (
     <footer className={styles.footer}>
 
@@ -30,55 +61,76 @@ export default function Footer() {
           {/* Left — Brand + Email */}
           <div className={styles.left}>
             <h2 className={styles.logo}>Palqar</h2>
-            <p className={styles.tagline}>Powering Possibilities</p>
+            <p className={styles.tagline}>Precision-engineered digital growth and transformation.</p>
             <div className={styles.emailBox}>
               <input
                 type="email"
-                placeholder="Enter Your Email..."
+                placeholder="Subscribe to our newsletter..."
                 className={styles.input}
               />
               <button
                 className={styles.button}
-                onClick={() => router.push("/contact#contact-form")}
+                onClick={() => router.push("/contact")}
               >
-                Contact us
+                Join Now
               </button>
             </div>
           </div>
 
-          {/* Links Row — wraps into 2-col on mobile */}
+          {/* Links Row */}
           <div className={styles.linksGroup}>
 
             <div className={styles.templateColumn}>
-              <h4 className={styles.columnTitle}>Template Pages</h4>
+              <h4 className={styles.columnTitle}>Company</h4>
               <ul className={styles.linkList}>
-                <li><Link href="/">Home</Link></li>
-                <li><Link href="/about">About</Link></li>
+                <li><Link href="/about">About Us</Link></li>
                 <li><Link href="/industries">Portfolio</Link></li>
-                <li><Link href="/contact">Contact</Link></li>
-                <li><Link href="/blog">Blog</Link></li>
+                <li><Link href="/blog">Our Insights</Link></li>
+                <li><Link href="/contact">Get in Touch</Link></li>
+                <li><Link href="/careers">Careers</Link></li>
+              </ul>
+            </div>
+
+            <div className={styles.templateColumn}>
+              <h4 className={styles.columnTitle}>Solutions</h4>
+              <ul className={styles.linkList}>
+                <li><Link href="/services/digital-marketing/seo">SEO Optimization</Link></li>
+                <li><Link href="/services/web-development">Web Development</Link></li>
+                <li><Link href="/services/branding">Brand Strategy</Link></li>
+                <li><Link href="/services/marketing">Digital Marketing</Link></li>
+                <li><Link href="/services/automation">Business Automation</Link></li>
               </ul>
             </div>
 
             <div className={styles.socialColumn}>
-              <h4 className={styles.columnTitle}>Social</h4>
+              <h4 className={styles.columnTitle}>Connect</h4>
               <ul className={styles.linkList}>
-                <li><a href="https://x.com/palqar" target="_blank" rel="noopener noreferrer">Twitter (X)</a></li>
+                <li><a href="https://linkedin.com/company/palqar" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
                 <li><a href="https://instagram.com/palqar" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                <li><a href="https://x.com/palqar" target="_blank" rel="noopener noreferrer">Twitter (X)</a></li>
                 <li><a href="https://youtube.com/@palqar" target="_blank" rel="noopener noreferrer">Youtube</a></li>
-                <li><a href="https://framer.com" target="_blank" rel="noopener noreferrer">Framer</a></li>
               </ul>
             </div>
 
           </div>
 
-          {/* Video Card */}
-          <div className={styles.videoWrapper}>
-            <div className={styles.clientsTag}>
-              Total Clients <strong>736+</strong>
+          {/* Region Pills Section (Replaced Status Card) */}
+          <div className={styles.regionWrapper}>
+            <div className={styles.pillsContainer}>
+              {regions.map((reg) => (
+                <button 
+                  key={reg.id} 
+                  className={styles.regionPill}
+                  onClick={() => router.push(reg.path)}
+                >
+                  <span className={styles.regionName}>{reg.name}</span>
+                  <span className={styles.regionTime}>{reg.time}</span>
+                </button>
+              ))}
             </div>
-            <div className={styles.videoCard}>
-              <div className={styles.playCircle}>▶</div>
+            <div className={styles.availability}>
+              <span className={styles.pulseDot}></span>
+              <span>Available for new projects</span>
             </div>
           </div>
 
@@ -88,7 +140,7 @@ export default function Footer() {
         <div className={styles.brandSection}>
           <Image
             src="/LOGO-02.png"
-            alt="Palqar Logo"
+            alt="Palqar Digital Growth Agency"
             width={1400}
             height={1200}
             className={styles.bigLogo}
@@ -98,14 +150,17 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className={styles.bottomBar}>
-          <span>© 2026 Palqar</span>
+          <div className={styles.footerInfo}>
+            <span>© 2026 Palqar · Doha · Dubai · New York · Mumbai</span>
+          </div>
           <div className={styles.bottomLinks}>
-            <span>Terms & Conditions</span>
-            <span>Privacy Policy</span>
+            <Link href="/terms">Terms & Conditions</Link>
+            <Link href="/privacy">Privacy Policy</Link>
+            <Link href="/sitemap">Sitemap</Link>
           </div>
         </div>
 
       </div>
     </footer>
   );
-}
+}

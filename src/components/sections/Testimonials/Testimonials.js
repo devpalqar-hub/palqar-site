@@ -66,11 +66,7 @@ export default function TestimonialsPage() {
       <section aria-label="Client testimonials">
         {!isMobile && (
           <div className={styles.stackContainer}>
-            <ScrollStack
-              useWindowScroll={true}
-              itemDistance={800}
-              itemStackDistance={40}
-            >
+            <ScrollStack>
               {testimonialData.map((item, i) => (
                 <ScrollStackItem key={i}>
                   <TestimonialCard item={item} />
