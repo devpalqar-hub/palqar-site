@@ -4,17 +4,26 @@
 }
 
 .scroll-stack-inner {
-  padding: 10vh 0 30vh;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10vh; /* Space between cards as they scroll */
 }
 
 .scroll-stack-card {
-  position: relative;
+  position: sticky;
+  top: 15vh; /* This creates the stacking effect */
   width: 100%;
-  margin-bottom: 100px;
+  max-width: 1100px;
+  background: #000; /* Ensure background is solid for stacking */
   border-radius: 40px;
   z-index: 1;
-  will-change: transform;
-  transition: none;
-  box-shadow: 0 4px 94px 0 #00000059;
+  box-shadow: 0 -20px 50px rgba(0,0,0,0.5); /* Subtle shadow on the card above */
+  transition: transform 0.3s ease;
 }
+
+/* Optional: Slight scaling down for cards that are underneath */
+.scroll-stack-card:nth-child(1) { z-index: 1; }
+.scroll-stack-card:nth-child(2) { z-index: 2; }
+.scroll-stack-card:nth-child(3) { z-index: 3; }
+.scroll-stack-card:nth-child(4) { z-index: 4; }

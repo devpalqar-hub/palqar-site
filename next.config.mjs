@@ -18,10 +18,10 @@ const nextConfig = {
 
   async rewrites() {
     return [
-      {
-        source: "/qa/:path*",
-        destination: "/:path*",
-      },
+      // {
+      //   source: "/qa/:path*",
+      //   destination: "/:path*",
+      // },
       {
         source: "/usa/:path*",
         destination: "/:path*",
