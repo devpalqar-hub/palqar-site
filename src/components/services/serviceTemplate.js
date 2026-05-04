@@ -79,7 +79,11 @@ export default function ServiceTemplate({ category, service, content }) {
             <div className={`${styles.psHeader} reveal`}>
               <p className={styles.eyebrow}>The Challenge</p>
               <h2 className={styles.heading}>
-                Why Businesses in Qatar <em>Struggle</em> with SEO
+                {problemSolution.title || (
+                  <>
+                    Why Businesses in Qatar <em>Struggle</em> with SEO
+                  </>
+                )}
               </h2>
             </div>
             <div className={`${styles.psGrid} reveal reveal-delay-1`}>
@@ -163,7 +167,11 @@ export default function ServiceTemplate({ category, service, content }) {
             <div className={styles.resultsHeader}>
               <p className={`${styles.eyebrow} reveal`}>What You Get</p>
               <h2 className={`${styles.heading} reveal reveal-delay-1`}>
-                Measurable Results That <em>Matter</em>
+                {results.title || (
+                  <>
+                    Measurable Results That <em>Matter</em>
+                  </>
+                )}
               </h2>
             </div>
             <div className={styles.resultsList} role="list">
@@ -190,7 +198,11 @@ export default function ServiceTemplate({ category, service, content }) {
             <div className={styles.faqHeader}>
               <p className={`${styles.eyebrow} reveal`}>FAQ</p>
               <h2 className={`${styles.heading} reveal reveal-delay-1`}>
-                Common Questions About <em>SEO in Qatar</em>
+                {faqs.title || (
+                  <>
+                    Common Questions About <em>{service.toUpperCase()} in Qatar</em>
+                  </>
+                )}
               </h2>
             </div>
             <div className={`${styles.faqList} reveal reveal-delay-1`}>
@@ -202,7 +214,7 @@ export default function ServiceTemplate({ category, service, content }) {
             <p className={styles.faqExplore}>
               Explore more:{" "}
               <Link
-                href="/qa/services/digital-marketing/social-media-marketing"
+                href="/qa/services/digital-marketing/ssm"
                 className={styles.faqExploreLink}
               >
                 Social Media
@@ -226,7 +238,7 @@ export default function ServiceTemplate({ category, service, content }) {
                 className={`${styles.eyebrow} reveal`}
                 style={{ justifyContent: "center" }}
               >
-                Free SEO Audit
+                {finalCTA.eyebrow || "Free Consultation"}
               </p>
               <h2 className={`${styles.heading} reveal reveal-delay-1`}>
                 {finalCTA.title}

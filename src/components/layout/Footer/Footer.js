@@ -18,9 +18,9 @@ export default function Footer() {
   useEffect(() => {
     const updateTimes = () => {
       const now = new Date();
-      const format = (tz) => now.toLocaleTimeString("en-GB", { 
-        hour12: false, 
-        hour: "2-digit", 
+      const format = (tz) => now.toLocaleTimeString("en-GB", {
+        hour12: false,
+        hour: "2-digit",
         minute: "2-digit",
         timeZone: tz
       });
@@ -48,8 +48,8 @@ export default function Footer() {
 
       {/* Background */}
       <div className={styles.backgroundWrapper}>
-       <Hyperspeed
-          effectOptions={{"distortion":"turbulentDistortion","length":400,"roadWidth":10,"islandWidth":2,"lanesPerRoad":3,"fov":90,"fovSpeedUp":150,"speedUp":2,"carLightsFade":0.4,"totalSideLightSticks":20,"lightPairsPerRoadWay":40,"shoulderLinesWidthPercentage":0.05,"brokenLinesWidthPercentage":0.1,"brokenLinesLengthPercentage":0.5,"lightStickWidth":[0.12,0.5],"lightStickHeight":[1.3,1.7],"movingAwaySpeed":[60,80],"movingCloserSpeed":[-120,-160],"carLightsLength":[12,80],"carLightsRadius":[0.05,0.14],"carWidthPercentage":[0.3,0.5],"carShiftX":[-0.8,0.8],"carFloorSeparation":[0,5],"colors":{"roadColor":526344,"islandColor":657930,"background":0,"shoulderLines":1250072,"brokenLines":1250072,"leftCars":[14177983,6770850,12732332],"rightCars":[242627,941733,3294549],"sticks":242627}}}
+        <Hyperspeed
+          effectOptions={{ "distortion": "turbulentDistortion", "length": 400, "roadWidth": 10, "islandWidth": 2, "lanesPerRoad": 3, "fov": 90, "fovSpeedUp": 150, "speedUp": 2, "carLightsFade": 0.4, "totalSideLightSticks": 20, "lightPairsPerRoadWay": 40, "shoulderLinesWidthPercentage": 0.05, "brokenLinesWidthPercentage": 0.1, "brokenLinesLengthPercentage": 0.5, "lightStickWidth": [0.12, 0.5], "lightStickHeight": [1.3, 1.7], "movingAwaySpeed": [60, 80], "movingCloserSpeed": [-120, -160], "carLightsLength": [12, 80], "carLightsRadius": [0.05, 0.14], "carWidthPercentage": [0.3, 0.5], "carShiftX": [-0.8, 0.8], "carFloorSeparation": [0, 5], "colors": { "roadColor": 526344, "islandColor": 657930, "background": 0, "shoulderLines": 1250072, "brokenLines": 1250072, "leftCars": [14177983, 6770850, 12732332], "rightCars": [242627, 941733, 3294549], "sticks": 242627 } }}
         />
       </div>
 
@@ -94,10 +94,14 @@ export default function Footer() {
             <div className={styles.templateColumn}>
               <h4 className={styles.columnTitle}>Solutions</h4>
               <ul className={styles.linkList}>
-                <li><Link href="/services/digital-marketing/seo">SEO Optimization</Link></li>
+                <li><Link href="/qa/services/digital-marketing/seo">SEO Optimization</Link></li>
+                <li><Link href="/qa/services/digital-marketing/ssm">Social Media Marketing</Link></li>
+                <li><Link href="/qa/services/digital-marketing/email-marketing">Email Marketing</Link></li>
+                <li><Link href="/qa/services/digital-marketing/reputation-management">Reputation Management</Link></li>
+                <li><Link href="/qa/services/digital-marketing/influencer-marketing">Influencer Marketing</Link></li>
                 <li><Link href="/services/web-development">Web Development</Link></li>
                 <li><Link href="/services/branding">Brand Strategy</Link></li>
-                <li><Link href="/services/marketing">Digital Marketing</Link></li>
+                <li><Link href="/qa/services/digital-marketing/performance-marketing">Performance Marketing</Link></li>
                 <li><Link href="/services/automation">Business Automation</Link></li>
               </ul>
             </div>
@@ -118,8 +122,8 @@ export default function Footer() {
           <div className={styles.regionWrapper}>
             <div className={styles.pillsContainer}>
               {regions.map((reg) => (
-                <button 
-                  key={reg.id} 
+                <button
+                  key={reg.id}
                   className={styles.regionPill}
                   onClick={() => router.push(reg.path)}
                 >
@@ -151,7 +155,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className={styles.bottomBar}>
           <div className={styles.footerInfo}>
-            <span>© 2026 Palqar · Doha · Dubai · New York · Mumbai</span>
+            <span>© 2026 Palqar · Kerala · Doha · California</span>
           </div>
           <div className={styles.bottomLinks}>
             <Link href="/terms">Terms & Conditions</Link>

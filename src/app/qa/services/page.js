@@ -44,11 +44,11 @@ export default function ServicesPage() {
       desc: "Data-driven campaigns that turn traffic into leads and leads into revenue.",
       items: [
         { name: "SEO — search engine optimisation", path: "/qa/services/digital-marketing/seo" },
-        "SEM — Google & Bing paid search",
-        "SMM — social media marketing",
-        "Email marketing & automation",
-        "Review & reputation management",
-        "Influencer & affiliate marketing"
+        { name: "Performance marketing — Ads & SEM", path: "/qa/services/digital-marketing/performance-marketing" },
+        { name: "SMM — social media marketing", path: "/qa/services/digital-marketing/ssm" },
+        { name: "Email marketing & automation", path: "/qa/services/digital-marketing/email-marketing" },
+        { name: "Review & reputation management", path: "/qa/services/digital-marketing/reputation-management" },
+        { name: "Influencer & affiliate marketing", path: "/qa/services/digital-marketing/influencer-marketing" }
       ],
       link: "/contact",
       linkText: "Explore digital marketing"
@@ -88,7 +88,7 @@ export default function ServicesPage() {
   return (
     <div className={styles.root}>
       <div className={styles.container}>
-        
+
         {/* Hero Section */}
         <section className={styles.hero}>
           <p className={styles.eyebrow}>Services Overview</p>
@@ -107,7 +107,7 @@ export default function ServicesPage() {
               <span className={styles.cardNum}>{service.num}</span>
               <h2 className={styles.title}>{service.title}</h2>
               <p className={styles.desc}>{service.desc}</p>
-              
+
               <ul className={styles.list}>
                 {service.items.map((item, i) => (
                   <li key={i} className={styles.listItem}>
@@ -123,7 +123,7 @@ export default function ServicesPage() {
               <Link href={service.link} className={styles.exploreLink}>
                 {service.linkText}
                 <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
-                  <path d="M1 6H17M17 6L12 1M17 6L12 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M1 6H17M17 6L12 1M17 6L12 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </Link>
             </div>
@@ -133,7 +133,7 @@ export default function ServicesPage() {
           <div className={`${styles.serviceCard} ${styles.auditCard}`}>
             <div className={styles.auditIcon}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>
+                <circle cx="12" cy="12" r="10" /><path d="M12 16v-4" /><path d="M12 8h.01" />
               </svg>
             </div>
             <h2 className={styles.title}>Not sure what you need?</h2>
