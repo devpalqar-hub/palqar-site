@@ -9,12 +9,42 @@ const contentRegistry = {
         content: m.seoContent,
         meta: m.seoContent.meta,
       })),
+    ssm: () =>
+      import("@/data/services/digitalMarketing/ssm").then((m) => ({
+        content: m.ssmContent,
+        meta: m.ssmContent.meta,
+      })),
+    "email-marketing": () =>
+      import("@/data/services/digitalMarketing/email-marketing").then((m) => ({
+        content: m.emailMarketingContent,
+        meta: m.emailMarketingContent.meta,
+      })),
+    "reputation-management": () =>
+      import("@/data/services/digitalMarketing/reputation-management").then((m) => ({
+        content: m.reputationManagementContent,
+        meta: m.reputationManagementContent.meta,
+      })),
+    "influencer-marketing": () =>
+      import("@/data/services/digitalMarketing/influencer-marketing").then((m) => ({
+        content: m.influencerMarketingContent,
+        meta: m.influencerMarketingContent.meta,
+      })),
+    "performance-marketing": () =>
+      import("@/data/services/digitalMarketing/performance-marketing").then((m) => ({
+        content: m.performanceMarketingContent,
+        meta: m.performanceMarketingContent.meta,
+      })),
   },
 };
 
 export async function generateStaticParams() {
   return [
     { category: "digital-marketing", service: "seo" },
+    { category: "digital-marketing", service: "ssm" },
+    { category: "digital-marketing", service: "email-marketing" },
+    { category: "digital-marketing", service: "reputation-management" },
+    { category: "digital-marketing", service: "influencer-marketing" },
+    { category: "digital-marketing", service: "performance-marketing" },
   ];
 }
 
